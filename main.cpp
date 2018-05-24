@@ -13,10 +13,14 @@ using namespace std;
 /*
  * 
  */
+//Resolucion,aún hay que trabajar en esto
+int ancho=1024;
+int alto=720;
 
 int main(int argc, char** argv) {
 
-   sf::RenderWindow window(sf::VideoMode(1280, 720), "Asteroids");
+   sf::RenderWindow window(sf::VideoMode(ancho, alto), "Asteroids",sf::Style::Fullscreen);
+   
 
     while (window.isOpen())
     {
