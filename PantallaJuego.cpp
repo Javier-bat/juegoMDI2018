@@ -12,8 +12,12 @@
  */
 
 #include <SFML/Graphics/RenderWindow.hpp>
-
+#include <SFML/Graphics.hpp>
 #include "PantallaJuego.h"
+#include "Ship.h"
+#include "Asteroide.h"
+
+#include <list>
 #include "Nave.h"
 
 PantallaJuego::PantallaJuego() {
@@ -37,36 +41,43 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     App.setFramerateLimit(60);
     //Desactiva el mouse,ya que no es necesario para jugar
     App.setMouseCursorVisible(false);
-
     score.setCharacterSize(32);
 
+
+    
+   sf::Clock syncronice_timer;
+    game::Ship nave;
+    
     while (running) {
+
+       
+        
+        
+    float delta_time_seconds = syncronice_timer.restart().asSeconds();
+
+
         //Actualiza el score en cada vuelta del bucle
         score.setString("Score"+ std::to_string(puntaje));
         //Esto es necesario para matar el programa cuando se cierra la ventana
+
         sf::Event event;
         while (App.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 return (-1);
             }
         }
+
+         
+            
+           nave.update(delta_time_seconds);
+           ball.update2(delta_time_seconds);
+        App.draw(ball);
+
         puntaje++;
         App.clear();
-        naveJugador.mostrarNave(App);
         App.draw(score);
+        App.draw(nave);
         App.display();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-            naveJugador.moverNave("derecha");
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-            naveJugador.moverNave("izquierda");
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
-            naveJugador.moverNave("arriba");
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
-            naveJugador.moverNave("abajo");
-        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
             
             return (-1);

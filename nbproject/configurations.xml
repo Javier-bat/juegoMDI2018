@@ -4,10 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Asteroide.h</itemPath>
       <itemPath>MenuPrincipal.h</itemPath>
       <itemPath>Nave.h</itemPath>
       <itemPath>Pantalla.h</itemPath>
       <itemPath>PantallaJuego.h</itemPath>
+      <itemPath>Ship.h</itemPath>
+      <itemPath>config.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,9 +19,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Asteroide.cpp</itemPath>
       <itemPath>MenuPrincipal.cpp</itemPath>
       <itemPath>Nave.cpp</itemPath>
       <itemPath>PantallaJuego.cpp</itemPath>
+      <itemPath>Ship.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -49,6 +54,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Asteroide.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Asteroide.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MenuPrincipal.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
@@ -62,6 +71,12 @@
       <item path="PantallaJuego.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PantallaJuego.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Ship.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Ship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="config.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -86,6 +101,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Asteroide.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Asteroide.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MenuPrincipal.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
@@ -99,6 +118,12 @@
       <item path="PantallaJuego.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PantallaJuego.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Ship.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Ship.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="config.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
