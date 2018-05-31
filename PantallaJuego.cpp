@@ -71,10 +71,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             
            nave.update(delta_time_seconds);
            ball.update2(delta_time_seconds);
-        App.draw(ball);
+        
 
         puntaje++;
         App.clear();
+        App.draw(ball);
         App.draw(score);
         App.draw(nave);
         App.display();

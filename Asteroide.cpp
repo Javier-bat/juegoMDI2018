@@ -20,7 +20,7 @@ Ball::Ball()
     : sf::Sprite()
 {
 	// Establecemos la textura de la bola
-	texture_ball.loadFromFile("asteroideGrande.png");
+	texture_ball.loadFromFile("Imagenes/asteroideGrande.png");
 	this->setTexture(texture_ball);
 
 	// Establecemos su sonido
@@ -31,7 +31,7 @@ Ball::Ball()
 //	this->setOrigin(1.6f,100.0f);
 	// Establecemos la posición de la bola en el centro de la ventana
         srand((unsigned)time(0));
-    int number = ((rand() % 1900));
+        int number = ((rand() % 1900));
         this->setPosition(number,-100.0f);
 
 	// Definimos la velocidad
