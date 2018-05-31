@@ -11,7 +11,8 @@
 #include "Pantalla.h"
 #include "MenuPrincipal.h"
 #include "PantallaJuego.h"
-
+#include "Ship.h"
+#include <list>
 using namespace std;
 
 /*

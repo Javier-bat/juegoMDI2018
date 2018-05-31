@@ -35,8 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Asteroide.o \
 	${OBJECTDIR}/MenuPrincipal.o \
 	${OBJECTDIR}/PantallaJuego.o \
+	${OBJECTDIR}/Ship.o \
 	${OBJECTDIR}/main.o
 
 
@@ -58,11 +60,16 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asteroids
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegomdi2018
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asteroids: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegomdi2018: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asteroids ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegomdi2018 ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Asteroide.o: Asteroide.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Asteroide.o Asteroide.cpp
 
 ${OBJECTDIR}/MenuPrincipal.o: MenuPrincipal.cpp
 	${MKDIR} -p ${OBJECTDIR}
@@ -73,6 +80,11 @@ ${OBJECTDIR}/PantallaJuego.o: PantallaJuego.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PantallaJuego.o PantallaJuego.cpp
+
+${OBJECTDIR}/Ship.o: Ship.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ship.o Ship.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
