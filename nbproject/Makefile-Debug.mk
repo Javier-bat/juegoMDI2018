@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/MenuPrincipal.o \
+	${OBJECTDIR}/Nave.o \
 	${OBJECTDIR}/PantallaJuego.o \
 	${OBJECTDIR}/main.o
 
@@ -68,6 +69,11 @@ ${OBJECTDIR}/MenuPrincipal.o: MenuPrincipal.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g `pkg-config --cflags sfml-all`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MenuPrincipal.o MenuPrincipal.cpp
+
+${OBJECTDIR}/Nave.o: Nave.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags sfml-all`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nave.o Nave.cpp
 
 ${OBJECTDIR}/PantallaJuego.o: PantallaJuego.cpp
 	${MKDIR} -p ${OBJECTDIR}
