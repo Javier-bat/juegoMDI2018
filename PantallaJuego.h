@@ -15,6 +15,9 @@
 #define PANTALLAJUEGO_H
 #include "Pantalla.h"
 #include <SFML/Graphics.hpp>
+#include "Asteroide.h"
+#include <array>
+#include <list>
 
 class PantallaJuego : public Pantalla {
 public:
@@ -22,7 +25,9 @@ public:
     int Run(sf::RenderWindow &App);
     void setRunning(bool run);
 private:
-
+    Ball ball;
+   
+       
 };
 
 #endif /* PANTALLAJUEGO_H */
