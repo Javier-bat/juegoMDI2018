@@ -14,15 +14,17 @@
 #ifndef NAVE_H
 #define NAVE_H
 
+#include <cstdlib>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 
+using namespace std;
 
 class Nave {
 public:
     Nave();
     void mostrarNave(sf::RenderWindow &window);
-    void moverNave();
+    void moverNave(string direccion);
     
 private:
     /*Estas variables se setean como globales,para evitar que el sprite

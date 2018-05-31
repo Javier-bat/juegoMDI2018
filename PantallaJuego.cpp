@@ -56,7 +56,16 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.draw(score);
         App.display();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-            naveJugador.moverNave();
+            naveJugador.moverNave("derecha");
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
+            naveJugador.moverNave("izquierda");
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)){
+            naveJugador.moverNave("arriba");
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)){
+            naveJugador.moverNave("abajo");
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
             
