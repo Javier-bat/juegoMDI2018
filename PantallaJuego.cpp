@@ -30,6 +30,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Text score;
     Nave naveJugador;
     
+    Asteroide asteroide;
+    
     
     //Carga la tipografía
     if (!font.loadFromFile("font/Cave-Story.ttf")) {
@@ -39,6 +41,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     score.setFont(font);
     //Para evitar un uso innecesario del procesador,limita los fps a 60
     App.setFramerateLimit(60);
+    //Para evitar efecto shuttering
+    App.setVerticalSyncEnabled(true);
     //Desactiva el mouse,ya que no es necesario para jugar
     App.setMouseCursorVisible(false);
     score.setCharacterSize(32);
@@ -70,14 +74,14 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
          
             
            nave.update(delta_time_seconds);
-           ball.update2(delta_time_seconds);
         
 
         puntaje++;
         App.clear();
-        App.draw(ball);
         App.draw(score);
         App.draw(nave);
+        asteroide.Mostrar(App);
+        asteroide.ActualizarPosicion();
         App.display();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
             

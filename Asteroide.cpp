@@ -5,67 +5,33 @@
  */
 
 /* 
- * File:   asteroide.cpp
- * Author: root
+ * File:   Asteroide.cpp
+ * Author: gabriel
  * 
- * Created on 30 de mayo de 2018, 05:14
+ * Created on 2 de junio de 2018, 14:52
  */
 
+#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <iostream>
+
 #include "Asteroide.h"
-#include <ctime>
-#include "config.hpp"
+#include <time.h>
 
-
-Ball::Ball()
-    : sf::Sprite()
-{
-	// Establecemos la textura de la bola
-	texture_ball.loadFromFile("Imagenes/asteroideGrande.png");
-	this->setTexture(texture_ball);
-
-	// Establecemos su sonido
-	//this->buffer.loadFromFile("data/hitball.wav");
-	//this->sound.setBuffer(buffer);
-
-	// Establecemos el origen de la bola en su centro
-//	this->setOrigin(1.6f,100.0f);
-	// Establecemos la posición de la bola en el centro de la ventana
-        srand((unsigned)time(0));
-        int number = ((rand() % 1900));
-        this->setPosition(number,-100.0f);
-
-	// Definimos la velocidad
-	this->speed.x = 0.0f;
-	this->speed.y = 500.0f;
+Asteroide::Asteroide() {
+    if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
+    }
+    spriteNave.setTexture(texturaNave);
+    srand(time(NULL));
+   int  y= rand()%sf::VideoMode::getDesktopMode().height;
+   std::cout<<"Posicion:"+std::to_string(y)<<std::endl;
+   spriteNave.setPosition(y,0);
 }
-void Ball::reset(){
- srand((unsigned)time(0));
-    int number = ((rand() % 1900));
-        this->setPosition(number,-100.0f);
-
-	// Definimos la velocidad
-	this->speed.x = 0.0f;
-	this->speed.y = 500.0f;
+void Asteroide::Mostrar(sf::RenderWindow &window){
+    window.draw(spriteNave);
 }
-void Ball::update2( float delta_time_seconds )
-{
-	// Obtenemos los cuatro laterales de la bola
-	float left = this->getPosition().x - this->getOrigin().x;
-	float right = this->getPosition().x + this->getOrigin().x;
-	float top = this->getPosition().y - this->getOrigin().y;
-	float bottom = this->getPosition().y + this->getOrigin().y;
-
-	// Comprobamos si choca contra las paredes
-	bool tocoSuelo =false;
-	if (bottom >= HEIGHT && speed.y > 0)
-	{
-            tocoSuelo=true;
-	}
-	// Movemos la bola multiplicando la velocidad por el tiempo pasado
-	this->move(delta_time_seconds * this->speed.x, delta_time_seconds* this->speed.y);
+void Asteroide::ActualizarPosicion(){
+    spriteNave.move(sf::Vector2f(2,2));
 }
 
-float Ball::getSpeedX() const
-{
-	return speed.x;
-}

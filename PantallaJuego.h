@@ -25,9 +25,7 @@ public:
     int Run(sf::RenderWindow &App);
     void setRunning(bool run);
 private:
-    Ball ball;
-   
-       
+
 };
 
 #endif /* PANTALLAJUEGO_H */

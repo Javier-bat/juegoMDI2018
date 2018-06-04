@@ -5,38 +5,25 @@
  */
 
 /* 
- * File:   asteroide.h
- * Author: root
+ * File:   Asteroide.h
+ * Author: gabriel
  *
- * Created on 30 de mayo de 2018, 05:14
+ * Created on 2 de junio de 2018, 14:52
  */
 
 #ifndef ASTEROIDE_H
 #define ASTEROIDE_H
 
-
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
-
-class Ball : public sf::Sprite
-{
+class Asteroide {
 public:
-    Ball();
-
-	void update(sf::Time& delta);
-        void update2( float delta_time_seconds );
-        void reset();
-	float getSpeedX() const;
-
+    Asteroide();
+    void Mostrar(sf::RenderWindow &window);
+    void ActualizarPosicion();
 private:
-	sf::Texture texture_ball;
-	sf::Vector2f speed;
-	sf::SoundBuffer buffer;
-	sf::Sound sound;
-}; // class Ball
+    sf::Texture texturaNave;
+    sf::Sprite spriteNave;
 
-
+};
 
 #endif /* ASTEROIDE_H */
 
