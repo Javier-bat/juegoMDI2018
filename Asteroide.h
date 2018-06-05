@@ -22,7 +22,7 @@ public:
 private:
     sf::Texture texturaNave;
     sf::Sprite spriteNave;
-
+    int movimientoX;
 };
 
 #endif /* ASTEROIDE_H */

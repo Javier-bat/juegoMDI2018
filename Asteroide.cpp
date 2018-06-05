@@ -24,14 +24,18 @@ Asteroide::Asteroide() {
     }
     spriteNave.setTexture(texturaNave);
     srand(time(NULL));
+    movimientoX=-3+rand()%2 + 2;
    int  y= rand()%sf::VideoMode::getDesktopMode().height;
    std::cout<<"Posicion:"+std::to_string(y)<<std::endl;
    spriteNave.setPosition(y,0);
+       std::cout<<"Valor: "+ std::to_string(movimientoX)<<std::endl;//Esto es solo una traza para mostrar el número generado
+
 }
 void Asteroide::Mostrar(sf::RenderWindow &window){
     window.draw(spriteNave);
 }
 void Asteroide::ActualizarPosicion(){
-    spriteNave.move(sf::Vector2f(2,2));
+    spriteNave.move(sf::Vector2f(movimientoX,2));
+    spriteNave.rotate(0.5);
 }
 

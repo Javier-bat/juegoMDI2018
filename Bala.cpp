@@ -38,6 +38,6 @@ Bala::~Bala() {
 
 void Bala::update(){
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
-        spriteBala.setPosition(sf::Vector2f)
+ //       spriteBala.setPosition(sf::Vector2f);
     }
 }

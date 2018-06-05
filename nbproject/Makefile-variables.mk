@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=juegomdi2018
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/juegomdi2018
+CND_ARTIFACT_NAME_Debug=asteroids
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/asteroids
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=juegomdi2018.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/juegomdi2018.tar
+CND_PACKAGE_NAME_Debug=asteroids.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/asteroids.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=juegomdi2018
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/juegomdi2018
+CND_ARTIFACT_NAME_Release=asteroids
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/asteroids
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=juegomdi2018.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/juegomdi2018.tar
+CND_PACKAGE_NAME_Release=asteroids.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/asteroids.tar
 #
 # include compiler specific variables
 #
