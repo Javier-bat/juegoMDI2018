@@ -96,8 +96,8 @@ namespace game
    float angle_of_velocity = std::atan2( m_ship_velocity.y/ship_speed , m_ship_velocity.x/ship_speed );
  
    //Aplico la resistencia en la direccion del movimiento
-  m_ship_velocity.x -= m_ship_drag_force * delta_time_seconds * std::cos( angle_of_velocity );
-   m_ship_velocity.y -= m_ship_drag_force * delta_time_seconds * std::sin( angle_of_velocity );
+      m_ship_velocity.x -= m_ship_drag_force * delta_time_seconds * std::cos( angle_of_velocity );
+       m_ship_velocity.y -= m_ship_drag_force * delta_time_seconds * std::sin( angle_of_velocity );
  
    //Compruebo la nueva velocidad
    ship_speed = std::sqrt( (m_ship_velocity.x * m_ship_velocity.x) + (m_ship_velocity.y * m_ship_velocity.y) );
@@ -106,7 +106,7 @@ namespace game
    if( ship_speed < 0.0f ) m_ship_velocity = sf::Vector2f( 0.0f, 0.0f );
     
    //Actualizo la posición de la nave
-   move( m_ship_velocity * delta_time_seconds );
+  // move( m_ship_velocity * delta_time_seconds );
  
    //Comprueba la posición
    sf::Vector2f position = getPosition();
