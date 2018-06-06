@@ -28,10 +28,13 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int puntaje=0;
     sf::Font font;
     sf::Text score;
-    fondo.loadFromFile("Imagenes/back.png");
-    sf::Sprite sprite;
     
-    sprite.setTexture(fondo);
+    fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
+    
+    sf::Sprite sprite;//creo un sprite
+    
+    sprite.setTexture(fondo); //le seteo la textura
+     //seteo el tamaño del fondo
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
     
     Asteroide asteroide;
@@ -81,8 +84,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         
 
         puntaje++;
+        //limpiamos la pantalla
         App.clear();
-        App.draw(sprite);
+        //dibujamos la pantalla
+        App.draw(sprite); //dibujo fondo
         App.draw(score);
         App.draw(nave);
         asteroide.Mostrar(App);
