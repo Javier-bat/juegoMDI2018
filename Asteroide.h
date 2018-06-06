@@ -19,10 +19,13 @@ public:
     Asteroide();
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
+    void generarOrigen();
 private:
     sf::Texture texturaNave;
     sf::Sprite spriteNave;
     int movimientoX;
+    int x;
+    int movimientoY;
 };
 
 #endif /* ASTEROIDE_H */

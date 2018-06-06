@@ -20,22 +20,49 @@
 #include <time.h>
 
 Asteroide::Asteroide() {
+    int multiplicadorMovimiento;
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     spriteNave.setTexture(texturaNave);
+    this->generarOrigen();
+    //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     srand(time(NULL));
-    movimientoX=-3+rand()%2 + 2;
-   int  y= rand()%sf::VideoMode::getDesktopMode().height;
-   std::cout<<"Posicion:"+std::to_string(y)<<std::endl;
-   spriteNave.setPosition(y,0);
-       std::cout<<"Valor: "+ std::to_string(movimientoX)<<std::endl;//Esto es solo una traza para mostrar el número generado
+    movimientoX = rand() % 4;
+    //Este bloque,genera un numero entre 0 y 1,si es 1,hace que el movimiento sea negativo,si es 0 lo deja positivo
+    multiplicadorMovimiento=rand() % 2;
+    if(multiplicadorMovimiento == 1){
+        movimientoX=-movimientoX;
+    }
+    //Fin del bloque
+    int y = rand() % sf::VideoMode::getDesktopMode().height;
+    std::cout << "Posicion:" + std::to_string(y) << std::endl;//Traza
+    spriteNave.setPosition(y, x);
+    std::cout << "Valor: " + std::to_string(movimientoX) << std::endl; //Esto es solo una traza para mostrar el número generado
 
 }
-void Asteroide::Mostrar(sf::RenderWindow &window){
+
+void Asteroide::Mostrar(sf::RenderWindow &window) {
     window.draw(spriteNave);
 }
-void Asteroide::ActualizarPosicion(){
-    spriteNave.move(sf::Vector2f(movimientoX,2));
+
+void Asteroide::ActualizarPosicion() {
+    spriteNave.move(sf::Vector2f(movimientoX, movimientoY));
     spriteNave.rotate(0.5);
+}
+void Asteroide::generarOrigen() {
+    int ladoDeOrigen;
+    srand(time(NULL));
+    ladoDeOrigen=rand() % 2;
+    std::cout<<"Random generado:"<<ladoDeOrigen<<std::endl;
+    switch (ladoDeOrigen){
+        case 0:
+            x=0;
+            movimientoY=2;
+        break;
+        default:
+            x= sf::VideoMode::getDesktopMode().height;
+            movimientoY=-2;
+        break;
+    }
 }
 
