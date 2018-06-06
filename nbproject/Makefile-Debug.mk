@@ -61,11 +61,11 @@ LDLIBSOPTIONS=`pkg-config --libs sfml-all`
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asteroids
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegomdi2018
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asteroids: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegomdi2018: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/asteroids ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/juegomdi2018 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/Asteroide.o: Asteroide.cpp
 	${MKDIR} -p ${OBJECTDIR}

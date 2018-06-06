@@ -16,6 +16,7 @@
 #include "PantallaJuego.h"
 #include "Ship.h"
 #include "Asteroide.h"
+#include "ConstantesGlobales.h"
 
 #include <list>
 
@@ -27,6 +28,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int puntaje=0;
     sf::Font font;
     sf::Text score;
+    fondo.loadFromFile("Imagenes/back.png");
+    sf::Sprite sprite;
+    
+    sprite.setTexture(fondo);
+    sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
     
     Asteroide asteroide;
     
@@ -76,6 +82,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         puntaje++;
         App.clear();
+        App.draw(sprite);
         App.draw(score);
         App.draw(nave);
         asteroide.Mostrar(App);
