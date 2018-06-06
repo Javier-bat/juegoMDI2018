@@ -18,6 +18,7 @@
 #include<SFML/Config.hpp>
 #include <complex>
 #include <math.h>
+#include "ConstantesGlobales.h"
 
 namespace game
 {
@@ -45,7 +46,7 @@ namespace game
  //Inicializa la nave a sus valores iniciales
  void Ship::reset()
  {
-  setPosition( sf::VideoMode::getDesktopMode().width/2, sf::VideoMode::getDesktopMode().height/2); //Lo colocamos en el centro de la pantalla
+  setPosition( anchoResolucion/2, altoResolucion/2); //Lo colocamos en el centro de la pantalla
   setRotation( 270.0f );   //lo ponemos con giro cero
   m_ship_velocity.x = 0.0f;  //Lo paramos para que no se mueva
   m_ship_velocity.y = 0.0f;
