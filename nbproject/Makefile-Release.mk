@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Asteroide.o \
 	${OBJECTDIR}/Bala.o \
 	${OBJECTDIR}/MenuPrincipal.o \
-	${OBJECTDIR}/Nave.o \
 	${OBJECTDIR}/PantallaJuego.o \
 	${OBJECTDIR}/Ship.o \
 	${OBJECTDIR}/main.o
@@ -82,11 +81,6 @@ ${OBJECTDIR}/MenuPrincipal.o: MenuPrincipal.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MenuPrincipal.o MenuPrincipal.cpp
-
-${OBJECTDIR}/Nave.o: Nave.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Nave.o Nave.cpp
 
 ${OBJECTDIR}/PantallaJuego.o: PantallaJuego.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -8,11 +8,9 @@
       <itemPath>Bala.h</itemPath>
       <itemPath>ConstantesGlobales.h</itemPath>
       <itemPath>MenuPrincipal.h</itemPath>
-      <itemPath>Nave.h</itemPath>
       <itemPath>Pantalla.h</itemPath>
       <itemPath>PantallaJuego.h</itemPath>
       <itemPath>Ship.h</itemPath>
-      <itemPath>config.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -24,7 +22,6 @@
       <itemPath>Asteroide.cpp</itemPath>
       <itemPath>Bala.cpp</itemPath>
       <itemPath>MenuPrincipal.cpp</itemPath>
-      <itemPath>Nave.cpp</itemPath>
       <itemPath>PantallaJuego.cpp</itemPath>
       <itemPath>Ship.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -71,10 +68,6 @@
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Nave.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Nave.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Pantalla.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PantallaJuego.cpp" ex="false" tool="1" flavor2="0">
@@ -84,8 +77,6 @@
       <item path="Ship.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ship.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="config.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -124,10 +115,6 @@
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Nave.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Nave.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Pantalla.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PantallaJuego.cpp" ex="false" tool="1" flavor2="0">
@@ -137,8 +124,6 @@
       <item path="Ship.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ship.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="config.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

@@ -18,7 +18,6 @@
 #include "Asteroide.h"
 
 #include <list>
-#include "Nave.h"
 
 PantallaJuego::PantallaJuego() {
 }
@@ -28,7 +27,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int puntaje=0;
     sf::Font font;
     sf::Text score;
-    Nave naveJugador;
     
     Asteroide asteroide;
     
