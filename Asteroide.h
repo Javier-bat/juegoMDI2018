@@ -19,8 +19,8 @@ public:
     Asteroide();
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
-    void generarOrigen();
 private:
+    void generarOrigen();
     sf::Texture texturaNave;
     sf::Sprite spriteNave;
     int movimientoX;

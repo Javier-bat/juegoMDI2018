@@ -17,6 +17,7 @@
 #include <iostream>
 
 #include "Asteroide.h"
+#include "ConstantesGlobales.h"
 #include <time.h>
 
 Asteroide::Asteroide() {
@@ -34,7 +35,7 @@ Asteroide::Asteroide() {
         movimientoX=-movimientoX;
     }
     //Fin del bloque
-    int y = rand() % sf::VideoMode::getDesktopMode().height;
+    int y = rand() % altoResolucion;
     std::cout << "Posicion:" + std::to_string(y) << std::endl;//Traza
     spriteNave.setPosition(y, x);
     std::cout << "Valor: " + std::to_string(movimientoX) << std::endl; //Esto es solo una traza para mostrar el número generado
@@ -60,7 +61,7 @@ void Asteroide::generarOrigen() {
             movimientoY=2;
         break;
         default:
-            x= sf::VideoMode::getDesktopMode().height;
+            x= altoResolucion;
             movimientoY=-2;
         break;
     }

@@ -12,6 +12,7 @@
 #include "MenuPrincipal.h"
 #include "PantallaJuego.h"
 #include "Ship.h"
+#include "ConstantesGlobales.h"
 #include <list>
 using namespace std;
 
@@ -19,15 +20,13 @@ using namespace std;
  * 
  */
 //Resolucion,aún hay que trabajar en esto
-int alto=sf::VideoMode::getDesktopMode().height;
-int ancho=sf::VideoMode::getDesktopMode().width;
 std::vector<Pantalla*> pantallas;
 
 int pantalla;
 
 int main(int argc, char** argv) {
     //Setea la resolucion de la pantalla
-   sf::RenderWindow window(sf::VideoMode(ancho,alto), "Asteroids",sf::Style::Fullscreen);
+   sf::RenderWindow window(sf::VideoMode(anchoResolucion,altoResolucion), "Asteroids",sf::Style::Fullscreen);
    
    
    MenuPrincipal menuP;

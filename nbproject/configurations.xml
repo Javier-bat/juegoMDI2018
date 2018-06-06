@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Asteroide.h</itemPath>
       <itemPath>Bala.h</itemPath>
+      <itemPath>ConstantesGlobales.h</itemPath>
       <itemPath>MenuPrincipal.h</itemPath>
       <itemPath>Nave.h</itemPath>
       <itemPath>Pantalla.h</itemPath>
@@ -64,6 +65,8 @@
       </item>
       <item path="Bala.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="ConstantesGlobales.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="MenuPrincipal.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
@@ -114,6 +117,8 @@
       <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Bala.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConstantesGlobales.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MenuPrincipal.cpp" ex="false" tool="1" flavor2="0">
       </item>
