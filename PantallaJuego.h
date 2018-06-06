@@ -24,6 +24,7 @@ public:
     PantallaJuego();
     int Run(sf::RenderWindow &App);
     void setRunning(bool run);
+    sf::Texture fondo;
 private:
 
 };
