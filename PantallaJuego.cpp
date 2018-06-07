@@ -24,26 +24,27 @@ PantallaJuego::PantallaJuego() {
 }
 
 int PantallaJuego::Run(sf::RenderWindow &App) {
+    //Variables
     bool running=true;
     int puntaje=0;
     sf::Font font;
     sf::Text score;
-    
     sf::Texture texturaNave;
     int cantidadAsteroides=0;
+    sf::Sprite sprite;//creo un sprite
+    std::vector<Asteroide> asteroides;
+    sf::Clock syncronice_timer;
+    game::Ship nave;
+    //Fin de declaracion de variables
+    
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     
-    sf::Sprite sprite;//creo un sprite
-    
     sprite.setTexture(fondo); //le seteo la textura
      //seteo el tamaño del fondo
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
-    
-    std::vector<Asteroide> asteroides;
-    
     
     //Carga la tipografía
     if (!font.loadFromFile("font/Cave-Story.ttf")) {
@@ -61,8 +62,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
     
-   sf::Clock syncronice_timer;
-    game::Ship nave;
+   
     
     while (running) {
 
