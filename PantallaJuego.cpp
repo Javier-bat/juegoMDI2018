@@ -29,6 +29,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Font font;
     sf::Text score;
     
+    sf::Texture texturaNave;
+    int cantidadAsteroides=0;
+    if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
+    }
+    
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     
     sf::Sprite sprite;//creo un sprite
@@ -37,7 +42,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
      //seteo el tamaño del fondo
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
     
-    Asteroide asteroide;
+    std::vector<Asteroide> asteroides;
     
     
     //Carga la tipografía
@@ -77,7 +82,14 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 return (-1);
             }
         }
-
+        if(puntaje%4 ==0 && asteroides.size() <= 10){
+            Asteroide asteroide=Asteroide(texturaNave);
+            asteroides.push_back(asteroide);
+            cantidadAsteroides+=1;
+        }
+        for(int i=0;i< asteroides.size();i++){
+            asteroides[i].verificarExistencia(cantidadAsteroides,i,asteroides);
+        }
          
             
            nave.update(delta_time_seconds);
@@ -90,8 +102,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.draw(sprite); //dibujo fondo
         App.draw(score);
         App.draw(nave);
-        asteroide.Mostrar(App);
-        asteroide.ActualizarPosicion();
+        for(int i=0;i < asteroides.size();i++){
+            asteroides[i].Mostrar(App);
+            asteroides[i].ActualizarPosicion();
+        }
         App.display();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
             

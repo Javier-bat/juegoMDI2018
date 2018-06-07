@@ -19,27 +19,16 @@
 #include "Asteroide.h"
 #include "ConstantesGlobales.h"
 #include <time.h>
-
-Asteroide::Asteroide() {
-    int multiplicadorMovimiento;
-    if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
-    }
+#include <random>
+using namespace std;
+Asteroide::Asteroide(sf::Texture &texturaNave) {
+    
     spriteNave.setTexture(texturaNave);
     this->generarOrigen();
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
-    srand(time(NULL));
-    movimientoX = rand() % 4;
-    //Este bloque,genera un numero entre 0 y 1,si es 1,hace que el movimiento sea negativo,si es 0 lo deja positivo
-    multiplicadorMovimiento=rand() % 2;
-    if(multiplicadorMovimiento == 1){
-        movimientoX=-movimientoX;
-    }
-    //Fin del bloque
+    srand(std::random_device()() %360);
     int y = rand() % altoResolucion;
-    std::cout << "Posicion:" + std::to_string(y) << std::endl;//Traza
     spriteNave.setPosition(y, x);
-    std::cout << "Valor: " + std::to_string(movimientoX) << std::endl; //Esto es solo una traza para mostrar el número generado
-
 }
 
 void Asteroide::Mostrar(sf::RenderWindow &window) {
@@ -52,9 +41,11 @@ void Asteroide::ActualizarPosicion() {
 }
 void Asteroide::generarOrigen() {
     int ladoDeOrigen;
-    srand(time(NULL));
+    srand(std::random_device()() % 360);
+    y = rand() % altoResolucion;
     ladoDeOrigen=rand() % 2;
-    std::cout<<"Random generado:"<<ladoDeOrigen<<std::endl;
+    movimientoX = rand() % 4;
+    
     switch (ladoDeOrigen){
         case 0:
             x=0;
@@ -65,5 +56,21 @@ void Asteroide::generarOrigen() {
             movimientoY=-2;
         break;
     }
+     if(y < anchoResolucion/2 && movimientoX<0 && x==0){
+        movimientoX= -movimientoX;
+        cout<<"Movimiento en x modificado:"<<movimientoX<<endl;
+    }
+    if(y < anchoResolucion/2 && movimientoX<0 && x==altoResolucion){
+        movimientoX= movimientoX * (-1);
+    }
+    
 }
-
+void Asteroide::verificarExistencia(int &cantidad,int indice,std::vector<Asteroide> &vector){
+    int posX=spriteNave.getPosition().x;
+    int posY=spriteNave.getPosition().y;
+    if(posX > anchoResolucion || posY > altoResolucion){
+        cantidad=-1;
+        vector.erase(vector.begin()+indice);
+        cout<<"Tamaño del vector="<<vector.size()<<endl;
+    }
+}

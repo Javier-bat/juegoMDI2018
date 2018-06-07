@@ -16,16 +16,19 @@
 
 class Asteroide {
 public:
-    Asteroide();
+    Asteroide(sf::Texture &texturaNave);
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
+    void verificarExistencia(int &cantidad,int indice,std::vector<Asteroide> &vector);
 private:
     void generarOrigen();
-    sf::Texture texturaNave;
+   // sf::Texture texturaNave;
     sf::Sprite spriteNave;
     int movimientoX;
     int x;
+    int y;
     int movimientoY;
+    int randomSeed=0;
 };
 
 #endif /* ASTEROIDE_H */
