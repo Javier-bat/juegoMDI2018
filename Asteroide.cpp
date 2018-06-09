@@ -41,46 +41,59 @@ void Asteroide::ActualizarPosicion() {
 void Asteroide::generarOrigen(int randomer) {
     int ladoDeOrigen;
     srand(std::random_device()() * randomer);//Semilla para rand()
-    x=rand() % anchoResolucion;//Genera posicion aleatoria para el ancho
     ladoDeOrigen=rand() % 5;
     movimientoX = rand() % 4;
     
     switch (ladoDeOrigen){
-        case 0:
-            y=0;//Hace que aparezca desde arriba
+        case 0://Aparecen desde arriba
+            y=0;
+            x=rand() % anchoResolucion;//Genera posicion aleatoria para el ancho
             movimientoY=2;
+            //Ambos if, hacen que los asteroides convergan hacia el centro
+            if(x > anchoResolucion/2 && movimientoX>=0) {
+                movimientoX=-movimientoX;
+            }else
+                if(x < anchoResolucion/2 && movimientoX<=0) 
+                movimientoX=movimientoX *(-1);
         break;
-        case 1:
-            y=altoResolucion;//Hace que aparezca desde abajo
+        case 1://Aparecen desde abajo
+            y=altoResolucion;
+            x=rand() % anchoResolucion;//Genera posicion aleatoria para el ancho
             movimientoY=-2;
+            //Ambos if, hacen que los asteroides convergan hacia el centro
+            if(x < anchoResolucion/2 && movimientoX<=0){
+                movimientoX=movimientoX *(-1);
+            }else
+                if(x>anchoResolucion/2 && movimientoX>=0){
+                    movimientoX=-movimientoX;
+                }
             break;
-        case 3:
-            y=altoResolucion/2;//Hace que aparezcan de la mitad del lado izquierdo
+        case 2://Aparecen del lado izquierdo
+            y=rand() % altoResolucion;
             x=0;
+            if(movimientoX==0) {//Es para evitar que la rotacion saque al asteroide de la pantalla
+                movimientoX+=1;
+            }
+            //Ambos if, hacen que los asteroides convergan hacia el centro
+            if(y > altoResolucion/2 && movimientoY>=0){
+                movimientoY=-2;
+                
+            }if(y < altoResolucion/2 && movimientoY<=0){
+                    movimientoY=2;
+            }
             break;
-        case 4:
-            y=altoResolucion/2;
+        default://Aparecen del lado derecho
+            y=rand() % altoResolucion;
             x=anchoResolucion;
-            if(movimientoX > 0) movimientoX=-movimientoX;
-            if(movimientoX == 0) movimientoX=movimientoX-1;
+            movimientoX=-movimientoX;
+            if(movimientoX == 0) {//Es para evitar que la rotacion saque al asteroide de la pantalla
+                movimientoX-=1;
+            }if(y > altoResolucion/2 && movimientoY>=0){
+                movimientoY=-2;
+            }if(y < altoResolucion/2 && movimientoY<=0){
+                    movimientoY=2;
+            }
             break;
-        default:
-            //x= altoResolucion;
-            //movimientoY=-2;
-            cout<<ladoDeOrigen<<endl;
-        break;
-    }
-     if(x < anchoResolucion/2 && movimientoX<0 && y==0){
-        movimientoX= -movimientoX;
-    }
-    if(x < anchoResolucion/2 && movimientoX<0 && y==altoResolucion){
-        movimientoX= movimientoX * (-1);
-    }
-    if(x==0 && y==0 && movimientoX<0){
-        movimientoX=movimientoX * (-1);
-    }if(y> anchoResolucion/2 && x> altoResolucion/2 && movimientoX>0){
-        movimientoX=-movimientoX;
-        //movimientoY=-movimientoY;
     }
     
 }
