@@ -86,7 +86,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
                     itemSeleccionado = 0;
                 break;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             switch (itemSeleccionado) {
                 case 0:
                     running = false;

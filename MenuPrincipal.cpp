@@ -112,7 +112,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
                 break;
         }
         
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             if (itemSeleccionado == 0) {
                 running = false;
                 PantallaJuego p1;
