@@ -23,21 +23,26 @@ Bala::Bala(game::Ship &nave) {
     spriteBala.setTexture(texturaBala);
     spriteBala.setPosition(nave.getPosition().x,nave.getPosition().y);
     spriteBala.setScale(0.25,0.25);
-    spriteBala.setOrigin(nave.getOrigin().x,nave.getOrigin().y);
+}
+
+void Bala::disparo(){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
+        apretado = true;
+    }
 }
 
 void Bala::mostrar(sf::RenderWindow &window){
-    window.draw(spriteBala);
+        if(apretado){
+            velocity = {1,-1};
+            window.draw(spriteBala);
+            spriteBala.move(velocity);
+        } else {
+            apretado = false;
+        }
 }
 
 Bala::Bala(const Bala& orig) {
 }
 
 Bala::~Bala() {
-}
-
-void Bala::update(){
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
- //       spriteBala.setPosition(sf::Vector2f);
-    }
 }

@@ -25,10 +25,13 @@ public:
     Bala(const Bala& orig);
     virtual ~Bala();
     void mostrar(sf::RenderWindow &window);
+    void disparo();
     void update();
 private:
     sf::Sprite spriteBala;
     sf::Texture texturaBala;
+    sf::Vector2f velocity;
+    bool apretado = false;
     
 };
 
