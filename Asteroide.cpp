@@ -21,14 +21,13 @@
 #include <time.h>
 #include <random>
 using namespace std;
-Asteroide::Asteroide(sf::Texture &texturaNave) {
-    
+Asteroide::Asteroide(sf::Texture &texturaNave,int randomer) {
     spriteNave.setTexture(texturaNave);
-    this->generarOrigen();
+    this->generarOrigen(randomer);
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
-    srand(std::random_device()() %360);
-    int y = rand() % altoResolucion;
-    spriteNave.setPosition(y, x);
+    spriteNave.setPosition(x, y);
+    spriteNave.setScale(0.8,0.8);
+    cout<<"Posicion x:"<<spriteNave.getPosition().x<<" Posicion y:"<<spriteNave.getPosition().y<<endl;
 }
 
 void Asteroide::Mostrar(sf::RenderWindow &window) {
@@ -39,38 +38,45 @@ void Asteroide::ActualizarPosicion() {
     spriteNave.move(sf::Vector2f(movimientoX, movimientoY));
     spriteNave.rotate(0.5);
 }
-void Asteroide::generarOrigen() {
+void Asteroide::generarOrigen(int randomer) {
     int ladoDeOrigen;
-    srand(std::random_device()() % 360);
-    y = rand() % altoResolucion;
-    ladoDeOrigen=rand() % 2;
+    srand(std::random_device()() * randomer);
+    x=rand() % anchoResolucion;
+    ladoDeOrigen=rand() % 4;
     movimientoX = rand() % 4;
     
     switch (ladoDeOrigen){
         case 0:
-            x=0;
+            y=0;
             movimientoY=2;
         break;
-        default:
-            x= altoResolucion;
+        case 1:
+            y=altoResolucion;//Hace que la pos
             movimientoY=-2;
+        default:
+            //x= altoResolucion;
+            //movimientoY=-2;
+            cout<<ladoDeOrigen<<endl;
         break;
     }
-     if(y < anchoResolucion/2 && movimientoX<0 && x==0){
+     if(x < anchoResolucion/2 && movimientoX<0 && y==0){
         movimientoX= -movimientoX;
-        cout<<"Movimiento en x modificado:"<<movimientoX<<endl;
     }
-    if(y < anchoResolucion/2 && movimientoX<0 && x==altoResolucion){
+    if(x < anchoResolucion/2 && movimientoX<0 && y==altoResolucion){
         movimientoX= movimientoX * (-1);
+    }
+    if(x==0 && y==0 && movimientoX<0){
+        movimientoX=movimientoX * (-1);
+    }if(y> anchoResolucion/2 && x> altoResolucion/2 && movimientoX>0){
+        movimientoX=-movimientoX;
+        //movimientoY=-movimientoY;
     }
     
 }
 void Asteroide::verificarExistencia(int &cantidad,int indice,std::vector<Asteroide> &vector){
     int posX=spriteNave.getPosition().x;
     int posY=spriteNave.getPosition().y;
-    if(posX > anchoResolucion || posY > altoResolucion){
-        cantidad=-1;
+    if(posX > anchoResolucion+100 || posX<0 || posY<0 || posY>altoResolucion+100){
         vector.erase(vector.begin()+indice);
-        cout<<"Tamaño del vector="<<vector.size()<<endl;
     }
 }

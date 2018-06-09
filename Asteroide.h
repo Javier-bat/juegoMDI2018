@@ -16,17 +16,17 @@
 
 class Asteroide {
 public:
-    Asteroide(sf::Texture &texturaNave);
+    Asteroide(sf::Texture &texturaNave,int randomer);
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
     void verificarExistencia(int &cantidad,int indice,std::vector<Asteroide> &vector);
 private:
-    void generarOrigen();
+    void generarOrigen(int randomer);
    // sf::Texture texturaNave;
     sf::Sprite spriteNave;
     int movimientoX;
-    int x;
     int y;
+    int x;
     int movimientoY;
     int randomSeed=0;
 };

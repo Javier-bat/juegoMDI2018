@@ -19,6 +19,7 @@
 #include "ConstantesGlobales.h"
 
 #include <list>
+#include <iostream>
 
 PantallaJuego::PantallaJuego() {
 }
@@ -82,8 +83,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 return (-1);
             }
         }
-        if(puntaje%4 ==0 && asteroides.size() <= 10){
-            Asteroide asteroide=Asteroide(texturaNave);
+        if( asteroides.size() <= 10){
+            Asteroide asteroide=Asteroide(texturaNave,puntaje);
             asteroides.push_back(asteroide);
             cantidadAsteroides+=1;
         }
