@@ -28,6 +28,8 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     int itemSeleccionado = 0;
     sf::Texture fondo;
     sf::Sprite sprite;
+    std::vector<Asteroide> asteroides;
+    sf::Texture texturaAsteroide;
     
     App.setFramerateLimit(60);
     App.setMouseCursorVisible(false);
@@ -39,6 +41,8 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sf::Font font;
     if (!font.loadFromFile("font/Cave-Story.ttf")) {
         //Aquí hay que manejar el error
+    }
+    if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     sf::Text titulo;
     sf::Text tituloSinglePlayer;
@@ -72,8 +76,21 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
                 return (-1);
             }
         }
+        if( asteroides.size() <= 10){
+            Asteroide asteroide=Asteroide(texturaAsteroide);
+            asteroides.push_back(asteroide);
+        }
+        for(int i=0;i< asteroides.size();i++){
+            
+        }
+        
         App.clear();
         App.draw(sprite);
+        for(int i=0;i < asteroides.size();i++){
+            asteroides[i].verificarExistencia(i,asteroides);
+            asteroides[i].Mostrar(App);
+            asteroides[i].ActualizarPosicion();
+        }
         App.draw(titulo);
         App.draw(tituloSinglePlayer);
         App.draw(tituloSalir);

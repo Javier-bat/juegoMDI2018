@@ -14,14 +14,17 @@
 #ifndef ASTEROIDE_H
 #define ASTEROIDE_H
 
+#include <SFML/Graphics/RenderWindow.hpp>
+
+
 class Asteroide {
 public:
-    Asteroide(sf::Texture &texturaNave,int randomer);
+    Asteroide(sf::Texture &texturaNave);
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
-    void verificarExistencia(int &cantidad,int indice,std::vector<Asteroide> &vector);
+    void verificarExistencia(int indice,std::vector<Asteroide> &vector);
 private:
-    void generarOrigen(int randomer);
+    void generarOrigen();
    // sf::Texture texturaNave;
     sf::Sprite spriteNave;
     int movimientoX;

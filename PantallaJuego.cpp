@@ -84,12 +84,12 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             }
         }
         if( asteroides.size() <= 10){
-            Asteroide asteroide=Asteroide(texturaNave,puntaje);
+            Asteroide asteroide=Asteroide(texturaNave);
             asteroides.push_back(asteroide);
             cantidadAsteroides+=1;
         }
         for(int i=0;i< asteroides.size();i++){
-            asteroides[i].verificarExistencia(cantidadAsteroides,i,asteroides);
+            asteroides[i].verificarExistencia(i,asteroides);
         }
          
             

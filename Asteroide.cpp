@@ -21,9 +21,9 @@
 #include <time.h>
 #include <random>
 using namespace std;
-Asteroide::Asteroide(sf::Texture &texturaNave,int randomer) {
+Asteroide::Asteroide(sf::Texture &texturaNave) {
     spriteNave.setTexture(texturaNave);
-    this->generarOrigen(randomer);
+    this->generarOrigen();
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteNave.setPosition(x, y);
     spriteNave.setScale(0.8,0.8);
@@ -38,9 +38,9 @@ void Asteroide::ActualizarPosicion() {
     spriteNave.move(sf::Vector2f(movimientoX, movimientoY));
     spriteNave.rotate(0.5);
 }
-void Asteroide::generarOrigen(int randomer) {
+void Asteroide::generarOrigen() {
     int ladoDeOrigen;
-    srand(std::random_device()() * randomer);//Semilla para rand()
+    srand(std::random_device()());//Semilla para rand()
     ladoDeOrigen=rand() % 5;
     movimientoX = rand() % 4;
     
@@ -97,7 +97,7 @@ void Asteroide::generarOrigen(int randomer) {
     }
     
 }
-void Asteroide::verificarExistencia(int &cantidad,int indice,std::vector<Asteroide> &vector){
+void Asteroide::verificarExistencia(int indice,std::vector<Asteroide> &vector){
     int posX=spriteNave.getPosition().x;
     int posY=spriteNave.getPosition().y;
     if(posX > anchoResolucion+100 || posX<0 || posY<0 || posY>altoResolucion+100){
