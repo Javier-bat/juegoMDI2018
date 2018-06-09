@@ -63,7 +63,13 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
                 return (-1);
             }
         }
-        //Este bloque de codigo hace que el menu sea navegable con las flechas
+        App.clear();
+        App.draw(titulo);
+        App.draw(tituloSinglePlayer);
+        App.draw(tituloSalir);
+        App.display();
+        
+                //Este bloque de codigo hace que el menu sea navegable con las flechas
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && itemSeleccionado == 0) {
             itemSeleccionado = 1;
         }
@@ -89,11 +95,6 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
             }
         }
         //Fin del bloque
-        App.clear();
-        App.draw(titulo);
-        App.draw(tituloSinglePlayer);
-        App.draw(tituloSalir);
-        App.display();
 
     }
     return -1;
