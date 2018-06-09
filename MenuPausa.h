@@ -18,11 +18,13 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 
+#include "Ship.h"
+
 
 class MenuPausa {
 public:
     MenuPausa();
-    int run(sf::RenderWindow &window,std::vector<sf::Sprite> sprites,bool &seguirJuego);
+    int run(sf::RenderWindow &window,std::vector<sf::Sprite> sprites,bool &seguirJuego,game::Ship nave);
 private:
     bool running=true;
 

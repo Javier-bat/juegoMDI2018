@@ -116,7 +116,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 sprites.push_back(asteroides[i].getSprite());
             }
             MenuPausa menuPausa;
-            menuPausa.run(App,sprites,running);
+            menuPausa.run(App,sprites,running,nave);
             pausa=false;
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa){

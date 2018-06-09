@@ -96,21 +96,22 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
         App.draw(tituloSalir);
         App.display();
         
-                //Este bloque de codigo hace que el menu sea navegable con las flechas
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && itemSeleccionado == 0) {
-            itemSeleccionado = 1;
+        //Este bloque de codigo hace que el menu sea navegable con las flechas
+        switch (itemSeleccionado) {
+            case 0:
+                tituloSinglePlayer.setColor(sf::Color::Red);
+                tituloSalir.setColor(sf::Color::White);
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    itemSeleccionado = 1;
+                break;
+            case 1:
+                tituloSinglePlayer.setColor(sf::Color::White);
+                tituloSalir.setColor(sf::Color::Red);
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    itemSeleccionado = 0;
+                break;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && itemSeleccionado == 1) {
-            itemSeleccionado = 0;
-        }
-        if (itemSeleccionado == 0) {
-            tituloSinglePlayer.setColor(sf::Color::Red);
-            tituloSalir.setColor(sf::Color::White);
-        }
-        if (itemSeleccionado == 1) {
-            tituloSalir.setColor(sf::Color::Red);
-            tituloSinglePlayer.setColor(sf::Color::White);
-        }
+        
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
             if (itemSeleccionado == 0) {
                 running = false;
