@@ -19,9 +19,12 @@
 #include "PantallaJuego.h"
 using namespace std;
 
-MenuPrincipal::MenuPrincipal(){}
+MenuPrincipal::MenuPrincipal() {
+}
+
 int MenuPrincipal::Run(sf::RenderWindow &App) {
     bool running = true;
+    int itemSeleccionado = 0;
 
     //Tipografia
     sf::Font font;
@@ -37,13 +40,14 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     tituloSalir.setFont(font);
 
     titulo.setString("Asteroids");
-    tituloSinglePlayer.setString("1-Juego individual");
-    tituloSalir.setString("0-Salir");
+    tituloSinglePlayer.setString("Juego individual");
+    tituloSalir.setString("Salir");
 
     titulo.setCharacterSize(56);
 
     //Centrar texto en pantalla
     sf::FloatRect textRec = titulo.getGlobalBounds();
+    titulo.setColor(sf::Color::Yellow);
     titulo.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
     tituloSinglePlayer.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
     tituloSalir.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
@@ -59,20 +63,38 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
                 return (-1);
             }
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
-            return (-1);
+        //Este bloque de codigo hace que el menu sea navegable con las flechas
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && itemSeleccionado == 0) {
+            itemSeleccionado = 1;
         }
-        
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && itemSeleccionado == 1) {
+            itemSeleccionado = 0;
+        }
+        if (itemSeleccionado == 0) {
+            tituloSinglePlayer.setColor(sf::Color::Red);
+            tituloSalir.setColor(sf::Color::White);
+        }
+        if (itemSeleccionado == 1) {
+            tituloSalir.setColor(sf::Color::Red);
+            tituloSinglePlayer.setColor(sf::Color::White);
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+            if (itemSeleccionado == 0) {
+                running = false;
+                PantallaJuego p1;
+                p1.Run(App);
+            }
+            if (itemSeleccionado == 1) {
+                return (-1);
+            }
+        }
+        //Fin del bloque
         App.clear();
         App.draw(titulo);
         App.draw(tituloSinglePlayer);
         App.draw(tituloSalir);
         App.display();
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1)) {
-            running=false;
-            PantallaJuego p1;
-            p1.Run(App);
-        }
+
     }
     return -1;
 }
