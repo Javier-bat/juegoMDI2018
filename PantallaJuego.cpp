@@ -40,6 +40,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     game::Ship nave;
     //Fin de declaracion de variables
     
+     musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav"); //Agregar credito a Zander Noriega pendiente
+    musicaFondo.setLoop(true);
+    musicaFondo.play();
+    
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     
@@ -110,6 +114,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].ActualizarPosicion();
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
+            musicaFondo.pause();
             std::vector<sf::Sprite> sprites;
             sprites.push_back(sprite);
             for(int i=0;i<asteroides.size();i++){
@@ -117,9 +122,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             }
             MenuPausa menuPausa;
             menuPausa.run(App,sprites,running,nave);
+            musicaFondo.play();
             pausa=false;
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa){
+          
             pausa=true;
         }
         App.display();

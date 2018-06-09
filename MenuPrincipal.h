@@ -15,11 +15,13 @@
 #define MENUPRINCIPAL_H
 #include "Pantalla.h"
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class MenuPrincipal : public Pantalla {
 public:
     MenuPrincipal(void);
     int Run(sf::RenderWindow &App);
+    sf::Music musicaFondo;
 };
 
 

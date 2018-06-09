@@ -31,6 +31,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     std::vector<Asteroide> asteroides;
     sf::Texture texturaAsteroide;
     
+    
     App.setFramerateLimit(60);
     App.setMouseCursorVisible(false);
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
@@ -39,6 +40,10 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
     //Tipografia
     sf::Font font;
+    musicaFondo.openFromFile("musica/wyver9_ArcadeTitle.wav"); //Agregar credito a wyver9 pendiente
+    musicaFondo.setLoop(true);
+    musicaFondo.play();
+	
     if (!font.loadFromFile("font/Cave-Story.ttf")) {
         //Aquí hay que manejar el error
     }
@@ -85,6 +90,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
         }
         
         App.clear();
+        
         App.draw(sprite);
         for(int i=0;i < asteroides.size();i++){
             asteroides[i].verificarExistencia(i,asteroides);
@@ -114,9 +120,11 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
         
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             if (itemSeleccionado == 0) {
+                musicaFondo.stop();
                 running = false;
                 PantallaJuego p1;
                 p1.Run(App);
+                
             }
             if (itemSeleccionado == 1) {
                 return (-1);

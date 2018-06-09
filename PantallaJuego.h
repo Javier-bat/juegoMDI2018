@@ -18,6 +18,7 @@
 #include "Asteroide.h"
 #include <array>
 #include <list>
+#include <SFML/Audio/Music.hpp>
 
 class PantallaJuego : public Pantalla {
 public:
@@ -25,6 +26,7 @@ public:
     int Run(sf::RenderWindow &App);
     void setRunning(bool run);
     sf::Texture fondo; // creo una textura para el fondo
+    sf::Music musicaFondo;
 private:
 
 };
