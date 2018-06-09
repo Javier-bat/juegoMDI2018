@@ -40,19 +40,30 @@ void Asteroide::ActualizarPosicion() {
 }
 void Asteroide::generarOrigen(int randomer) {
     int ladoDeOrigen;
-    srand(std::random_device()() * randomer);
-    x=rand() % anchoResolucion;
-    ladoDeOrigen=rand() % 4;
+    srand(std::random_device()() * randomer);//Semilla para rand()
+    x=rand() % anchoResolucion;//Genera posicion aleatoria para el ancho
+    ladoDeOrigen=rand() % 5;
     movimientoX = rand() % 4;
     
     switch (ladoDeOrigen){
         case 0:
-            y=0;
+            y=0;//Hace que aparezca desde arriba
             movimientoY=2;
         break;
         case 1:
-            y=altoResolucion;//Hace que la pos
+            y=altoResolucion;//Hace que aparezca desde abajo
             movimientoY=-2;
+            break;
+        case 3:
+            y=altoResolucion/2;//Hace que aparezcan de la mitad del lado izquierdo
+            x=0;
+            break;
+        case 4:
+            y=altoResolucion/2;
+            x=anchoResolucion;
+            if(movimientoX > 0) movimientoX=-movimientoX;
+            if(movimientoX == 0) movimientoX=movimientoX-1;
+            break;
         default:
             //x= altoResolucion;
             //movimientoY=-2;
