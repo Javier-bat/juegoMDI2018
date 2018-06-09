@@ -17,6 +17,7 @@
 #include "MenuPrincipal.h"
 #include "Pantalla.h"
 #include "PantallaJuego.h"
+#include "ConstantesGlobales.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {
@@ -25,7 +26,15 @@ MenuPrincipal::MenuPrincipal() {
 int MenuPrincipal::Run(sf::RenderWindow &App) {
     bool running = true;
     int itemSeleccionado = 0;
-
+    sf::Texture fondo;
+    sf::Sprite sprite;
+    
+    App.setFramerateLimit(60);
+    App.setMouseCursorVisible(false);
+    fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
+    sprite.setTexture(fondo); //le seteo la textura
+     //seteo el tamaño del fondo
+    sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
     //Tipografia
     sf::Font font;
     if (!font.loadFromFile("font/Cave-Story.ttf")) {
@@ -64,6 +73,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
             }
         }
         App.clear();
+        App.draw(sprite);
         App.draw(titulo);
         App.draw(tituloSinglePlayer);
         App.draw(tituloSalir);
