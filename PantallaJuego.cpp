@@ -17,6 +17,7 @@
 #include "Ship.h"
 #include "Asteroide.h"
 #include "ConstantesGlobales.h"
+#include "MenuPausa.h"
 
 #include <list>
 #include <iostream>
@@ -27,6 +28,7 @@ PantallaJuego::PantallaJuego() {
 int PantallaJuego::Run(sf::RenderWindow &App) {
     //Variables
     bool running=true;
+    bool pausa=false;
     int puntaje=0;
     sf::Font font;
     sf::Text score;
@@ -107,9 +109,21 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
         }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
+            std::vector<sf::Sprite> sprites;
+            sprites.push_back(sprite);
+            for(int i=0;i<asteroides.size();i++){
+                sprites.push_back(asteroides[i].getSprite());
+            }
+            MenuPausa menuPausa;
+            menuPausa.run(App,sprites,running);
+            pausa=false;
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa){
+            pausa=true;
+        }
         App.display();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
-            
             return (-1);
         }
     }

@@ -15,6 +15,7 @@
 #define ASTEROIDE_H
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 
 
 class Asteroide {
@@ -23,6 +24,8 @@ public:
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
     void verificarExistencia(int indice,std::vector<Asteroide> &vector);
+    void abc(sf::RenderWindow &window,std::vector<Asteroide> &asteroides);
+    sf::Sprite getSprite();
 private:
     void generarOrigen();
    // sf::Texture texturaNave;

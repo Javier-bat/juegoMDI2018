@@ -27,7 +27,6 @@ Asteroide::Asteroide(sf::Texture &texturaNave) {
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteNave.setPosition(x, y);
     spriteNave.setScale(0.8,0.8);
-    cout<<"Posicion x:"<<spriteNave.getPosition().x<<" Posicion y:"<<spriteNave.getPosition().y<<endl;
 }
 
 void Asteroide::Mostrar(sf::RenderWindow &window) {
@@ -103,4 +102,14 @@ void Asteroide::verificarExistencia(int indice,std::vector<Asteroide> &vector){
     if(posX > anchoResolucion+100 || posX<0 || posY<0 || posY>altoResolucion+100){
         vector.erase(vector.begin()+indice);
     }
+}
+void abc(sf::RenderWindow &window,std::vector<Asteroide> &asteroides){
+    for(int i=0;i < asteroides.size();i++){
+            asteroides[i].verificarExistencia(i,asteroides);
+            asteroides[i].Mostrar(window);
+            asteroides[i].ActualizarPosicion();
+        }
+}
+sf::Sprite Asteroide::getSprite(){
+    return spriteNave;
 }
