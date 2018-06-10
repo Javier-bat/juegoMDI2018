@@ -28,16 +28,8 @@ int main(int argc, char** argv) {
     //Setea la resolucion de la pantalla
    sf::RenderWindow window(sf::VideoMode(anchoResolucion,altoResolucion), "Asteroids",sf::Style::Fullscreen);
    
-   
    MenuPrincipal menuP;
-   PantallaJuego pantallaJuego;
-   pantallas.push_back(&menuP);
-   pantallas.push_back(&pantallaJuego);
-   
-   while (pantalla >= 0) {
-       pantalla = pantallas[pantalla] -> Run(window);
-    }
-
+   menuP.Run(window);
    
     return 0;
 }
