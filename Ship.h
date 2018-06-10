@@ -22,11 +22,11 @@
  
 const float degree2radian = (3.14159f / 180.0f);
  
-const float m_ship_drag_force = 3.0f; //Velocidad de resistencia contra el movimiento de la nave (Esto ara que se pare poco a poco cuando se deje de acelerar )
-const float m_ship_aceleration = 10.0f; //Aceleración en pixel/segundo2 de la nave cuando se aplica empuje
-const float m_ship_rotation_velocity = 240.0f; //Velocidad de rotación de la nave en grados/segundo
+const float fuerzaResistencia = 3.0f; //Velocidad de resistencia contra el movimiento de la nave (Esto ara que se pare poco a poco cuando se deje de acelerar )
+const float velocidadAceleracion = 10.0f; //Aceleración en pixel/segundo2 de la nave cuando se aplica empuje
+const float velocidadRotacion = 240.0f; //Velocidad de rotación de la nave en grados/segundo
  
-namespace game //Un namespace para evitar cualquier colisión de nombres accidental
+namespace game 
 {
  //Clase Ship derivada de Transformable y Drawable
  //La clase transformable nos proporciona métodos para girar y mover la nave
@@ -46,9 +46,9 @@ namespace game //Un namespace para evitar cualquier colisión de nombres acciden
   void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
  
  protected:
-  sf::Vector2f m_ship_velocity; //Velocidad de la nave
+  sf::Vector2f velocidadNave; //Velocidad de la nave
  
-  sf::ConvexShape m_shipShape; //Representación gráfica de la nave
+  sf::ConvexShape formaNave; //Representación gráfica de la nave
  
   
  

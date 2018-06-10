@@ -26,7 +26,7 @@ Asteroide::Asteroide(sf::Texture &texturaNave) {
     this->generarOrigen();
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteNave.setPosition(x, y);
-    spriteNave.setScale(0.8,0.8);
+    //spriteNave.setScale(0.8,0.8);
 }
 
 void Asteroide::Mostrar(sf::RenderWindow &window) {
