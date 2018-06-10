@@ -27,4 +27,10 @@ void Menu::ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno
     opcionUno.setString(mensajeUno);
     opcionDos.setString(mensajeDos);
 }
+void Menu::ConfigurarTamanoTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,int tamanoTitulo,int tamanoUno,int tamanoDos){
+    
+    titulo.setCharacterSize(tamanoTitulo);
+    opcionUno.setCharacterSize(tamanoUno);
+    opcionDos.setCharacterSize(tamanoDos);
+}
 

@@ -63,6 +63,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         seleccionar.setVolume(100);
 
     ConfigurarTexto(fuente,pausaTitulo,pausaReanudar,pausaSalir,"Juego Pausado","Reanudar","Salir");
+    ConfigurarTamanoTexto(pausaTitulo,pausaReanudar,pausaSalir,46,36,36);
     
     //Seteo de posiciones
     textRec = pausaTitulo.getGlobalBounds();
@@ -74,10 +75,6 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
     pausaTitulo.setPosition(anchoResolucion / 2, (altoResolucion / 2) - 200);
     pausaReanudar.setPosition(pausaTitulo.getPosition().x, pausaTitulo.getPosition().y + 60);
     pausaSalir.setPosition(pausaTitulo.getPosition().x, pausaTitulo.getPosition().y + 90);
-    //Seteo de tamaño
-    pausaTitulo.setCharacterSize(46);
-    pausaReanudar.setCharacterSize(36);
-    pausaSalir.setCharacterSize(36);
     pausaTitulo.setColor(sf::Color::Yellow);
 
     while (running) {

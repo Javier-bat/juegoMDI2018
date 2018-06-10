@@ -81,9 +81,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     }
 
     ConfigurarTexto(font,titulo,tituloSinglePlayer,tituloSalir,"Asteroids","Juego individual","Salir");
-
-    titulo.setCharacterSize(56);
-
+    ConfigurarTamanoTexto(titulo,tituloSinglePlayer,tituloSalir,56,36,36);
     //Centrar texto en pantalla
     sf::FloatRect textRec = titulo.getGlobalBounds();
     titulo.setColor(sf::Color::Yellow);
