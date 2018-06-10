@@ -13,6 +13,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "PantallaJuego.h"
 #include "Ship.h"
 #include "Asteroide.h"
@@ -40,9 +41,14 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     game::Ship nave;
     //Fin de declaracion de variables
     
-     musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav"); //Agregar credito a Zander Noriega pendiente
+//musica y sonidos
+    musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav"); //Agregar credito a Zander Noriega pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
+
+
+ //finMusica y sonidos
+
     
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }

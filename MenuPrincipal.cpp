@@ -40,9 +40,39 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
     //Tipografia
     sf::Font font;
+    
+ //musica y sonnidos
     musicaFondo.openFromFile("musica/wyver9_ArcadeTitle.wav"); //Agregar credito a wyver9 pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
+    
+    	// Creamos un SoundBuffer
+	sf::SoundBuffer buffer;
+        sf::SoundBuffer buffer2;
+	//Cargamos un archivo en el buffer
+	if (!buffer.loadFromFile("musica/selectNoise.wav"))
+	{
+		return EXIT_FAILURE;
+	}
+        if (!buffer2.loadFromFile("musica/Menu Selection Click.wav"))
+	{
+		return EXIT_FAILURE;
+	}
+        
+
+	//Creamos un sonido
+	sf::Sound cambiarSeleccion;
+        sf::Sound seleccionar;
+	// Le asignamos el buffer
+	cambiarSeleccion.setBuffer(buffer2);
+        seleccionar.setBuffer(buffer);
+	// establecemos el volumen
+        cambiarSeleccion.setVolume(100);
+        seleccionar.setVolume(100);
+
+ //finMusica y sonidos
+    
+    
 	
     if (!font.loadFromFile("font/Cave-Story.ttf")) {
         //Aquí hay que manejar el error
@@ -107,19 +137,24 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
             case 0:
                 tituloSinglePlayer.setColor(sf::Color::Red);
                 tituloSalir.setColor(sf::Color::White);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+                   cambiarSeleccion.play();
                     itemSeleccionado = 1;
+                }
                 break;
             case 1:
                 tituloSinglePlayer.setColor(sf::Color::White);
                 tituloSalir.setColor(sf::Color::Red);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+                    cambiarSeleccion.play();
                     itemSeleccionado = 0;
+                }
                 break;
         }
         
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             if (itemSeleccionado == 0) {
+                seleccionar.play();
                 musicaFondo.stop();
                 running = false;
                 PantallaJuego p1;
@@ -128,6 +163,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
             }
             if (itemSeleccionado == 1) {
                 return (-1);
+                
             }
         }
         //Fin del bloque

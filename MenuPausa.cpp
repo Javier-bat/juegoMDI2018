@@ -17,6 +17,7 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Audio.hpp>
 #include "ConstantesGlobales.h"
 
 #include "MenuPausa.h"
@@ -35,6 +36,31 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
     sf::Text pausaTitulo;
     sf::Text pausaReanudar;
     sf::Text pausaSalir;
+    
+    //musica y sonidos
+      	// Creamos un SoundBuffer
+	sf::SoundBuffer buffer;
+        sf::SoundBuffer buffer2;
+	//Cargamos un archivo en el buffer
+	if (!buffer.loadFromFile("musica/selectNoise.wav"))
+	{
+		return EXIT_FAILURE;
+	}
+        if (!buffer2.loadFromFile("musica/Menu Selection Click.wav"))
+	{
+		return EXIT_FAILURE;
+	}
+        
+
+	//Creamos un sonido
+	sf::Sound cambiarSeleccion;
+        sf::Sound seleccionar;
+	// Le asignamos el buffer
+	cambiarSeleccion.setBuffer(buffer2);
+        seleccionar.setBuffer(buffer);
+	// establecemos el volumen
+        cambiarSeleccion.setVolume(100);
+        seleccionar.setVolume(100);
 
     fuente.loadFromFile("font/Cave-Story.ttf"); //Leer fuente
     //Seteo de fuentes
@@ -76,18 +102,24 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
             case 0:
                 pausaReanudar.setColor(sf::Color::Red);
                 pausaSalir.setColor(sf::Color::White);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+                    cambiarSeleccion.play();
                     itemSeleccionado = 1;
+                }
                 break;
             case 1:
                 pausaReanudar.setColor(sf::Color::White);
                 pausaSalir.setColor(sf::Color::Red);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+                    cambiarSeleccion.play();
                     itemSeleccionado = 0;
+                }
                 break;
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+            
             switch (itemSeleccionado) {
+                  seleccionar.play();
                 case 0:
                     running = false;
                     break;
