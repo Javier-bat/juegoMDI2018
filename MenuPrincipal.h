@@ -14,10 +14,11 @@
 #ifndef MENUPRINCIPAL_H
 #define MENUPRINCIPAL_H
 #include "Pantalla.h"
+#include "Menu.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
-class MenuPrincipal : public Pantalla {
+class MenuPrincipal : public Menu {
 public:
     MenuPrincipal(void);
     int Run(sf::RenderWindow &App);

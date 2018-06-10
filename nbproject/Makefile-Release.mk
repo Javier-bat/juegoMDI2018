@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Asteroide.o \
 	${OBJECTDIR}/Bala.o \
 	${OBJECTDIR}/Luna.o \
+	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/MenuPausa.o \
 	${OBJECTDIR}/MenuPrincipal.o \
 	${OBJECTDIR}/PantallaJuego.o \
@@ -83,6 +84,11 @@ ${OBJECTDIR}/Luna.o: Luna.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Luna.o Luna.cpp
+
+${OBJECTDIR}/Menu.o: Menu.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Menu.o Menu.cpp
 
 ${OBJECTDIR}/MenuPausa.o: MenuPausa.cpp
 	${MKDIR} -p ${OBJECTDIR}

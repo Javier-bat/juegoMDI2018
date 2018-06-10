@@ -18,6 +18,7 @@
 #include "Pantalla.h"
 #include "PantallaJuego.h"
 #include "ConstantesGlobales.h"
+#include "Menu.h"
 using namespace std;
 
 MenuPrincipal::MenuPrincipal() {
@@ -28,7 +29,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     int itemSeleccionado = 0;
     sf::Texture fondo;
     sf::Sprite sprite;
-    std::vector<Asteroide> asteroides;
+    vector<Asteroide> asteroides;
     sf::Texture texturaAsteroide;
     
     
@@ -73,20 +74,13 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
 
  //finMusica y sonidos
     
-    
-	
-    if (!font.loadFromFile("font/Cave-Story.ttf")) {
-        //Aquí hay que manejar el error
-    }
     if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     sf::Text titulo;
     sf::Text tituloSinglePlayer;
     sf::Text tituloSalir;
 
-    titulo.setFont(font);
-    tituloSinglePlayer.setFont(font);
-    tituloSalir.setFont(font);
+    ConfigurarTexto(font,titulo,tituloSinglePlayer,tituloSalir);
 
     titulo.setString("Asteroids");
     tituloSinglePlayer.setString("Juego individual");

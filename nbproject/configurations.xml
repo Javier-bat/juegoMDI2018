@@ -8,6 +8,7 @@
       <itemPath>Bala.h</itemPath>
       <itemPath>ConstantesGlobales.h</itemPath>
       <itemPath>Luna.h</itemPath>
+      <itemPath>Menu.h</itemPath>
       <itemPath>MenuPausa.h</itemPath>
       <itemPath>MenuPrincipal.h</itemPath>
       <itemPath>Pantalla.h</itemPath>
@@ -24,6 +25,7 @@
       <itemPath>Asteroide.cpp</itemPath>
       <itemPath>Bala.cpp</itemPath>
       <itemPath>Luna.cpp</itemPath>
+      <itemPath>Menu.cpp</itemPath>
       <itemPath>MenuPausa.cpp</itemPath>
       <itemPath>MenuPrincipal.cpp</itemPath>
       <itemPath>PantallaJuego.cpp</itemPath>
@@ -71,6 +73,10 @@
       <item path="Luna.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Luna.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Menu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Menu.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MenuPausa.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -126,6 +132,10 @@
       <item path="Luna.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Luna.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Menu.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Menu.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="MenuPausa.cpp" ex="false" tool="1" flavor2="0">
       </item>
