@@ -137,7 +137,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.draw(score);
         App.draw(nave);
         
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
             Bala bala(nave, texturaBala);
             balas.push_back(bala);
             balas[cantBalas].disparo(nave);
