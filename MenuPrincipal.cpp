@@ -45,6 +45,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     musicaFondo.openFromFile("musica/wyver9_ArcadeTitle.wav"); //Agregar credito a wyver9 pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
+    musicaFondo.setVolume(50);
     
     	// Creamos un SoundBuffer
 	sf::SoundBuffer buffer;

@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Asteroide.o \
 	${OBJECTDIR}/Bala.o \
+	${OBJECTDIR}/Luna.o \
 	${OBJECTDIR}/MenuPausa.o \
 	${OBJECTDIR}/MenuPrincipal.o \
 	${OBJECTDIR}/PantallaJuego.o \
@@ -77,6 +78,11 @@ ${OBJECTDIR}/Bala.o: Bala.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g `pkg-config --cflags sfml-all`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bala.o Bala.cpp
+
+${OBJECTDIR}/Luna.o: Luna.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g `pkg-config --cflags sfml-all`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Luna.o Luna.cpp
 
 ${OBJECTDIR}/MenuPausa.o: MenuPausa.cpp
 	${MKDIR} -p ${OBJECTDIR}

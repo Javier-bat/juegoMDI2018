@@ -14,6 +14,7 @@
 #include "ConstantesGlobales.h"
 #include "MenuPausa.h"
 #include "Bala.h"
+#include "Luna.h"
 #include <list>
 #include <iostream>
 
@@ -28,6 +29,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Font font;
     sf::Text score;
     sf::Texture texturaNave;
+    sf::Texture texturaNave2;
+    sf::Texture texturaNave3;
     int cantidadAsteroides=0;
     sf::Sprite sprite;//creo un sprite
     std::vector<Asteroide> asteroides;
@@ -36,6 +39,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     std::vector<Bala> balas;
     sf::Texture texturaBala;
     int cantBalas = 0;
+    sf::Texture texturaLuna;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -45,11 +49,16 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
  //finMusica y sonidos
-
     
+    if(!texturaLuna.loadFromFile("Imagenes/01.png")){
+    
+    }
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
-    
+    if (!texturaNave2.loadFromFile("Imagenes/asteroideChico.png")) {
+    }
+     if (!texturaNave3.loadFromFile("Imagenes/asteroideMediano.png")) {
+    }
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
         return -1;
     }
@@ -97,8 +106,19 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             }
         }
         if( asteroides.size() <= 10){
+           
             Asteroide asteroide=Asteroide(texturaNave);
+            Asteroide asteroide2=Asteroide(texturaNave);
+            Asteroide asteroide3=Asteroide(texturaNave);
+            Asteroide asteroide4=Asteroide(texturaNave2);
+            Asteroide asteroide5=Asteroide(texturaNave3);
+
             asteroides.push_back(asteroide);
+            asteroides.push_back(asteroide2);
+            asteroides.push_back(asteroide3);
+            asteroides.push_back(asteroide4);
+            asteroides.push_back(asteroide5);
+            
             cantidadAsteroides+=1;
         }
         for(int i=0;i< asteroides.size();i++){
@@ -107,7 +127,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
          
             
            nave.update(delta_time_seconds);
-        
+           Luna luna = Luna(texturaLuna);
 
         puntaje++;
         //limpiamos la pantalla
