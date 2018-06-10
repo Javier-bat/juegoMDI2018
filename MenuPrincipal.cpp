@@ -27,13 +27,14 @@ MenuPrincipal::MenuPrincipal() {
 int MenuPrincipal::Run(sf::RenderWindow &App) {
     bool running = true;
     int itemSeleccionado = 0;
+    vector<Asteroide> asteroides;
     sf::Texture fondo;
     sf::Sprite sprite;
-    vector<Asteroide> asteroides;
     sf::Texture texturaAsteroide;
     sf::Text titulo;
     sf::Text tituloSinglePlayer;
     sf::Text tituloSalir;
+    sf::Font font;
     
     
     App.setFramerateLimit(60);
@@ -42,8 +43,6 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sprite.setTexture(fondo); //le seteo la textura
      //seteo el tamaño del fondo
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
-    //Tipografia
-    sf::Font font;
     
  //musica y sonnidos
     musicaFondo.openFromFile("musica/wyver9_ArcadeTitle.wav"); //Agregar credito a wyver9 pendiente
@@ -84,7 +83,6 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     ConfigurarTamanoTexto(titulo,tituloSinglePlayer,tituloSalir,56,36,36);
     //Centrar texto en pantalla
     sf::FloatRect textRec = titulo.getGlobalBounds();
-    titulo.setColor(sf::Color::Yellow);
     titulo.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
     tituloSinglePlayer.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
     tituloSalir.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);

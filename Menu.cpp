@@ -26,6 +26,8 @@ void Menu::ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno
     titulo.setString(mensajeTitulo);
     opcionUno.setString(mensajeUno);
     opcionDos.setString(mensajeDos);
+    
+    titulo.setFillColor(sf::Color::Yellow);
 }
 void Menu::ConfigurarTamanoTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,int tamanoTitulo,int tamanoUno,int tamanoDos){
     

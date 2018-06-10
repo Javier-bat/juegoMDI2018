@@ -75,7 +75,6 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
     pausaTitulo.setPosition(anchoResolucion / 2, (altoResolucion / 2) - 200);
     pausaReanudar.setPosition(pausaTitulo.getPosition().x, pausaTitulo.getPosition().y + 60);
     pausaSalir.setPosition(pausaTitulo.getPosition().x, pausaTitulo.getPosition().y + 90);
-    pausaTitulo.setColor(sf::Color::Yellow);
 
     while (running) {
         sf::Event event;
