@@ -21,19 +21,14 @@
 
 class Bala {
 public:
-    Bala(game::Ship &nave);
-    Bala(const Bala& orig);
+    Bala(game::Ship &nave, sf::Texture &textura);
     virtual ~Bala();
-    void mostrar(sf::RenderWindow &window);
-    void disparo();
-    void update();
-private:
+    void mostrar(sf::RenderWindow &window, game::Ship &nave);
+    void disparo(game::Ship &nave);
     sf::Sprite spriteBala;
-    sf::Texture texturaBala;
     sf::Vector2f velocity;
-    bool apretado = false;
-    
+    bool apretado = true;
+  
 };
 
 #endif /* BALA_H */
-

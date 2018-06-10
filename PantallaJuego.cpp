@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   PantallaJuego.cpp
  * Author: gabrielascurra
@@ -19,7 +13,7 @@
 #include "Asteroide.h"
 #include "ConstantesGlobales.h"
 #include "MenuPausa.h"
-
+#include "Bala.h"
 #include <list>
 #include <iostream>
 
@@ -39,6 +33,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     std::vector<Asteroide> asteroides;
     sf::Clock syncronice_timer;
     game::Ship nave;
+    std::vector<Bala> balas;
+    sf::Texture texturaBala;
+    int cantBalas = 0;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -51,6 +48,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
     
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
+    }
+    
+    if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
+        return -1;
     }
     
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
@@ -115,6 +116,23 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.draw(sprite); //dibujo fondo
         App.draw(score);
         App.draw(nave);
+        
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::E)){
+            Bala bala(nave, texturaBala);
+            balas.push_back(bala);
+            balas[cantBalas].disparo(nave);
+            cantBalas++;
+                
+        }
+        
+        for(int i =0; i<balas.size() ;i++){
+            balas[i].mostrar(App,nave);
+            if(balas[i].apretado == false){
+                balas[i].~Bala();
+                cantBalas--;
+            }
+        }
+        
         for(int i=0;i < asteroides.size();i++){
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
