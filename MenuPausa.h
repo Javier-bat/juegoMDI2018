@@ -19,9 +19,10 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 
 #include "Ship.h"
+#include "Menu.h"
 
 
-class MenuPausa {
+class MenuPausa : public Menu{
 public:
     MenuPausa();
     int run(sf::RenderWindow &window,std::vector<sf::Sprite> sprites,bool &seguirJuego,game::Ship nave);

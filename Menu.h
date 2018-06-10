@@ -15,12 +15,12 @@
 #define MENU_H
 
 #include <SFML/Graphics/Text.hpp>
-
+using namespace std;
 
 class Menu {
 public:
     Menu();
-    void ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos);
+    void ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,string mensajeTitulo,string mensajeUno,string mensajeDos);
 private:
 
 };

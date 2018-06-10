@@ -62,15 +62,8 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         cambiarSeleccion.setVolume(100);
         seleccionar.setVolume(100);
 
-    fuente.loadFromFile("font/Cave-Story.ttf"); //Leer fuente
-    //Seteo de fuentes
-    pausaTitulo.setFont(fuente);
-    pausaReanudar.setFont(fuente);
-    pausaSalir.setFont(fuente);
-    //Seteo de mensajes
-    pausaTitulo.setString("Juego Pausado");
-    pausaReanudar.setString("Reanudar");
-    pausaSalir.setString("Salir");
+    ConfigurarTexto(fuente,pausaTitulo,pausaReanudar,pausaSalir,"Juego Pausado","Reanudar","Salir");
+    
     //Seteo de posiciones
     textRec = pausaTitulo.getGlobalBounds();
     origenX = textRec.left + textRec.width / 2.0f;

@@ -31,6 +31,9 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sf::Sprite sprite;
     vector<Asteroide> asteroides;
     sf::Texture texturaAsteroide;
+    sf::Text titulo;
+    sf::Text tituloSinglePlayer;
+    sf::Text tituloSalir;
     
     
     App.setFramerateLimit(60);
@@ -76,15 +79,8 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     
     if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
-    sf::Text titulo;
-    sf::Text tituloSinglePlayer;
-    sf::Text tituloSalir;
 
-    ConfigurarTexto(font,titulo,tituloSinglePlayer,tituloSalir);
-
-    titulo.setString("Asteroids");
-    tituloSinglePlayer.setString("Juego individual");
-    tituloSalir.setString("Salir");
+    ConfigurarTexto(font,titulo,tituloSinglePlayer,tituloSalir,"Asteroids","Juego individual","Salir");
 
     titulo.setCharacterSize(56);
 

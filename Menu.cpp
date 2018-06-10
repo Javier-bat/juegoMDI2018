@@ -16,11 +16,15 @@
 
 Menu::Menu() {
 }
-void Menu::ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos){
+void Menu::ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,string mensajeTitulo,string mensajeUno,string mensajeDos){
     fuente.loadFromFile("font/Cave-Story.ttf");
     
     titulo.setFont(fuente);
     opcionUno.setFont(fuente);
     opcionDos.setFont(fuente);
+    
+    titulo.setString(mensajeTitulo);
+    opcionUno.setString(mensajeUno);
+    opcionDos.setString(mensajeDos);
 }
 
