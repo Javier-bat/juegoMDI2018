@@ -81,15 +81,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
 
     ConfigurarTexto(font,titulo,tituloSinglePlayer,tituloSalir,"Asteroids","Juego individual","Salir");
     ConfigurarTamanoTexto(titulo,tituloSinglePlayer,tituloSalir,56,36,36);
-    //Centrar texto en pantalla
-    sf::FloatRect textRec = titulo.getGlobalBounds();
-    titulo.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
-    tituloSinglePlayer.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
-    tituloSalir.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
-
-    titulo.setPosition(sf::Vector2f(App.getSize().x / 2, App.getSize().y / 2));
-    tituloSinglePlayer.setPosition(sf::Vector2f(App.getSize().x / 2, (App.getSize().y / 2) + 60));
-    tituloSalir.setPosition(sf::Vector2f(App.getSize().x / 2, (App.getSize().y / 2) + 90));
+    ConfigurarPosicionTexto(titulo,tituloSinglePlayer,tituloSalir,0);
 
     while (running) {
         sf::Event event;

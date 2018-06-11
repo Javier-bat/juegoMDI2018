@@ -66,15 +66,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
     ConfigurarTamanoTexto(pausaTitulo,pausaReanudar,pausaSalir,46,36,36);
     
     //Seteo de posiciones
-    textRec = pausaTitulo.getGlobalBounds();
-    origenX = textRec.left + textRec.width / 2.0f;
-    origenY = textRec.top + textRec.height / 2.0f;
-    pausaTitulo.setOrigin(origenX, origenY);
-    pausaReanudar.setOrigin(origenX, origenY);
-    pausaSalir.setOrigin(origenX, origenY);
-    pausaTitulo.setPosition(anchoResolucion / 2, (altoResolucion / 2) - 200);
-    pausaReanudar.setPosition(pausaTitulo.getPosition().x, pausaTitulo.getPosition().y + 60);
-    pausaSalir.setPosition(pausaTitulo.getPosition().x, pausaTitulo.getPosition().y + 90);
+    ConfigurarPosicionTexto(pausaTitulo,pausaReanudar,pausaSalir,200);
 
     while (running) {
         sf::Event event;

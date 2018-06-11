@@ -22,6 +22,7 @@ public:
     Menu();
     void ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,string mensajeTitulo,string mensajeUno,string mensajeDos);
     void ConfigurarTamanoTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,int tamanoTitulo,int tamanoUno,int tamanoDos);
+    void ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,int offset);
 private:
 
 };
