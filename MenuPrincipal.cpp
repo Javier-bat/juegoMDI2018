@@ -35,53 +35,51 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sf::Text tituloSinglePlayer;
     sf::Text tituloSalir;
     sf::Font font;
-    
-    
+
+
     App.setFramerateLimit(60);
     App.setMouseCursorVisible(false);
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     sprite.setTexture(fondo); //le seteo la textura
-     //seteo el tamaño del fondo
-    sprite.setOrigin(anchoResolucion/15,altoResolucion/5);
-    
- //musica y sonnidos
+    //seteo el tamaño del fondo
+    sprite.setOrigin(anchoResolucion / 15, altoResolucion / 5);
+
+    //musica y sonnidos
     musicaFondo.openFromFile("musica/wyver9_ArcadeTitle.wav"); //Agregar credito a wyver9 pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
     musicaFondo.setVolume(50);
-    
-    	// Creamos un SoundBuffer
-	sf::SoundBuffer buffer;
-        sf::SoundBuffer buffer2;
-	//Cargamos un archivo en el buffer
-	if (!buffer.loadFromFile("musica/selectNoise.wav"))
-	{
-		return EXIT_FAILURE;
-	}
-        if (!buffer2.loadFromFile("musica/Menu Selection Click.wav"))
-	{
-		return EXIT_FAILURE;
-	}
-        
 
-	//Creamos un sonido
-	sf::Sound cambiarSeleccion;
-        sf::Sound seleccionar;
-	// Le asignamos el buffer
-	cambiarSeleccion.setBuffer(buffer2);
-        seleccionar.setBuffer(buffer);
-	// establecemos el volumen
-        cambiarSeleccion.setVolume(100);
-        seleccionar.setVolume(100);
+    // Creamos un SoundBuffer
+    sf::SoundBuffer buffer;
+    sf::SoundBuffer buffer2;
+    //Cargamos un archivo en el buffer
+    if (!buffer.loadFromFile("musica/selectNoise.wav")) {
+        return EXIT_FAILURE;
+    }
+    if (!buffer2.loadFromFile("musica/Menu Selection Click.wav")) {
+        return EXIT_FAILURE;
+    }
 
- //finMusica y sonidos
-    
+
+    //Creamos un sonido
+    sf::Sound cambiarSeleccion;
+    sf::Sound seleccionar;
+    // Le asignamos el buffer
+    cambiarSeleccion.setBuffer(buffer2);
+    seleccionar.setBuffer(buffer);
+    // establecemos el volumen
+    cambiarSeleccion.setVolume(100);
+    seleccionar.setVolume(100);
+
+    //finMusica y sonidos
+
     if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
 
-    ConfigurarTexto(font,titulo,tituloSinglePlayer,tituloSalir,"Asteroids","Juego individual","Salir");
-    ConfigurarTamanoTexto(titulo,tituloSinglePlayer,tituloSalir,56,36,36);
-    ConfigurarPosicionTexto(titulo,tituloSinglePlayer,tituloSalir,0);
+    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloSalir, "Asteroids", "Juego individual", "Salir");
+    ConfigurarTamanoTexto(titulo, tituloSinglePlayer, tituloSalir, 56, 36, 36);
+    ConfigurarPosicionTexto(titulo, tituloSinglePlayer, tituloSalir, 0);
 
     while (running) {
         sf::Event event;
@@ -90,19 +88,19 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
                 return (-1);
             }
         }
-        if( asteroides.size() <= 10){
-            Asteroide asteroide=Asteroide(texturaAsteroide);
+        if (asteroides.size() <= 10) {
+            Asteroide asteroide = Asteroide(texturaAsteroide);
             asteroides.push_back(asteroide);
         }
-        for(int i=0;i< asteroides.size();i++){
-            
+        for (int i = 0; i < asteroides.size(); i++) {
+
         }
-        
+
         App.clear();
-        
+
         App.draw(sprite);
-        for(int i=0;i < asteroides.size();i++){
-            asteroides[i].verificarExistencia(i,asteroides);
+        for (int i = 0; i < asteroides.size(); i++) {
+            asteroides[i].verificarExistencia(i, asteroides);
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
         }
@@ -110,44 +108,55 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
         App.draw(tituloSinglePlayer);
         App.draw(tituloSalir);
         App.display();
-        
+
         //Este bloque de codigo hace que el menu sea navegable con las flechas
-        switch (itemSeleccionado) {
-            case 0:
-                tituloSinglePlayer.setColor(sf::Color::Red);
-                tituloSalir.setColor(sf::Color::White);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-                   cambiarSeleccion.play();
-                    itemSeleccionado = 1;
-                }
-                break;
-            case 1:
-                tituloSinglePlayer.setColor(sf::Color::White);
-                tituloSalir.setColor(sf::Color::Red);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-                    cambiarSeleccion.play();
-                    itemSeleccionado = 0;
-                }
-                break;
-        }
-        
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-            if (itemSeleccionado == 0) {
-                seleccionar.play();
-                musicaFondo.stop();
-                running = false;
-                PantallaJuego p1;
-                p1.Run(App);
-                
-            }
-            if (itemSeleccionado == 1) {
-                return (-1);
-                
-            }
-        }
+        SeleccionarOpcion(itemSeleccionado, tituloSinglePlayer, tituloSalir, running, App);
+        //        switch (itemSeleccionado) {
+        //            case 0:
+        //                tituloSinglePlayer.setColor(sf::Color::Red);
+        //                tituloSalir.setColor(sf::Color::White);
+        //                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+        //                   cambiarSeleccion.play();
+        //                    itemSeleccionado = 1;
+        //                }
+        //                break;
+        //            case 1:
+        //                tituloSinglePlayer.setColor(sf::Color::White);
+        //                tituloSalir.setColor(sf::Color::Red);
+        //                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+        //                    cambiarSeleccion.play();
+        //                    itemSeleccionado = 0;
+        //                }
+        //                break;
+        //        }
+        //        
+        //        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+        //            if (itemSeleccionado == 0) {
+        //                seleccionar.play();
+        //                musicaFondo.stop();
+        //                running = false;
+        //                PantallaJuego p1;
+        //                p1.Run(App);
+        //                
+        //            }
+        //            if (itemSeleccionado == 1) {
+        //                return (-1);
+        //                
+        //            }
+        //        }
         //Fin del bloque
 
     }
     return -1;
 }
+
+void MenuPrincipal::OpcionUno(sf::RenderWindow &App,bool &running) {
+    running=false;
+    PantallaJuego p1;
+    p1.Run(App);
+}
+void MenuPrincipal::OpcionDos(){
+    std::exit(-1);
+}
+
 

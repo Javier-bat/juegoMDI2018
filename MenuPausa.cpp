@@ -22,6 +22,7 @@
 
 #include "MenuPausa.h"
 #include "Ship.h"
+#include "Menu.h"
 
 MenuPausa::MenuPausa() {
 
@@ -79,37 +80,38 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         for (int i = 0; i < sprites.size(); i++) {
             window.draw(sprites[i]);
         }
-        switch (itemSeleccionado) {
-            case 0:
-                pausaReanudar.setColor(sf::Color::Red);
-                pausaSalir.setColor(sf::Color::White);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-                    cambiarSeleccion.play();
-                    itemSeleccionado = 1;
-                }
-                break;
-            case 1:
-                pausaReanudar.setColor(sf::Color::White);
-                pausaSalir.setColor(sf::Color::Red);
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-                    cambiarSeleccion.play();
-                    itemSeleccionado = 0;
-                }
-                break;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-                              seleccionar.play();
-
-            switch (itemSeleccionado) {
-                case 0:
-                    running = false;
-                    break;
-                case 1:
-                    seguirJuego = false;
-                    return -1;
-                    break;
-            }
-        }
+        SeleccionarOpcion(itemSeleccionado,pausaReanudar,pausaSalir,running,window);
+//        switch (itemSeleccionado) {
+//            case 0:
+//                pausaReanudar.setColor(sf::Color::Red);
+//                pausaSalir.setColor(sf::Color::White);
+//                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+//                    cambiarSeleccion.play();
+//                    itemSeleccionado = 1;
+//                }
+//                break;
+//            case 1:
+//                pausaReanudar.setColor(sf::Color::White);
+//                pausaSalir.setColor(sf::Color::Red);
+//                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+//                    cambiarSeleccion.play();
+//                    itemSeleccionado = 0;
+//                }
+//                break;
+//        }
+//        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+//                              seleccionar.play();
+//
+//            switch (itemSeleccionado) {
+//                case 0:
+//                    running = false;
+//                    break;
+//                case 1:
+//                    seguirJuego = false;
+//                    return -1;
+//                    break;
+//            }
+//        }
         window.draw(nave);
         window.draw(pausaTitulo);
         window.draw(pausaReanudar);
@@ -119,4 +121,9 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
     return -1;
 
 }
-
+void MenuPausa::OpcionUno(sf::RenderWindow &App,bool &running){
+    running=false;
+}
+void MenuPausa::OpcionDos(){
+    std::exit(-1);
+}
