@@ -19,7 +19,6 @@
 #include <array>
 #include <list>
 #include <SFML/Audio/Music.hpp>
-#include "Luna.h"
 
 class PantallaJuego : public Pantalla {
 public:
