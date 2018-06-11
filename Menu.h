@@ -17,6 +17,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <iostream>
+#include <SFML/Audio/Sound.hpp>
 using namespace std;
 
 class Menu {
@@ -27,7 +28,7 @@ public:
     void ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,string mensajeTitulo,string mensajeUno,string mensajeDos);
     void ConfigurarTamanoTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,int tamanoTitulo,int tamanoUno,int tamanoDos);
     void ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,int offset);
-    void SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos,bool &running,sf::RenderWindow &App);
+    void SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion);
     virtual void OpcionUno(sf::RenderWindow &App,bool &running){cout<<"Opcion uno"<<endl;}
     virtual void OpcionDos(){std::exit(-1);}
 private:

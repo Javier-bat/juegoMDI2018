@@ -110,41 +110,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
         App.display();
 
         //Este bloque de codigo hace que el menu sea navegable con las flechas
-        SeleccionarOpcion(itemSeleccionado, tituloSinglePlayer, tituloSalir, running, App);
-        //        switch (itemSeleccionado) {
-        //            case 0:
-        //                tituloSinglePlayer.setColor(sf::Color::Red);
-        //                tituloSalir.setColor(sf::Color::White);
-        //                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        //                   cambiarSeleccion.play();
-        //                    itemSeleccionado = 1;
-        //                }
-        //                break;
-        //            case 1:
-        //                tituloSinglePlayer.setColor(sf::Color::White);
-        //                tituloSalir.setColor(sf::Color::Red);
-        //                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-        //                    cambiarSeleccion.play();
-        //                    itemSeleccionado = 0;
-        //                }
-        //                break;
-        //        }
-        //        
-        //        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
-        //            if (itemSeleccionado == 0) {
-        //                seleccionar.play();
-        //                musicaFondo.stop();
-        //                running = false;
-        //                PantallaJuego p1;
-        //                p1.Run(App);
-        //                
-        //            }
-        //            if (itemSeleccionado == 1) {
-        //                return (-1);
-        //                
-        //            }
-        //        }
-        //Fin del bloque
+        SeleccionarOpcion(itemSeleccionado, tituloSinglePlayer, tituloSalir, running, App,cambiarSeleccion);
 
     }
     return -1;
@@ -152,6 +118,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
 
 void MenuPrincipal::OpcionUno(sf::RenderWindow &App,bool &running) {
     running=false;
+    musicaFondo.stop();
     PantallaJuego p1;
     p1.Run(App);
 }

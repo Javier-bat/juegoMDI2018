@@ -14,6 +14,7 @@
 #include "Menu.h"
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Keyboard.hpp>
+#include <SFML/Audio/Sound.hpp>
 #include "ConstantesGlobales.h"
 
 Menu::Menu() {
@@ -49,13 +50,13 @@ void Menu::ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text
     opcionUno.setPosition(titulo.getPosition().x , titulo.getPosition().y + 60);
     opcionDos.setPosition(titulo.getPosition().x , titulo.getPosition().y + 90);
 }
-void Menu::SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos,bool &running,sf::RenderWindow &App){
+void Menu::SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion){
     switch (itemSeleccionado) {
             case 0:
                 opcionUno.setFillColor(sf::Color::Red);
                 opcionDos.setFillColor(sf::Color::White);
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-                   //cambiarSeleccion.play();
+                   cambiarSeleccion.play();
                     itemSeleccionado = 1;
                 }
                 break;
@@ -63,7 +64,7 @@ void Menu::SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text 
                 opcionUno.setFillColor(sf::Color::White);
                 opcionDos.setFillColor(sf::Color::Red);
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-                    //cambiarSeleccion.play();
+                    cambiarSeleccion.play();
                     itemSeleccionado = 0;
                 }
                 break;
@@ -80,7 +81,6 @@ void Menu::SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text 
                 
             }
             if (itemSeleccionado == 1) {
-//               return (-1);
                 OpcionDos();
                 
             }
