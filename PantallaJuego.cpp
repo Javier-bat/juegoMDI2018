@@ -47,6 +47,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Time timeLuna;
     float tiempoLuna=0;
     bool hayLuna;
+    sf::Clock relojJuego;
+    sf::Time timeJuego;
+    int velocidadAsteroide;
     sf::Texture explosion;
     sf::Vector2f posicion;
     //Fin de declaracion de variables
@@ -107,15 +110,18 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     
     while (running) {
 
-       
+    timeJuego = relojJuego.getElapsedTime();
+    if((int)timeJuego.asSeconds() > 45 ){
+        velocidadAsteroide += 1;
+        relojJuego.restart();
+    }
         
         
     float delta_time_seconds = syncronice_timer.restart().asSeconds();
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score"+ std::to_string(puntaje));//+"tiempo "+ std::to_string(tiempoLuna)
-        //Esto es necesario para matar el programa cuando se cierra la ventana
+        score.setString("Score"+ std::to_string(puntaje)+ "\nNivel de Velocidad    :  "+std::to_string(velocidadAsteroide+1)+"\nTiempo para el siguiente nivel    :     "+std::to_string(45-(int)timeJuego.asSeconds()));        //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
         while (App.pollEvent(event)) {
@@ -126,10 +132,15 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         if( asteroides.size() <= 10){
            
             Asteroide asteroide=Asteroide(texturaNave);
+            asteroide.setVelocidad(velocidadAsteroide);
             Asteroide asteroide2=Asteroide(texturaNave);
+            asteroide2.setVelocidad(velocidadAsteroide);
             Asteroide asteroide3=Asteroide(texturaNave);
+            asteroide3.setVelocidad(velocidadAsteroide);
             Asteroide asteroide4=Asteroide(texturaNave2);
+            asteroide4.setVelocidad(velocidadAsteroide);
             Asteroide asteroide5=Asteroide(texturaNave3);
+            asteroide5.setVelocidad(velocidadAsteroide);
 
             asteroides.push_back(asteroide);
             asteroides.push_back(asteroide2);
@@ -168,7 +179,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         
            
 
-        puntaje++;
+        
         //limpiamos la pantalla
         App.clear();
         //dibujamos la pantalla
@@ -214,6 +225,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                     }while(!explosionUno.termina());
                     asteroides.erase(asteroides.begin()+i);
                     balas.erase(balas.begin()+j);
+                    puntaje++;
                 }
             }
         }   

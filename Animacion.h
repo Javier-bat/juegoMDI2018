@@ -25,6 +25,7 @@ public:
     void mostrar(sf::RenderWindow &window, sf::Vector2f posicion);
     std::vector<sf::IntRect> frames;
     sf::Sprite spriteExplosion;
+    void setVelocidad(int velocidad);
 
 private:
     float frame; 

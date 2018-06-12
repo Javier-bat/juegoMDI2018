@@ -32,7 +32,39 @@ Asteroide::Asteroide(sf::Texture &texturaNave) {
 void Asteroide::Mostrar(sf::RenderWindow &window) {
     window.draw(spriteNave);
 }
+void Asteroide::setVelocidad(int velocidad){
+    if(this->movimientoX > 0 && this->movimientoY >0){
+    this->movimientoX+=velocidad;
+    this->movimientoY+=velocidad;
+    }
+    if(this->movimientoX < 0 && this->movimientoY >0){
+    this->movimientoX-=velocidad;
+    this->movimientoY+=velocidad;
+    }
+    if(this->movimientoX < 0 && this->movimientoY <0){
+    this->movimientoX-=velocidad;
+    this->movimientoY-=velocidad;
+    }
+    if(this->movimientoX > 0 && this->movimientoY <0){
+    this->movimientoX+=velocidad;
+    this->movimientoY-=velocidad;
+    }
+    if(this->movimientoX == 0 && this->movimientoY >0){
+    this->movimientoY+=velocidad;
+    }
+    if(this->movimientoX > 0 && this->movimientoY ==0){
+    this->movimientoX+=velocidad;
 
+    }
+     if(this->movimientoX == 0 && this->movimientoY <0){
+    this->movimientoY-=velocidad;
+    }
+    if(this->movimientoX < 0 && this->movimientoY ==0){
+    this->movimientoX-=velocidad;
+
+    }
+
+}
 void Asteroide::ActualizarPosicion() {
     spriteNave.move(sf::Vector2f(movimientoX, movimientoY));
     spriteNave.rotate(0.5);
