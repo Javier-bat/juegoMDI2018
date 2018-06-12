@@ -42,7 +42,7 @@ namespace game //Un namespace para evitar cualquier colisión de nombres acciden
   //Definición de la función virtual de sf::Drawable
   void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
   sf::Sprite spriteNave;
- 
+  sf::ConvexShape getForma();
  protected:
   sf::Vector2f velocidadNave; //Velocidad de la nave
  

@@ -42,7 +42,9 @@ namespace game
  Ship::~Ship()
  {
  }
- 
+ sf::ConvexShape Ship::getForma(){
+     return this->formaNave;
+ }
  //Inicializa la nave a sus valores iniciales
  void Ship::reset()
  {

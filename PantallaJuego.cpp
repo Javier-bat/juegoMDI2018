@@ -46,7 +46,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Clock relojLuna;
     sf::Time timeLuna;
     float tiempoLuna=0;
-    bool hayLuna;
     sf::Clock relojJuego;
     sf::Time timeJuego;
     sf::Clock relojDisparo;
@@ -76,14 +75,14 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
      if (!texturaNave3.loadFromFile("Imagenes/asteroideMediano.png")) {
     }
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
-        return -1;
+           std::cout<<"no se pudo cargar"<<std::endl;
     }
     
     if(!explosion.loadFromFile("Imagenes/explosion.png")){
-        return -1;
+        std::cout<<"no se pudo cargar"<<std::endl;
     }
     
-    Animacion explosionUno(explosion,0,0,256,256,48,1);
+    Animacion explosionUno(explosion,1,1,256,256,48,1);
 
     
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
@@ -156,12 +155,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].verificarExistencia(i,asteroides);
         }
          
-      if( lunas.size() < 1 && cantidadAsteroides > 15  ){
+      if( lunas.size() < 1 && cantidadAsteroides > 30  ){
             relojLuna.restart();           
             Luna luna= Luna(texturaLuna);
             lunas.push_back(luna);
-            hayLuna=true;
-
         }
         timeLuna =relojLuna.getElapsedTime();
         tiempoLuna=timeLuna.asSeconds();
@@ -197,8 +194,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             balas[cantBalas].disparo(nave);
             cantBalas++;
              relojDisparo.restart();   
-        }}
-        
+        }
+        }
         for(int i =0; i<balas.size() ;i++){
             balas[i].mostrar(App,nave);
             if(balas[i].apretado == false){
