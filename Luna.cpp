@@ -25,9 +25,11 @@ using namespace std;
 Luna::Luna(sf::Texture &texturaNave) {
     spriteLuna.setTexture(texturaNave);
     this->generarOrigen();
-    //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteLuna.setPosition(x, y);
     spriteLuna.setScale(0.5, 0.5);
+    
+    spriteLuna.setRotation((float)(rand() % 359));
+    
    
 }
 
@@ -37,12 +39,14 @@ void Luna::Mostrar(sf::RenderWindow &window) {
 
 void Luna::ActualizarPosicion() {
      srand(time(NULL));
-     int num = (100+rand()%((altoResolucion-200)-100));
+     int num = (250+rand()%((altoResolucion-250)-100));
     spriteLuna.move(sf::Vector2f(movimientoX, movimientoY));
-    if((int)spriteLuna.getPosition().y > num-9 && (int)spriteLuna.getPosition().y <num+9){
+    if((int)spriteLuna.getPosition().y > num-12 && (int)spriteLuna.getPosition().y <num+12){
     
         movimientoY=0;
     }
+    
+    
     
 }
 void Luna::setMovimientoY(int movimientoY){
