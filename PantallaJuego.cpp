@@ -61,11 +61,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     }
 
     
-    if (!texturaNave.loadFromFile("Imagenes/asteroideMarron.png")) {
+    if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     if (!texturaNave2.loadFromFile("Imagenes/asteroideChico.png")) {
     }
-     if (!texturaNave3.loadFromFile("Imagenes/asteroideLlama.png")) {
+     if (!texturaNave3.loadFromFile("Imagenes/asteroideMediano.png")) {
     }
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
         return -1;
@@ -103,7 +103,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score"+ std::to_string(puntaje)+"tiempo "+ std::to_string(tiempoLuna));
+        score.setString("Score"+ std::to_string(puntaje));//+"tiempo "+ std::to_string(tiempoLuna)
         //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
