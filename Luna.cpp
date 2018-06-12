@@ -68,7 +68,7 @@ Luna::~Luna(){
 void Luna::verificarExistencia(int indice, std::vector<Luna> &vector) {
     int posX = spriteLuna.getPosition().x;
     int posY = spriteLuna.getPosition().y;
-    if (posX > anchoResolucion + 100 || posX < 0 || posY < 0 || posY > altoResolucion + 100) {
+    if (posX > anchoResolucion + 100 || posX < 0 || posY < 0 || posY > altoResolucion + 500) {
         vector.erase(vector.begin() + indice);
     }
 }
