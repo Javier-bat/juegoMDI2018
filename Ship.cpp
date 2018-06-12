@@ -25,15 +25,15 @@ namespace game
  Ship::Ship()
  {
 //  Define la figura que representara la nave
-  m_shipShape.setPointCount( 3 ); //Será un triangulo
-  m_shipShape.setPoint( 0, sf::Vector2f( 10.0f, 0.0f ) );
-  m_shipShape.setPoint( 1, sf::Vector2f(-10.0f, 7.5f ) );
-  m_shipShape.setPoint( 2, sf::Vector2f(-10.0f,-7.5f ) );
+  formaNave.setPointCount( 3 ); //Será un triangulo
+  formaNave.setPoint( 0, sf::Vector2f( 10.0f, 0.0f ) );
+  formaNave.setPoint( 1, sf::Vector2f(-10.0f, 7.5f ) );
+  formaNave.setPoint( 2, sf::Vector2f(-10.0f,-7.5f ) );
      
-  m_shipShape.setFillColor( sf::Color( 0,0,0,0 ) );
-  m_shipShape.setOutlineColor(sf::Color::White);
-  m_shipShape.setOutlineThickness(2);
-  m_shipShape.setPosition( 0.0f, 0.0f );
+  formaNave.setFillColor( sf::Color( 0,0,0,0 ) );
+  formaNave.setOutlineColor(sf::Color::White);
+  formaNave.setOutlineThickness(2);
+  formaNave.setPosition( 0.0f, 0.0f );
      
 
   reset();
@@ -48,31 +48,31 @@ namespace game
  {
   setPosition( anchoResolucion/2, altoResolucion/2); //Lo colocamos en el centro de la pantalla
   setRotation( 270.0f );   //lo ponemos con giro cero
-  m_ship_velocity.x = 0.0f;  //Lo paramos para que no se mueva
-  m_ship_velocity.y = 0.0f;
+  velocidadNave.x = 0.0f;  //Lo paramos para que no se mueva
+  velocidadNave.y = 0.0f;
  }
  
  //Función que actualizara la lógica de la nave
  void Ship::update( float delta_time_seconds )
  {
   //Comprobación del teclado
-  if( sf::Keyboard::isKeyPressed( sf::Keyboard::Left  ) )    //Si pulsamos cursor izquierda
-      move(m_ship_velocity.x = -2.0f,m_ship_velocity.y = 0.0f);
+  if( sf::Keyboard::isKeyPressed( sf::Keyboard::A  ) )    //Si pulsamos cursor izquierda
+      move(velocidadNave.x = -2.0f,velocidadNave.y = 0.0f);
       
  
-  if( sf::Keyboard::isKeyPressed( sf::Keyboard::Right  ) )   //Si pulsamos cursor derecha
-      move(m_ship_velocity.x = 2.0f,m_ship_velocity.y = 0.0f);
+  if( sf::Keyboard::isKeyPressed( sf::Keyboard::D  ) )   //Si pulsamos cursor derecha
+      move(velocidadNave.x = 2.0f,velocidadNave.y = 0.0f);
  
-  if( sf::Keyboard::isKeyPressed( sf::Keyboard::Up ) )    //Si pulsamos cursor arriba
-     move(m_ship_velocity.x = 0.0f,m_ship_velocity.y = -2.0f);
-  if( sf::Keyboard::isKeyPressed( sf::Keyboard::Down) )    //Si pulsamos cursor  abajo
-     move(m_ship_velocity.x = 0.0f,m_ship_velocity.y = 2.0f);
+  if( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) )    //Si pulsamos cursor arriba
+     move(velocidadNave.x = 0.0f,velocidadNave.y = -2.0f);
+  if( sf::Keyboard::isKeyPressed( sf::Keyboard::S) )    //Si pulsamos cursor  abajo
+     move(velocidadNave.x = 0.0f,velocidadNave.y = 2.0f);
   
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) //con Z gira en sentido antihorario
-      rotate( -1.0f * m_ship_rotation_velocity * delta_time_seconds );
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) //con Z gira en sentido antihorario
+      rotate( -1.0f * velocidadRotacion * delta_time_seconds );
   
-  if(sf::Keyboard::isKeyPressed(sf::Keyboard::X)) //con X gira en sentido horario     
-      rotate( m_ship_rotation_velocity * delta_time_seconds );
+  if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) //con X gira en sentido horario     
+      rotate( velocidadRotacion * delta_time_seconds );
     
   //{
    //Cogemos la dirección en la que mira la nave
@@ -84,27 +84,27 @@ namespace game
   float sinRotation = std::sin( rotation * degree2radian );
  
    //Damos un acelerón a la nave
-   m_ship_velocity.x += m_ship_aceleration * delta_time_seconds * cosRotation;
-   m_ship_velocity.y += m_ship_aceleration * delta_time_seconds * sinRotation;
+   velocidadNave.x += aceleracion * delta_time_seconds * cosRotation;
+   velocidadNave.y += aceleracion * delta_time_seconds * sinRotation;
 //  }
  
   //Comprobamos si la nave se mueve
   //La velocidad es la longitud del vector velocidad
-  float ship_speed = std::sqrt( (m_ship_velocity.x * m_ship_velocity.x) + (m_ship_velocity.y * m_ship_velocity.y) );
+  float ship_speed = std::sqrt( (velocidadNave.x * velocidadNave.x) + (velocidadNave.y * velocidadNave.y) );
   if( ship_speed > 0 ) //Si la nave se esta moviendo
   {
    //Vemos cual es la direccion del movimiento
-   float angle_of_velocity = std::atan2( m_ship_velocity.y/ship_speed , m_ship_velocity.x/ship_speed );
+   float angle_of_velocity = std::atan2( velocidadNave.y/ship_speed , velocidadNave.x/ship_speed );
  
    //Aplico la resistencia en la direccion del movimiento
-      m_ship_velocity.x -= m_ship_drag_force * delta_time_seconds * std::cos( angle_of_velocity );
-       m_ship_velocity.y -= m_ship_drag_force * delta_time_seconds * std::sin( angle_of_velocity );
+      velocidadNave.x -= resistencia * delta_time_seconds * std::cos( angle_of_velocity );
+       velocidadNave.y -= resistencia * delta_time_seconds * std::sin( angle_of_velocity );
  
    //Compruebo la nueva velocidad
-   ship_speed = std::sqrt( (m_ship_velocity.x * m_ship_velocity.x) + (m_ship_velocity.y * m_ship_velocity.y) );
+   ship_speed = std::sqrt( (velocidadNave.x * velocidadNave.x) + (velocidadNave.y * velocidadNave.y) );
  
    //Si es menos que cero, paro la nave para que no retroceda
-   if( ship_speed < 0.0f ) m_ship_velocity = sf::Vector2f( 0.0f, 0.0f );
+   if( ship_speed < 0.0f ) velocidadNave = sf::Vector2f( 0.0f, 0.0f );
     
    //Actualizo la posición de la nave
   // move( m_ship_velocity * delta_time_seconds );
@@ -136,7 +136,7 @@ namespace game
   states.transform *= getTransform();
  
   //Dibujamos la representación gráfica de la nave con la transformación calculada
- target.draw( m_shipShape, states );
+ target.draw( formaNave, states );
  
   //NOTA - Una transformación contiene la información de posición, rotación y escalado...
  }

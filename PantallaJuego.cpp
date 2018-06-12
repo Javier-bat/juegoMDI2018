@@ -49,6 +49,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     bool hayLuna;
     sf::Clock relojJuego;
     sf::Time timeJuego;
+    sf::Clock relojDisparo;
+    sf::Time timeDisparo;
     int velocidadAsteroide = 0;
     sf::Texture explosion;
     sf::Vector2f posicion;
@@ -186,14 +188,16 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.draw(sprite); //dibujo fondo
         App.draw(score);
         App.draw(nave);
-        
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::C)){
+        timeDisparo=relojDisparo.getElapsedTime();
+        if(timeDisparo.asSeconds()>0.25){
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
+            
             Bala bala(nave, texturaBala);
             balas.push_back(bala);
             balas[cantBalas].disparo(nave);
             cantBalas++;
-                
-        }
+             relojDisparo.restart();   
+        }}
         
         for(int i =0; i<balas.size() ;i++){
             balas[i].mostrar(App,nave);
@@ -210,8 +214,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         for(int i=0;i < lunas.size();i++){
                 lunas[i].Mostrar(App);
                 lunas[i].ActualizarPosicion();
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-                {lunas[i].~Luna();}
+               // if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+              //  {lunas[i].~Luna();}
                 
         }
         
