@@ -51,25 +51,26 @@ void Luna::ActualizarPosicion() {
 }
 void Luna::setMovimientoY(int movimientoY){
     this->movimientoY = movimientoY;
-
+   
 }
 
 void Luna::generarOrigen() {
 
     movimientoX = 0;
-    y = 0;
+    y = -150;
     x = (250+rand() % (anchoResolucion-250)-250); //Genera posicion aleatoria para el ancho
-   movimientoY = rand() %3 +1;
+   movimientoY = rand() %2 +1;
    
 }
 Luna::~Luna(){
 
 }
-void Luna::verificarExistencia(int indice, std::vector<Luna> &vector) {
+void Luna::verificarExistencia(int indice, std::vector<Luna> &vector,sf::Clock relojLuna2) {
     int posX = spriteLuna.getPosition().x;
     int posY = spriteLuna.getPosition().y;
-    if (posX > anchoResolucion + 100 || posX < 0 || posY < 0 || posY > altoResolucion + 500) {
+    if (posX > anchoResolucion + 100 || posX < 0 || posY < -200 || posY > altoResolucion + 500) {
         vector.erase(vector.begin() + indice);
+        relojLuna2.restart();
     }
 }
 

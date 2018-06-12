@@ -46,7 +46,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Clock syncronice_timer;
     game::Ship nave;
     std::vector <Bala> balas;
-    int cantBalas = 0;
     sf::Clock relojLuna;
     sf::Time timeLuna;
     float tiempoLuna=0;
@@ -57,6 +56,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int velocidadAsteroide = 0;
     sf::Vector2f posicion;
     int tiempoSigNivel = 45;
+    sf::Clock relojLuna2;
+    sf::Time timeLuna2;
+    bool primeraVez=true;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -131,24 +133,25 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].verificarExistencia(i,asteroides);
         }
          
-      if( lunas.size() < 1 && cantidadAsteroides > 30  ){ 
+      if( lunas.size() < 1 && (velocidadAsteroide+1) >= 2 && (int)timeLuna2.asSeconds()>=10 ){ 
             relojLuna.restart();           
             Luna luna= Luna(texturaLuna);
             lunas.push_back(luna);
         }
         timeLuna =relojLuna.getElapsedTime();
         tiempoLuna=timeLuna.asSeconds();
-        if(tiempoLuna>20.0){
+        if(tiempoLuna>30.0 ){
            for(int i=0;i< lunas.size();i++){
             lunas[i].setMovimientoY(2);
           
         }
         }
-        
+        if(lunas.size()>=1){
         for(int i=0;i< lunas.size();i++){
             
-           lunas[i].verificarExistencia(i,lunas);
-        }            
+           lunas[i].verificarExistencia(i,lunas,relojLuna2);
+        } }
+        timeLuna2=relojLuna2.getElapsedTime();
            nave.update(delta_time_seconds);
 
         

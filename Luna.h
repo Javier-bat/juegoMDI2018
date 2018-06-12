@@ -14,7 +14,7 @@ public:
     void ActualizarPosicion();
     sf::Sprite getSprite();
     void setMovimientoY(int movimientoY);
-    void verificarExistencia(int indice,std::vector<Luna> &vector);
+    void verificarExistencia(int indice,std::vector<Luna> &vector,sf::Clock relojLuna2);
     ~Luna();
 private:
  
