@@ -17,6 +17,7 @@
 #include "Luna.h"
 #include <list>
 #include <iostream>
+#include "Animacion.h"
 
 PantallaJuego::PantallaJuego() {
 }
@@ -46,6 +47,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Time timeLuna;
     float tiempoLuna=0;
     bool hayLuna;
+    sf::Texture explosion;
+    sf::Vector2f posicion;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -70,6 +73,14 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
         return -1;
     }
+    
+    if(!explosion.loadFromFile("Imagenes/explosion.png")){
+        return -1;
+    }
+    
+    Animacion explosionUno(explosion,0,0,256,256,48,1);
+
+    
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     
     sprite.setTexture(fondo); //le seteo la textura
@@ -154,6 +165,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         }            
            nave.update(delta_time_seconds);
           
+        
+           
 
         puntaje++;
         //limpiamos la pantalla
@@ -190,6 +203,20 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 {lunas[i].~Luna();}
                 
         }
+        
+        for(int i=0;i < asteroides.size();i++){
+            for(int j=0;j < balas.size();j++){
+                if(asteroides[i].getSprite().getGlobalBounds().intersects(balas[j].spriteBala.getGlobalBounds())){      
+                    posicion = {(asteroides[i].getSprite().getPosition().x+balas[j].spriteBala.getPosition().x)/2,(asteroides[i].getSprite().getPosition().y+balas[j].spriteBala.getPosition().y)/2};
+                    do{
+                        explosionUno.mostrar(App,posicion);
+                        explosionUno.actualizar();
+                    }while(!explosionUno.termina());
+                    asteroides.erase(asteroides.begin()+i);
+                    balas.erase(balas.begin()+j);
+                }
+            }
+        }   
         
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
             musicaFondo.pause();

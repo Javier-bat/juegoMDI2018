@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Animacion.h</itemPath>
       <itemPath>Asteroide.h</itemPath>
       <itemPath>Bala.h</itemPath>
       <itemPath>ConstantesGlobales.h</itemPath>
@@ -22,6 +23,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Animacion.cpp</itemPath>
       <itemPath>Asteroide.cpp</itemPath>
       <itemPath>Bala.cpp</itemPath>
       <itemPath>Luna.cpp</itemPath>
@@ -60,6 +62,10 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="Animacion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Animacion.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Asteroide.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Asteroide.h" ex="false" tool="3" flavor2="0">
@@ -119,6 +125,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Animacion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Animacion.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Asteroide.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Asteroide.h" ex="false" tool="3" flavor2="0">
