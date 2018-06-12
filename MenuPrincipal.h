@@ -13,7 +13,6 @@
 
 #ifndef MENUPRINCIPAL_H
 #define MENUPRINCIPAL_H
-#include "Pantalla.h"
 #include "Menu.h"
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
