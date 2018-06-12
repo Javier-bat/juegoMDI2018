@@ -61,11 +61,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     }
 
     
-    if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
+    if (!texturaNave.loadFromFile("Imagenes/asteroideMarron.png")) {
     }
     if (!texturaNave2.loadFromFile("Imagenes/asteroideChico.png")) {
     }
-     if (!texturaNave3.loadFromFile("Imagenes/asteroideMediano.png")) {
+     if (!texturaNave3.loadFromFile("Imagenes/asteroideLlama.png")) {
     }
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
         return -1;
