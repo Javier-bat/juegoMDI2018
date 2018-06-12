@@ -49,7 +49,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     bool hayLuna;
     sf::Clock relojJuego;
     sf::Time timeJuego;
-    int velocidadAsteroide;
+    int velocidadAsteroide = 0;
     sf::Texture explosion;
     sf::Vector2f posicion;
     //Fin de declaracion de variables
