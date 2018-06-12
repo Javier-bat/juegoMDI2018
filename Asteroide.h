@@ -20,7 +20,7 @@
 
 class Asteroide {
 public:
-    Asteroide(sf::Texture &texturaNave);
+    Asteroide(sf::Texture &texturaNave,int velocidad);
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
     void verificarExistencia(int indice,std::vector<Asteroide> &vector);

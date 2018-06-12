@@ -21,12 +21,13 @@
 #include <time.h>
 #include <random>
 using namespace std;
-Asteroide::Asteroide(sf::Texture &texturaNave) {
+Asteroide::Asteroide(sf::Texture &texturaNave,int velocidad) {
     spriteNave.setTexture(texturaNave);
     this->generarOrigen();
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteNave.setPosition(x, y);
     spriteNave.setScale(1.2,1.2);
+    this->setVelocidad(velocidad);
 }
 
 void Asteroide::Mostrar(sf::RenderWindow &window) {

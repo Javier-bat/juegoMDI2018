@@ -53,6 +53,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int velocidadAsteroide = 0;
     sf::Texture explosion;
     sf::Vector2f posicion;
+    int tiempoSigNivel = 45;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -112,9 +113,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     while (running) {
 
     timeJuego = relojJuego.getElapsedTime();
-    if((int)timeJuego.asSeconds() > 45 ){
+    if((int)timeJuego.asSeconds() > tiempoSigNivel ){
         velocidadAsteroide += 1;
         relojJuego.restart();
+        tiempoSigNivel+=(velocidadAsteroide*5);
     }
         
         
@@ -122,7 +124,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score"+ std::to_string(puntaje)+ "\nNivel de Velocidad    :  "+std::to_string(velocidadAsteroide+1)+"\nTiempo para el siguiente nivel    :     "+std::to_string(45-(int)timeJuego.asSeconds()));        //Esto es necesario para matar el programa cuando se cierra la ventana
+        score.setString("Score"+ std::to_string(puntaje)+ "\nNivel de Velocidad    :  "+std::to_string(velocidadAsteroide+1)+"\nTiempo para el siguiente nivel    :     "+std::to_string(tiempoSigNivel-(int)timeJuego.asSeconds()));        //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
         while (App.pollEvent(event)) {
@@ -132,16 +134,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         }
         if( asteroides.size() <= 10){
            
-            Asteroide asteroide=Asteroide(texturaNave);
-            asteroide.setVelocidad(velocidadAsteroide);
-            Asteroide asteroide2=Asteroide(texturaNave);
-            asteroide2.setVelocidad(velocidadAsteroide);
-            Asteroide asteroide3=Asteroide(texturaNave);
-            asteroide3.setVelocidad(velocidadAsteroide);
-            Asteroide asteroide4=Asteroide(texturaNave2);
-            asteroide4.setVelocidad(velocidadAsteroide);
-            Asteroide asteroide5=Asteroide(texturaNave3);
-            asteroide5.setVelocidad(velocidadAsteroide);
+            Asteroide asteroide=Asteroide(texturaNave,velocidadAsteroide);
+            Asteroide asteroide2=Asteroide(texturaNave,velocidadAsteroide);
+            Asteroide asteroide3=Asteroide(texturaNave,velocidadAsteroide);
+            Asteroide asteroide4=Asteroide(texturaNave2,velocidadAsteroide);
+            Asteroide asteroide5=Asteroide(texturaNave3,velocidadAsteroide);
 
             asteroides.push_back(asteroide);
             asteroides.push_back(asteroide2);

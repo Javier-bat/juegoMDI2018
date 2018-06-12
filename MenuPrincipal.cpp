@@ -89,7 +89,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
             }
         }
         if (asteroides.size() <= 10) {
-            Asteroide asteroide = Asteroide(texturaAsteroide);
+            Asteroide asteroide = Asteroide(texturaAsteroide,0);
             asteroides.push_back(asteroide);
         }
         for (int i = 0; i < asteroides.size(); i++) {
