@@ -36,6 +36,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
     sf::FloatRect textRec;
     sf::Text pausaTitulo;
     sf::Text pausaReanudar;
+    sf::Text pausaConfig;
     sf::Text pausaSalir;
     
     //musica y sonidos
@@ -63,11 +64,11 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         cambiarSeleccion.setVolume(100);
         seleccionar.setVolume(100);
 
-    ConfigurarTexto(fuente,pausaTitulo,pausaReanudar,pausaSalir,"Juego Pausado","Reanudar","Salir");
-    ConfigurarTamanoTexto(pausaTitulo,pausaReanudar,pausaSalir,46,36,36);
+    ConfigurarTexto(fuente,pausaTitulo,pausaReanudar,pausaConfig,pausaSalir,"Juego Pausado","Reanudar","Configurar","Salir");
+    ConfigurarTamanoTexto(pausaTitulo,pausaReanudar,pausaConfig,pausaSalir,46,36,36);
     
     //Seteo de posiciones
-    ConfigurarPosicionTexto(pausaTitulo,pausaReanudar,pausaSalir,200);
+    ConfigurarPosicionTexto(pausaTitulo,pausaReanudar,pausaConfig,pausaSalir,200);
 
     while (running) {
         sf::Event event;
@@ -80,10 +81,11 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         for (int i = 0; i < sprites.size(); i++) {
             window.draw(sprites[i]);
         }
-        SeleccionarOpcion(itemSeleccionado,pausaReanudar,pausaSalir,running,window,cambiarSeleccion);
+        SeleccionarOpcion(itemSeleccionado,pausaReanudar,pausaConfig,pausaSalir,running,window,cambiarSeleccion);
         window.draw(nave);
         window.draw(pausaTitulo);
         window.draw(pausaReanudar);
+        window.draw(pausaConfig);
         window.draw(pausaSalir);
         window.display();
     }
@@ -94,5 +96,8 @@ void MenuPausa::OpcionUno(sf::RenderWindow &App,bool &running){
     running=false;
 }
 void MenuPausa::OpcionDos(){
+    std::exit(-1);
+}
+void MenuPausa::OpcionTres(){
     std::exit(-1);
 }

@@ -32,6 +32,7 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     sf::Texture texturaAsteroide;
     sf::Text titulo;
     sf::Text tituloSinglePlayer;
+    sf::Text tituloConfig;
     sf::Text tituloSalir;
     sf::Font font;
 
@@ -76,9 +77,9 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
     if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
 
-    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloSalir, "Asteroids", "Juego individual", "Salir");
-    ConfigurarTamanoTexto(titulo, tituloSinglePlayer, tituloSalir, 56, 36, 36);
-    ConfigurarPosicionTexto(titulo, tituloSinglePlayer, tituloSalir, 0);
+    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloConfig, tituloSalir, "Asteroids", "Juego individual", "Configurar","Salir");
+    ConfigurarTamanoTexto(titulo, tituloSinglePlayer, tituloConfig,tituloSalir, 56, 36, 36);
+    ConfigurarPosicionTexto(titulo, tituloSinglePlayer,tituloConfig, tituloSalir, 0);
 
     while (running) {
         sf::Event event;
@@ -105,11 +106,12 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
         }
         App.draw(titulo);
         App.draw(tituloSinglePlayer);
+        App.draw(tituloConfig);
         App.draw(tituloSalir);
         App.display();
 
         //Este bloque de codigo hace que el menu sea navegable con las flechas
-        SeleccionarOpcion(itemSeleccionado, tituloSinglePlayer, tituloSalir, running, App,cambiarSeleccion);
+        SeleccionarOpcion(itemSeleccionado, tituloSinglePlayer, tituloConfig,tituloSalir, running, App,cambiarSeleccion);
 
     }
     return -1;
@@ -124,5 +126,7 @@ void MenuPrincipal::OpcionUno(sf::RenderWindow &App,bool &running) {
 void MenuPrincipal::OpcionDos(){
     std::exit(-1);
 }
-
+void MenuPrincipal::OpcionTres(){
+    std::exit(-1);
+}
 
