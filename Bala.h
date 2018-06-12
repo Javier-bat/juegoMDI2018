@@ -23,11 +23,9 @@ class Bala {
 public:
     Bala(game::Ship &nave, sf::Texture &textura);
     virtual ~Bala();
-    void mostrar(sf::RenderWindow &window, game::Ship &nave);
-    void disparo(game::Ship &nave);
+    void mostrar(sf::RenderWindow &window);
     sf::Sprite spriteBala;
     sf::Vector2f velocity;
-    bool apretado = true;
   
 };
 

@@ -34,11 +34,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Texture texturaNave3;
     int cantidadAsteroides=0;
     sf::Sprite sprite;//creo un sprite
-    std::vector<Asteroide> asteroides;
-    std::vector<Luna> lunas;
+    std::vector <Asteroide> asteroides;
+    std::vector <Luna> lunas;
     sf::Clock syncronice_timer;
     game::Ship nave;
-    std::vector<Bala> balas;
+    std::vector <Bala> balas;
     sf::Texture texturaBala;
     int cantBalas = 0;
     sf::Texture texturaLuna;
@@ -82,7 +82,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         std::cout<<"no se pudo cargar"<<std::endl;
     }
     
-    Animacion explosionUno(explosion,1,1,256,256,48,1);
+    Animacion explosionUno(explosion,1,1,256,256,48,0.3f);
 
     
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
@@ -174,9 +174,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
            lunas[i].verificarExistencia(i,lunas);
         }            
            nave.update(delta_time_seconds);
-          
-        
-           
 
         
         //limpiamos la pantalla
@@ -185,29 +182,28 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.draw(sprite); //dibujo fondo
         App.draw(score);
         App.draw(nave);
+ 
         timeDisparo=relojDisparo.getElapsedTime();
         if(timeDisparo.asSeconds()>0.25){
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
-            
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)){
             Bala bala(nave, texturaBala);
             balas.push_back(bala);
-            balas[cantBalas].disparo(nave);
-            cantBalas++;
-             relojDisparo.restart();   
-        }
-        }
-        for(int i =0; i<balas.size() ;i++){
-            balas[i].mostrar(App,nave);
-            if(balas[i].apretado == false){
-                balas[i].~Bala();
-                cantBalas--;
+            relojDisparo.restart(); 
             }
         }
-        
+
+        for(int i =0; i<balas.size() ;i++){
+            balas[i].mostrar(App);
+            if(balas[i].spriteBala.getPosition().x > anchoResolucion && balas[i].spriteBala.getPosition().y > altoResolucion ){
+                balas.erase(balas.begin()+i);
+            }
+        }
+                
         for(int i=0;i < asteroides.size();i++){
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
         }
+        
         for(int i=0;i < lunas.size();i++){
                 lunas[i].Mostrar(App);
                 lunas[i].ActualizarPosicion();
@@ -231,6 +227,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             }
         }   
         
+        
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
             musicaFondo.pause();
             std::vector<sf::Sprite> sprites;
@@ -253,5 +250,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         }
     }
     return -1;
+
 }
 

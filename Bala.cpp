@@ -29,19 +29,9 @@ Bala::Bala(game::Ship &nave, sf::Texture &textura) {
     
 }
 
-void Bala::disparo(game::Ship &nave){
-        apretado = true;
-}
-
-void Bala::mostrar(sf::RenderWindow &window, game::Ship &nave){
-        if(apretado){
-            if((spriteBala.getPosition().x <= altoResolucion || spriteBala.getPosition().x >= 0) && (spriteBala.getPosition().y <= anchoResolucion || spriteBala.getPosition().y >= 0)  ){
+void Bala::mostrar(sf::RenderWindow &window){
                 window.draw(spriteBala);
                 spriteBala.move(velocity);
-            }
-        } else {
-            apretado = false;
-        }
 }
 
 

@@ -18,9 +18,10 @@ Animacion::Animacion(sf::Texture &textura, int x, int y, int w, int h, int count
     frame = 0;
     this->speed = speed;
 
-    for (int i=0;i<count;i++)
-    frames.push_back( sf::IntRect(x+i*w, y, w, h)  );
-
+    for (int i=0;i< count;i++){
+            frames.push_back( sf::IntRect(x+i*w, y, w, h)  );
+       
+    }    
     spriteExplosion.setTexture(textura);
     spriteExplosion.setOrigin(w/2,h/2);
     spriteExplosion.setTextureRect(frames[0]);
@@ -37,7 +38,7 @@ void Animacion::actualizar(){
 }
 
 bool Animacion::termina(){
-    	  return frame + speed >= frames.size();
+    	  return frame + speed > frames.size();
 }
 
 Animacion::~Animacion() {
