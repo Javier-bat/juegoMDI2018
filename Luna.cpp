@@ -37,9 +37,9 @@ void Luna::Mostrar(sf::RenderWindow &window) {
 
 void Luna::ActualizarPosicion() {
      srand(time(NULL));
-     int num = (100+rand()%((altoResolucion-99)-100));
+     int num = (100+rand()%((altoResolucion-200)-100));
     spriteLuna.move(sf::Vector2f(movimientoX, movimientoY));
-    if((int)spriteLuna.getPosition().y > num-2 && (int)spriteLuna.getPosition().y <num+2){
+    if((int)spriteLuna.getPosition().y > num-9 && (int)spriteLuna.getPosition().y <num+9){
     
         movimientoY=0;
     }
@@ -54,8 +54,9 @@ void Luna::generarOrigen() {
 
     movimientoX = 0;
     y = 0;
-    x = (100+rand() % (anchoResolucion-100)-100); //Genera posicion aleatoria para el ancho
+    x = (250+rand() % (anchoResolucion-250)-250); //Genera posicion aleatoria para el ancho
    movimientoY = rand() %3 +1;
+   
 }
 Luna::~Luna(){
 
