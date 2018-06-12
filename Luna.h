@@ -15,6 +15,7 @@ public:
     sf::Sprite getSprite();
     void setMovimientoY(int movimientoY);
     void verificarExistencia(int indice,std::vector<Luna> &vector);
+    ~Luna();
 private:
  
     void generarOrigen();

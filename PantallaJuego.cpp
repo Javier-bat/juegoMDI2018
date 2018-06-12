@@ -41,6 +41,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Texture texturaBala;
     int cantBalas = 0;
     sf::Texture texturaLuna;
+    
     sf::Clock relojLuna;
     sf::Time timeLuna;
     float tiempoLuna=0;
@@ -58,6 +59,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     if(!texturaLuna.loadFromFile("Imagenes/1346946235.png")){
     
     }
+
     
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
@@ -68,7 +70,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
         return -1;
     }
-    
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     
     sprite.setTexture(fondo); //le seteo la textura
@@ -102,7 +103,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score"+ std::to_string(puntaje));
+        score.setString("Score"+ std::to_string(puntaje)+"tiempo "+ std::to_string(tiempoLuna));
         //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
@@ -131,19 +132,19 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].verificarExistencia(i,asteroides);
         }
          
-      if( lunas.size() < 1 && cantidadAsteroides > 20  ){
+      if( lunas.size() < 1 && cantidadAsteroides > 15  ){
             relojLuna.restart();           
-            Luna luna=Luna(texturaLuna);
+            Luna luna= Luna(texturaLuna);
             lunas.push_back(luna);
             hayLuna=true;
 
         }
         timeLuna =relojLuna.getElapsedTime();
         tiempoLuna=timeLuna.asSeconds();
-        if(tiempoLuna>30.0 && hayLuna){
+        if(tiempoLuna>20.0){
            for(int i=0;i< lunas.size();i++){
             lunas[i].setMovimientoY(2);
-            hayLuna=false;
+          
         }
         }
         
@@ -185,8 +186,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         for(int i=0;i < lunas.size();i++){
                 lunas[i].Mostrar(App);
                 lunas[i].ActualizarPosicion();
-            
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+                {lunas[i].~Luna();}
+                
         }
+        
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
             musicaFondo.pause();
             std::vector<sf::Sprite> sprites;

@@ -15,11 +15,8 @@
 #define SHIP_H
 
 
-      //Este método es mucho mejor que el #pragma one
-      //sobre todo hay que evitar usar #pragma pues no son estándar
- 
-#include <SFML/Graphics.hpp> //Inclusión de las clases de SFML2 graficas
- 
+#include <SFML/Graphics.hpp> 
+
 const float degree2radian = (3.14159f / 180.0f);
  
 const float m_ship_drag_force = 3.0f; //Velocidad de resistencia contra el movimiento de la nave (Esto ara que se pare poco a poco cuando se deje de acelerar )
@@ -44,6 +41,7 @@ namespace game //Un namespace para evitar cualquier colisión de nombres acciden
  
   //Definición de la función virtual de sf::Drawable
   void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
+  sf::Sprite spriteNave;
  
  protected:
   sf::Vector2f m_ship_velocity; //Velocidad de la nave

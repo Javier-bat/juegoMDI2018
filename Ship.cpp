@@ -24,7 +24,7 @@ namespace game
 {
  Ship::Ship()
  {
-  //Define la figura que representara la nave
+//  Define la figura que representara la nave
   m_shipShape.setPointCount( 3 ); //Será un triangulo
   m_shipShape.setPoint( 0, sf::Vector2f( 10.0f, 0.0f ) );
   m_shipShape.setPoint( 1, sf::Vector2f(-10.0f, 7.5f ) );
@@ -34,8 +34,8 @@ namespace game
   m_shipShape.setOutlineColor(sf::Color::White);
   m_shipShape.setOutlineThickness(2);
   m_shipShape.setPosition( 0.0f, 0.0f );
-  
-//this->texture.loadFromFile("animated_asteroid.xcf");
+     
+
   reset();
  }
  
