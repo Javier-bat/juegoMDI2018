@@ -1,14 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
+ * 
+ * 
  */
 
 /* 
- * File:   Asteroide.cpp
- * Author: gabriel
  * 
- * Created on 2 de junio de 2018, 14:52
+ * 
+ * 
+ * 
  */
 
 #include <SFML/Graphics/Texture.hpp>
@@ -26,7 +26,7 @@ Luna::Luna(sf::Texture &texturaNave) {
     this->generarOrigen();
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteLuna.setPosition(x, y);
-    spriteLuna.setScale(0.8, 0.8);
+    spriteLuna.setScale(0.5, 0.5);
 }
 
 void Luna::Mostrar(sf::RenderWindow &window) {

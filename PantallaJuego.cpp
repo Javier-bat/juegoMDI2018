@@ -34,12 +34,17 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int cantidadAsteroides=0;
     sf::Sprite sprite;//creo un sprite
     std::vector<Asteroide> asteroides;
+    std::vector<Luna> lunas;
     sf::Clock syncronice_timer;
     game::Ship nave;
     std::vector<Bala> balas;
     sf::Texture texturaBala;
     int cantBalas = 0;
     sf::Texture texturaLuna;
+    sf::Clock relojLuna;
+    sf::Time timeLuna;
+    float tiempoLuna=0;
+    bool hayLuna;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -50,9 +55,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
  //finMusica y sonidos
     
-    if(!texturaLuna.loadFromFile("Imagenes/01.png")){
+    if(!texturaLuna.loadFromFile("Imagenes/1346946235.png")){
     
     }
+    
     if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
     if (!texturaNave2.loadFromFile("Imagenes/asteroideChico.png")) {
@@ -119,15 +125,34 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides.push_back(asteroide4);
             asteroides.push_back(asteroide5);
             
-            cantidadAsteroides+=1;
+            cantidadAsteroides+=5;
         }
         for(int i=0;i< asteroides.size();i++){
             asteroides[i].verificarExistencia(i,asteroides);
         }
          
+      if( lunas.size() < 1 && cantidadAsteroides > 20  ){
+            relojLuna.restart();           
+            Luna luna=Luna(texturaLuna);
+            lunas.push_back(luna);
+            hayLuna=true;
+
+        }
+        timeLuna =relojLuna.getElapsedTime();
+        tiempoLuna=timeLuna.asSeconds();
+        if(tiempoLuna>30.0 && hayLuna){
+           for(int i=0;i< lunas.size();i++){
+            lunas[i].setMovimientoY(2);
+            hayLuna=false;
+        }
+        }
+        
+        for(int i=0;i< lunas.size();i++){
             
+           lunas[i].verificarExistencia(i,lunas);
+        }            
            nave.update(delta_time_seconds);
-           Luna luna = Luna(texturaLuna);
+          
 
         puntaje++;
         //limpiamos la pantalla
@@ -156,6 +181,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         for(int i=0;i < asteroides.size();i++){
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
+        }
+        for(int i=0;i < lunas.size();i++){
+                lunas[i].Mostrar(App);
+                lunas[i].ActualizarPosicion();
+            
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
             musicaFondo.pause();

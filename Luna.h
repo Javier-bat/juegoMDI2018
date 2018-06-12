@@ -12,10 +12,9 @@ public:
     Luna(sf::Texture &texturaNave);
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
-    void verificarExistencia(int indice,std::vector<Luna> &vector);
-    void abc(sf::RenderWindow &window,std::vector<Luna> &asteroides);
     sf::Sprite getSprite();
-       void setMovimientoY(int movimientoY);
+    void setMovimientoY(int movimientoY);
+    void verificarExistencia(int indice,std::vector<Luna> &vector);
 private:
  
     void generarOrigen();
