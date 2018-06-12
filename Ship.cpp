@@ -116,13 +116,13 @@ namespace game
  
    //Si se sale por los laterales izquierdo o derecho
    //los muevo hasta el lado contrario
-   if( position.x <= -10.0f ) position.x = 1900.0f + 10.0f;
-   else if( position.x >= 2000.0f ) position.x = - 10.0f;
+   if( position.x <= -15.0f ) position.x = anchoResolucion - 15.0f;
+   else if( position.x >= anchoResolucion-10.0f ) position.x = - 15.0f;
  
    //Si se sale por los laterales superior o inferior
    //Pongo limite
    if( position.y <= 10.0f ) position.y = 00.0f + 10.0f;
-   else if( position.y >= 1020.0f ) position.y = 1020.0f;
+   else if( position.y >= altoResolucion ) position.y = altoResolucion;
  
 
  
