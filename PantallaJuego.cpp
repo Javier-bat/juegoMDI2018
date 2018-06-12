@@ -20,6 +20,11 @@
 #include "Animacion.h"
 
 PantallaJuego::PantallaJuego() {
+    fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
+    texturaNave.loadFromFile("Imagenes/asteroideGrande.png");
+    texturaNave2.loadFromFile("Imagenes/asteroideChico.png");
+    texturaNave3.loadFromFile("Imagenes/asteroideMediano.png");
+    
 }
 
 int PantallaJuego::Run(sf::RenderWindow &App) {
@@ -29,9 +34,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int puntaje=0;
     sf::Font font;
     sf::Text score;
-    sf::Texture texturaNave;
-    sf::Texture texturaNave2;
-    sf::Texture texturaNave3;
     int cantidadAsteroides=0;
     sf::Sprite sprite;//creo un sprite
     std::vector <Asteroide> asteroides;
@@ -69,12 +71,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     }
 
     
-    if (!texturaNave.loadFromFile("Imagenes/asteroideGrande.png")) {
-    }
-    if (!texturaNave2.loadFromFile("Imagenes/asteroideChico.png")) {
-    }
-     if (!texturaNave3.loadFromFile("Imagenes/asteroideMediano.png")) {
-    }
+    
     if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
            std::cout<<"no se pudo cargar"<<std::endl;
     }
@@ -86,7 +83,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     Animacion explosionUno(explosion,1,1,256,256,48,0.3f);
 
     
-    fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     
     sprite.setTexture(fondo); //le seteo la textura
      //seteo el tamaño del fondo
