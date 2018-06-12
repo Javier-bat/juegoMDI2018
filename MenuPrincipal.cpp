@@ -15,7 +15,6 @@
 #include <iostream>
 
 #include "MenuPrincipal.h"
-#include "Pantalla.h"
 #include "PantallaJuego.h"
 #include "ConstantesGlobales.h"
 #include "Menu.h"

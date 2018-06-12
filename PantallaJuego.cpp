@@ -24,6 +24,12 @@ PantallaJuego::PantallaJuego() {
     texturaNave.loadFromFile("Imagenes/asteroideGrande.png");
     texturaNave2.loadFromFile("Imagenes/asteroideChico.png");
     texturaNave3.loadFromFile("Imagenes/asteroideMediano.png");
+    texturaLuna.loadFromFile("Imagenes/1346946235.png");
+    texturaBala.loadFromFile("Imagenes/new_bullet.png");
+    explosion.loadFromFile("Imagenes/explosion.png");
+    
+    //Inicializacion de sonidos
+    musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav");
     
 }
 
@@ -33,7 +39,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     bool pausa=false;
     int puntaje=0;
     sf::Font font;
-    sf::Text score;
     int cantidadAsteroides=0;
     sf::Sprite sprite;//creo un sprite
     std::vector <Asteroide> asteroides;
@@ -41,10 +46,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Clock syncronice_timer;
     game::Ship nave;
     std::vector <Bala> balas;
-    sf::Texture texturaBala;
     int cantBalas = 0;
-    sf::Texture texturaLuna;
-    
     sf::Clock relojLuna;
     sf::Time timeLuna;
     float tiempoLuna=0;
@@ -53,37 +55,18 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Clock relojDisparo;
     sf::Time timeDisparo;
     int velocidadAsteroide = 0;
-    sf::Texture explosion;
     sf::Vector2f posicion;
     int tiempoSigNivel = 45;
     //Fin de declaracion de variables
     
 //musica y sonidos
-    musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav"); //Agregar credito a Zander Noriega pendiente
+     //Agregar credito a Zander Noriega pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
 
 
- //finMusica y sonidos
-    
-    if(!texturaLuna.loadFromFile("Imagenes/1346946235.png")){
-    
-    }
-
-    
-    
-    if(!texturaBala.loadFromFile("Imagenes/new_bullet.png")){
-           std::cout<<"no se pudo cargar"<<std::endl;
-    }
-    
-    if(!explosion.loadFromFile("Imagenes/explosion.png")){
-        std::cout<<"no se pudo cargar"<<std::endl;
-    }
-    
+ //finMusica y sonidos 
     Animacion explosionUno(explosion,1,1,256,256,48,0.3f);
-
-    
-    
     sprite.setTexture(fondo); //le seteo la textura
      //seteo el tamaño del fondo
     sprite.setOrigin(anchoResolucion/15,altoResolucion/5);

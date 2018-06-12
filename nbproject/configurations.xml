@@ -12,7 +12,6 @@
       <itemPath>Menu.h</itemPath>
       <itemPath>MenuPausa.h</itemPath>
       <itemPath>MenuPrincipal.h</itemPath>
-      <itemPath>Pantalla.h</itemPath>
       <itemPath>PantallaJuego.h</itemPath>
       <itemPath>Ship.h</itemPath>
     </logicalFolder>
@@ -92,8 +91,6 @@
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Pantalla.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="PantallaJuego.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PantallaJuego.h" ex="false" tool="3" flavor2="0">
@@ -154,8 +151,6 @@
       <item path="MenuPrincipal.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MenuPrincipal.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Pantalla.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="PantallaJuego.cpp" ex="false" tool="1" flavor2="0">
       </item>

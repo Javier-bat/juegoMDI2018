@@ -13,14 +13,13 @@
 
 #ifndef PANTALLAJUEGO_H
 #define PANTALLAJUEGO_H
-#include "Pantalla.h"
 #include <SFML/Graphics.hpp>
 #include "Asteroide.h"
 #include <array>
 #include <list>
 #include <SFML/Audio/Music.hpp>
 
-class PantallaJuego : public Pantalla {
+class PantallaJuego {
 public:
     PantallaJuego();
     int Run(sf::RenderWindow &App);
@@ -32,8 +31,11 @@ private:
     sf::Texture texturaLuna;
     sf::Texture texturaBala;
     sf::Texture fondo; // creo una textura para el fondo
+    sf::Texture explosion;
     //Sonidos
     sf::Music musicaFondo;
+    //Texto
+    sf::Text score;
 };
 
 #endif /* PANTALLAJUEGO_H */
