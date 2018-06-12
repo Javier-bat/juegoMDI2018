@@ -26,11 +26,14 @@ Luna::Luna(sf::Texture &texturaNave) {
     spriteLuna.setTexture(texturaNave);
     this->generarOrigen();
     spriteLuna.setPosition(x, y);
-    spriteLuna.setScale(0.5, 0.5);
+    
     
     spriteLuna.setRotation((float)(rand() % 359));
     
-   
+    
+     if(anchoResolucion>899||altoResolucion>1439){
+     spriteLuna.setScale(0.5, 0.5); 
+  }else{spriteLuna.setScale(0.2,0.2);}
 }
 
 void Luna::Mostrar(sf::RenderWindow &window) {

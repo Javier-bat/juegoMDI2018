@@ -26,8 +26,11 @@ Asteroide::Asteroide(sf::Texture &texturaNave,int velocidad) {
     this->generarOrigen();
     //Esto inicializa una semilla en base a la fecha,para evitar que se genere el mismo numero
     spriteNave.setPosition(x, y);
-    spriteNave.setScale(1.2,1.2);
+    
     this->setVelocidad(velocidad);
+     if(anchoResolucion>899||altoResolucion>1439){
+     spriteNave.setScale(1.2,1.2);  
+  }else{spriteNave.setScale(0.9,0.9);}
    
 }
 
