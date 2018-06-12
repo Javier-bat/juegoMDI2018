@@ -148,7 +148,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].verificarExistencia(i,asteroides);
         }
          
-      if( lunas.size() < 1 && cantidadAsteroides > 30  ){
+      if( lunas.size() < 1 && cantidadAsteroides > 30  ){ 
             relojLuna.restart();           
             Luna luna= Luna(texturaLuna);
             lunas.push_back(luna);
