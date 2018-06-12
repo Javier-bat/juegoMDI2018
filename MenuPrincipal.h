@@ -24,7 +24,7 @@ public:
     sf::Music musicaFondo;
     void OpcionUno(sf::RenderWindow &App,bool &running);
     void OpcionDos();
-
+    void OpcionTres();
 };
 
 

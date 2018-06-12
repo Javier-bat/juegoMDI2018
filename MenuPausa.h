@@ -28,6 +28,7 @@ public:
     int run(sf::RenderWindow &window,std::vector<sf::Sprite> sprites,bool &seguirJuego,game::Ship nave);
     void OpcionUno(sf::RenderWindow &App,bool &running);
     void OpcionDos();
+    void OpcionTres();
 
 private:
     bool running=true;
