@@ -35,7 +35,7 @@ namespace game
   formaNave.setOutlineThickness(2);
   formaNave.setPosition( 0.0f, 0.0f );
     
-  if(anchoResolucion>899||altoResolucion>1439){
+  if(anchoResolucion>600||altoResolucion>1439){
       formaNave.setScale(1,1);
   
   }else{formaNave.setScale(0.7,0.7);}

@@ -31,7 +31,7 @@ Luna::Luna(sf::Texture &texturaNave) {
     spriteLuna.setRotation((float)(rand() % 359));
     
     
-     if(anchoResolucion>899||altoResolucion>1439){
+     if(anchoResolucion>600||altoResolucion>1439){
      spriteLuna.setScale(0.5, 0.5); 
   }else{spriteLuna.setScale(0.2,0.2);}
 }
