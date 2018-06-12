@@ -159,6 +159,14 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         App.clear();
         //dibujamos la pantalla
         App.draw(sprite); //dibujo fondo
+        
+         for(int i=0;i < lunas.size();i++){
+                lunas[i].Mostrar(App);
+                lunas[i].ActualizarPosicion();
+               // if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+              //  {lunas[i].~Luna();}
+                
+        }
         App.draw(score);
         App.draw(nave);
  
@@ -183,13 +191,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].ActualizarPosicion();
         }
         
-        for(int i=0;i < lunas.size();i++){
-                lunas[i].Mostrar(App);
-                lunas[i].ActualizarPosicion();
-               // if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-              //  {lunas[i].~Luna();}
-                
-        }
+       
         
         for(int i=0;i < asteroides.size();i++){
             for(int j=0;j < balas.size();j++){

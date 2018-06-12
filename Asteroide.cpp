@@ -28,6 +28,7 @@ Asteroide::Asteroide(sf::Texture &texturaNave,int velocidad) {
     spriteNave.setPosition(x, y);
     spriteNave.setScale(1.2,1.2);
     this->setVelocidad(velocidad);
+   
 }
 
 void Asteroide::Mostrar(sf::RenderWindow &window) {
