@@ -25,10 +25,12 @@ public:
     PantallaJuego();
     int Run(sf::RenderWindow &App);
     void setRunning(bool run);
-    sf::Texture fondo; // creo una textura para el fondo
     sf::Music musicaFondo;
 private:
-
+    sf::Texture texturaNave;
+    sf::Texture texturaNave2;
+    sf::Texture texturaNave3;
+    sf::Texture fondo; // creo una textura para el fondo
 };
 
 #endif /* PANTALLAJUEGO_H */
