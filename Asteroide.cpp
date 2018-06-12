@@ -28,7 +28,7 @@ Asteroide::Asteroide(sf::Texture &texturaNave,int velocidad) {
     spriteNave.setPosition(x, y);
     
     this->setVelocidad(velocidad);
-     if(anchoResolucion>600||altoResolucion>1439){
+     if(anchoResolucion>1600||altoResolucion>850){
      spriteNave.setScale(1.2,1.2);  
   }else{spriteNave.setScale(0.9,0.9);}
    
