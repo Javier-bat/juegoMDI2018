@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +16,11 @@
 #define BALA_H
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Window.hpp>
 
 #include "Ship.h"
+#include "Asteroide.h"
+#include "Animacion.h"
 
 
 class Bala {
@@ -26,7 +30,8 @@ public:
     void mostrar(sf::RenderWindow &window);
     sf::Sprite spriteBala;
     sf::Vector2f velocity;
-  
+    void colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje);
+    
 };
 
 #endif /* BALA_H */

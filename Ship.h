@@ -16,8 +16,11 @@
 
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio/Sound.hpp>
 
 #include "ConstantesGlobales.h" 
+#include "Asteroide.h"
+#include "Animacion.h"
 
 const float velocidadRotacion = 200.0f; //Velocidad de rotación de la nave en grados/segundo
 
@@ -41,6 +44,7 @@ namespace game //Un namespace para evitar cualquier colisión de nombres acciden
   //void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
   void mostrar(sf::RenderWindow &window);
 //  sf::ConvexShape getForma();
+  void colisiona(std::vector <Asteroide> &asteroides, game::Ship &nave, Animacion &explosionUno, sf::RenderWindow &App,bool &exploto);
  protected:
   sf::Vector2f velocidadNave; //Velocidad de la nave
  

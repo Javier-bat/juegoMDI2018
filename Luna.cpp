@@ -84,4 +84,3 @@ void Luna::verificarExistencia(int indice, std::vector<Luna> &vector,sf::Clock r
         relojLuna2.restart();
     }
 }
-

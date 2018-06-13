@@ -46,6 +46,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/MenuPrincipal.o \
 	${OBJECTDIR}/PantallaJuego.o \
 	${OBJECTDIR}/Ship.o \
+	${OBJECTDIR}/gameOver.o \
 	${OBJECTDIR}/main.o
 
 
@@ -127,6 +128,11 @@ ${OBJECTDIR}/Ship.o: Ship.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ship.o Ship.cpp
+
+${OBJECTDIR}/gameOver.o: gameOver.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gameOver.o gameOver.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}

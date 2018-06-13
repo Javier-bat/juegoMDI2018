@@ -25,15 +25,33 @@ Bala::Bala(game::Ship &nave, sf::Texture &textura) {
     spriteBala.setTexture(textura);
     spriteBala.setScale(0.25,0.25);
     spriteBala.setPosition(nave.getSprite().getPosition().x,nave.getSprite().getPosition().y);
-    velocity = {((float)(std::cos(nave.getSprite().getRotation()*(PI/180)))*10),((float)(std::sin(nave.getSprite().getRotation()*(PI/180)))*10)};
+    velocity = {(float)(std::cos(nave.getSprite().getRotation()*(PI/180)))*10,(float)(std::sin(nave.getSprite().getRotation()*(PI/180)))*10};
     
 }
 
 void Bala::mostrar(sf::RenderWindow &window){
                 window.draw(spriteBala);
-                spriteBala.move(velocity.x,velocity.y);
+                spriteBala.move(velocity);
 }
 
 
 Bala::~Bala() {
 };
+
+void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje){
+    for(int i=0;i < asteroides.size();i++){
+            for(int j=0;j < balas.size();j++){
+                if(asteroides[i].getSprite().getGlobalBounds().intersects(balas[j].spriteBala.getGlobalBounds())){      
+                    sf::Vector2f posicion = {(asteroides[i].getSprite().getPosition().x+balas[j].spriteBala.getPosition().x)/2,(asteroides[i].getSprite().getPosition().y+balas[j].spriteBala.getPosition().y)/2};
+                    explosionUno.spriteExplosion.setScale(1,1);
+                    do{
+                        explosionUno.mostrar(App,posicion);    
+                        explosionUno.actualizar();
+                    }while(!explosionUno.termina());
+                    asteroides.erase(asteroides.begin()+i);
+                    balas.erase(balas.begin()+j);
+                    puntaje++;
+                }    
+            }
+        }   
+}
