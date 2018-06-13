@@ -18,6 +18,7 @@
 #include<SFML/Config.hpp>
 #include <complex>
 #include <math.h>
+#include <iostream>
 #include "ConstantesGlobales.h"
 
 namespace game
@@ -35,10 +36,12 @@ namespace game
   formaNave.setOutlineThickness(2);
   formaNave.setPosition( 0.0f, 0.0f );
     
-  if(anchoResolucion>1600||altoResolucion>850){
-      formaNave.setScale(1,1);
+     // formaNave.setScale(1,1);
   
-  }else{formaNave.setScale(0.7,0.7);}
+        float escalaX=(anchoResolucion*0.0416666)/100;
+    float escalaY=(altoResolucion*0.0740740740)/100;
+     formaNave.setScale(escalaX,escalaY);
+
   reset();
  }
  
