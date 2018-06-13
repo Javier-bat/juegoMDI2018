@@ -22,9 +22,10 @@ public:
     MenuPrincipal(void);
     int Run(sf::RenderWindow &App);
     sf::Music musicaFondo;
-    void OpcionUno(sf::RenderWindow &App,bool &running);
-    void OpcionDos();
+    void OpcionUno(sf::RenderWindow &App, bool &running);
     void OpcionTres();
+private:
+    
 };
 
 

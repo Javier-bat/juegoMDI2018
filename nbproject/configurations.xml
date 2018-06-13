@@ -7,6 +7,7 @@
       <itemPath>Animacion.h</itemPath>
       <itemPath>Asteroide.h</itemPath>
       <itemPath>Bala.h</itemPath>
+      <itemPath>Configuracion.h</itemPath>
       <itemPath>ConstantesGlobales.h</itemPath>
       <itemPath>Luna.h</itemPath>
       <itemPath>Menu.h</itemPath>
@@ -25,6 +26,7 @@
       <itemPath>Animacion.cpp</itemPath>
       <itemPath>Asteroide.cpp</itemPath>
       <itemPath>Bala.cpp</itemPath>
+      <itemPath>Configuracion.cpp</itemPath>
       <itemPath>Luna.cpp</itemPath>
       <itemPath>Menu.cpp</itemPath>
       <itemPath>MenuPausa.cpp</itemPath>
@@ -72,6 +74,10 @@
       <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Bala.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Configuracion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Configuracion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ConstantesGlobales.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -133,6 +139,10 @@
       <item path="Bala.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Bala.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Configuracion.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Configuracion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ConstantesGlobales.h" ex="false" tool="3" flavor2="0">
       </item>

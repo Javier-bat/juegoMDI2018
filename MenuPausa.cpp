@@ -81,7 +81,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         for (int i = 0; i < sprites.size(); i++) {
             window.draw(sprites[i]);
         }
-        SeleccionarOpcion(itemSeleccionado,pausaReanudar,pausaConfig,pausaSalir,running,window,cambiarSeleccion);
+        SeleccionarOpcion(window,sprites[0],itemSeleccionado,pausaReanudar,pausaConfig,pausaSalir,running,window,cambiarSeleccion);
         window.draw(nave);
         window.draw(pausaTitulo);
         window.draw(pausaReanudar);
@@ -94,9 +94,6 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
 }
 void MenuPausa::OpcionUno(sf::RenderWindow &App,bool &running){
     running=false;
-}
-void MenuPausa::OpcionDos(){
-    std::exit(-1);
 }
 void MenuPausa::OpcionTres(){
     std::exit(-1);
