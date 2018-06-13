@@ -40,7 +40,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/Bala.o \
 	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Configuracion.o \
-	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Luna.o \
 	${OBJECTDIR}/Menu.o \
 	${OBJECTDIR}/MenuPausa.o \
@@ -99,11 +98,6 @@ ${OBJECTDIR}/Configuracion.o: Configuracion.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Configuracion.o Configuracion.cpp
-
-${OBJECTDIR}/Controles.o: Controles.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Controles.o Controles.cpp
 
 ${OBJECTDIR}/Luna.o: Luna.cpp
 	${MKDIR} -p ${OBJECTDIR}

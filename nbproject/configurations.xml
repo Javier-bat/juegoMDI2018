@@ -10,7 +10,6 @@
       <itemPath>Collision.h</itemPath>
       <itemPath>Configuracion.h</itemPath>
       <itemPath>ConstantesGlobales.h</itemPath>
-      <itemPath>Controles.h</itemPath>
       <itemPath>Luna.h</itemPath>
       <itemPath>Menu.h</itemPath>
       <itemPath>MenuPausa.h</itemPath>
@@ -31,7 +30,6 @@
       <itemPath>Bala.cpp</itemPath>
       <itemPath>Collision.cpp</itemPath>
       <itemPath>Configuracion.cpp</itemPath>
-      <itemPath>Controles.cpp</itemPath>
       <itemPath>Luna.cpp</itemPath>
       <itemPath>Menu.cpp</itemPath>
       <itemPath>MenuPausa.cpp</itemPath>
@@ -90,10 +88,6 @@
       <item path="Configuracion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ConstantesGlobales.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Controles.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Controles.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Luna.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -167,10 +161,6 @@
       <item path="Configuracion.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="ConstantesGlobales.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Controles.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Controles.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Luna.cpp" ex="false" tool="1" flavor2="0">
       </item>
