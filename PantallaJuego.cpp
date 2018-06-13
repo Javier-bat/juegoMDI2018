@@ -115,7 +115,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score : " + std::to_string(puntaje) + "\nNivel de Velocidad    :  " + std::to_string(velocidadAsteroide + 1) + "\nTiempo para el siguiente nivel    :     " + std::to_string(tiempoSigNivel - (int) timeJuego.asSeconds())+"\nVidas : "+std::to_string(vidas)); //Esto es necesario para matar el programa cuando se cierra la ventana
+        score.setString("Score : " + std::to_string(puntaje) + "\nNivel    :  " + std::to_string(velocidadAsteroide + 1) + "\nTiempo para el siguiente nivel    :     " + std::to_string(tiempoSigNivel - (int) timeJuego.asSeconds())+"\nVidas : "+std::to_string(vidas)); //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
         while (App.pollEvent(event)) {
@@ -193,7 +193,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         for (int i = 0; i < balas.size(); i++) {
             balas[i].mostrar(App);
-            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje);
+            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje, lunas);
             if (balas[i].spriteBala.getPosition().x > anchoResolucion  || balas[i].spriteBala.getPosition().y > altoResolucion || balas[i].spriteBala.getPosition().x < 0  && balas[i].spriteBala.getPosition().y < 0) {
                 balas.erase(balas.begin() + i);
             }

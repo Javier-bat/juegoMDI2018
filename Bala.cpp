@@ -18,6 +18,7 @@
 #include "Bala.h"
 #include "Ship.h"
 #include "ConstantesGlobales.h"
+#include "Collision.h"
 
 #define PI  3.14159265358979
 
@@ -38,7 +39,7 @@ void Bala::mostrar(sf::RenderWindow &window){
 Bala::~Bala() {
 };
 
-void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje){
+void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje, std::vector <Luna> &lunas){
     for(int i=0;i < asteroides.size();i++){
             for(int j=0;j < balas.size();j++){
                 if(asteroides[i].getSprite().getGlobalBounds().intersects(balas[j].spriteBala.getGlobalBounds())){      
@@ -51,6 +52,20 @@ void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroi
                     asteroides.erase(asteroides.begin()+i);
                     balas.erase(balas.begin()+j);
                     puntaje++;
+                }    
+            }
+        }   
+    
+    for(int i=0;i < balas.size();i++){
+            for(int j=0;j < lunas.size();j++){
+                if(Collision::PixelPerfectTest(lunas[j].getSprite(),balas[i].spriteBala,127)){      
+                    sf::Vector2f posicion = balas[i].spriteBala.getPosition();
+                    explosionUno.spriteExplosion.setScale(0.3,0.3);
+                    do{
+                        explosionUno.mostrar(App,posicion);    
+                        explosionUno.actualizar();
+                    }while(!explosionUno.termina());
+                    balas.erase(balas.begin()+j);
                 }    
             }
         }   
