@@ -69,6 +69,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     bool exploto = false;
     bool colisionoConAst = false;
     int vidas=3;
+    sf::Clock empiezaJuegoC;
+    sf::Time empiezaJuegoT;
     //Fin de declaracion de variables
 
     //musica y sonidos
@@ -96,14 +98,19 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     //Desactiva el mouse,ya que no es necesario para jugar
     App.setMouseCursorVisible(false);
     score.setCharacterSize(32);
-
+    cuentaRegresiva.setFont(font);
+    cuentaRegresiva.setCharacterSize(55);
 
 
 
 
     while (running) {
-
+        
+        
+        empiezaJuegoT=empiezaJuegoC.getElapsedTime();
+        if((int)empiezaJuegoT.asSeconds()>3){
         timeJuego = relojJuego.getElapsedTime();
+        
         if ((int) timeJuego.asSeconds() > tiempoSigNivel) {
             velocidadAsteroide += 1;
             relojJuego.restart();
@@ -229,6 +236,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             };
             relojJuego.restart();
             musicaFondo.play();
+            empiezaJuegoC.restart();
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa) {
@@ -262,8 +270,44 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num0)) {
             return (-1);
         }
-    }
+        }else{
+            relojJuego.restart();
+            cuentaRegresiva.setString("El juego comienza en: "+std::to_string(3-(int)empiezaJuegoT.asSeconds()));
+            cuentaRegresiva.setPosition(anchoResolucion/2.5,altoResolucion/3);
+            App.clear();
+            App.draw(sprite);
+            App.draw(score);
+            App.draw(cuentaRegresiva);
+             nave.mostrar(App);
+              if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa) {
+
+            pausa = true;
+        }
+     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa) {
+            musicaFondo.pause();
+            std::vector<sf::Sprite> sprites;
+            sprites.push_back(sprite);
+            sprites.push_back(nave.getSprite());
+            for (int i = 0; i < lunas.size(); i++) {
+                sprites.push_back(lunas[i].getSprite());
+            }
+
+
+            for (int i = 0; i < asteroides.size(); i++) {
+                sprites.push_back(asteroides[i].getSprite());
+            }
+            MenuPausa menuPausa;
+            menuPausa.run(App, sprites, running);
+            musicaFondo.play();
+            pausa = false;
+            empiezaJuegoC.restart();
+        }
+            App.display();
+        
+        
+        }}
     return -1;
 
-}
 
+
+}
