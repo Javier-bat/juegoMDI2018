@@ -61,13 +61,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Time timeJuego;
     sf::Clock relojDisparo;
     sf::Time timeDisparo;
-    int velocidadAsteroide = 0;
-    sf::Vector2f posicion;
+    int velocidadAsteroide = 0;   
     int tiempoSigNivel = 45;
     sf::Clock relojLuna2;
     sf::Time timeLuna2;
     bool exploto = false;
-    int explotoEntero = 0;
     int vidas=3;
     //Fin de declaracion de variables
 
@@ -115,7 +113,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score : " + std::to_string(puntaje) + "\nNivel de Velocidad    :  " + std::to_string(velocidadAsteroide + 1) + "\nTiempo para el siguiente nivel    :     " + std::to_string(tiempoSigNivel - (int) timeJuego.asSeconds())+"\nVidas : "+std::to_string(vidas)); //Esto es necesario para matar el programa cuando se cierra la ventana
+        score.setString("Score : " + std::to_string(puntaje) + "\nNivel    :  " + std::to_string(velocidadAsteroide + 1) + "\nTiempo para el siguiente nivel    :     " + std::to_string(tiempoSigNivel - (int) timeJuego.asSeconds())+"\nVidas : "+std::to_string(vidas)); //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
         while (App.pollEvent(event)) {
@@ -193,8 +191,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         for (int i = 0; i < balas.size(); i++) {
             balas[i].mostrar(App);
-            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje);
-            if (balas[i].spriteBala.getPosition().x > anchoResolucion && balas[i].spriteBala.getPosition().y > altoResolucion) {
+            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje, lunas);
+            if (balas[i].spriteBala.getPosition().x > anchoResolucion  || balas[i].spriteBala.getPosition().y > altoResolucion || balas[i].spriteBala.getPosition().x < 0  && balas[i].spriteBala.getPosition().y < 0) {
                 balas.erase(balas.begin() + i);
             }
         }
@@ -203,7 +201,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
         }
-        nave.colisiona(asteroides, nave, explosionUno, App, exploto);
+        
+        nave.colisiona(asteroides, nave, explosionUno, App, exploto, lunas);
 
         if (exploto) {
             exploto = false;
@@ -219,7 +218,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             while (balas.begin() != balas.end()) {
                 balas.erase(balas.begin());
             };
-            
+            while (lunas.begin() != lunas.end()) {
+                lunas.erase(lunas.begin());
+            };
+            relojJuego.restart();
         }
         
 
@@ -251,9 +253,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             musicaFondo.play();
             pausa = false;
         }
-        if(vidas==0){
+        if(vidas<0){
             musicaFondo.pause();
-            gameOver gameover;
+            gameOver gameover(puntaje);
             gameover.Run(App);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa) {

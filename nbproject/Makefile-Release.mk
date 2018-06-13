@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Animacion.o \
 	${OBJECTDIR}/Asteroide.o \
 	${OBJECTDIR}/Bala.o \
+	${OBJECTDIR}/Collision.o \
 	${OBJECTDIR}/Configuracion.o \
 	${OBJECTDIR}/Controles.o \
 	${OBJECTDIR}/Luna.o \
@@ -88,6 +89,11 @@ ${OBJECTDIR}/Bala.o: Bala.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Bala.o Bala.cpp
+
+${OBJECTDIR}/Collision.o: Collision.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Collision.o Collision.cpp
 
 ${OBJECTDIR}/Configuracion.o: Configuracion.cpp
 	${MKDIR} -p ${OBJECTDIR}
