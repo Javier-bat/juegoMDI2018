@@ -77,7 +77,7 @@ int gameOver::Run(sf::RenderWindow &App) {
 
     if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
-    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloConfig, tituloSalir, "Asteroids GAME OVER!!!\nSu puntuacion: "+std::to_string(score), "Jugar de nuevo", "Configurar","Salir");
+    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloConfig, tituloSalir, "Asteroids GAME OVER!!!\nSu puntuacion: "+std::to_string(score), "Jugar de nuevo", "Controles","Salir");
     ConfigurarTamanoTexto(titulo, tituloSinglePlayer, tituloConfig,tituloSalir, 56, 36, 36);
     ConfigurarPosicionTexto(titulo, tituloSinglePlayer,tituloConfig, tituloSalir, 0);
     while (running) {

@@ -64,7 +64,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         cambiarSeleccion.setVolume(100);
         seleccionar.setVolume(100);
 
-    ConfigurarTexto(fuente,pausaTitulo,pausaReanudar,pausaConfig,pausaSalir,"Juego Pausado","Reanudar","Configurar","Salir");
+    ConfigurarTexto(fuente,pausaTitulo,pausaReanudar,pausaConfig,pausaSalir,"Juego Pausado","Reanudar","Controles","Salir");
     ConfigurarTamanoTexto(pausaTitulo,pausaReanudar,pausaConfig,pausaSalir,46,36,36);
     
     //Seteo de posiciones
