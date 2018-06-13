@@ -18,15 +18,18 @@
 #include <list>
 #include <iostream>
 #include "Animacion.h"
-
+#include <unistd.h>
+#include <thread>
+#include <time.h>
 PantallaJuego::PantallaJuego() {
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
-    texturaNave.loadFromFile("Imagenes/asteroideGrande.png");
-    texturaNave2.loadFromFile("Imagenes/asteroideChico.png");
-    texturaNave3.loadFromFile("Imagenes/asteroideMediano.png");
+    texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png");
+    texturaAsteroide2.loadFromFile("Imagenes/asteroideChico.png");
+    texturaAsteroide3.loadFromFile("Imagenes/asteroideMediano.png");
     texturaLuna.loadFromFile("Imagenes/1346946235.png");
     texturaBala.loadFromFile("Imagenes/new_bullet.png");
     explosion.loadFromFile("Imagenes/explosion.png");
+    texturaNaveReal.loadFromFile("Imagenes/pixil.png");
     
     //Inicializacion de sonidos
     musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav");
@@ -44,7 +47,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     std::vector <Asteroide> asteroides;
     std::vector <Luna> lunas;
     sf::Clock syncronice_timer;
-    game::Ship nave;
+    game::Ship nave = game::Ship(texturaNaveReal);
     std::vector <Bala> balas;
     sf::Clock relojLuna;
     sf::Time timeLuna;
@@ -58,7 +61,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int tiempoSigNivel = 45;
     sf::Clock relojLuna2;
     sf::Time timeLuna2;
-  
+    bool exploto=false;
+    int explotoEntero=0;
     //Fin de declaracion de variables
     
 //musica y sonidos
@@ -80,7 +84,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     //Setea la tipografia
     score.setFont(font);
     //Para evitar un uso innecesario del procesador,limita los fps a 60
-    App.setFramerateLimit(120);
+    App.setFramerateLimit(110);
     //Para evitar efecto shuttering
     App.setVerticalSyncEnabled(true);
     //Desactiva el mouse,ya que no es necesario para jugar
@@ -92,7 +96,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
    
     
     while (running) {
-
+ 
     timeJuego = relojJuego.getElapsedTime();
     if((int)timeJuego.asSeconds() > tiempoSigNivel ){
         velocidadAsteroide += 1;
@@ -115,11 +119,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         }
         if( asteroides.size() <= 10){
            
-            Asteroide asteroide=Asteroide(texturaNave,velocidadAsteroide);
-            Asteroide asteroide2=Asteroide(texturaNave,velocidadAsteroide);
-            Asteroide asteroide3=Asteroide(texturaNave,velocidadAsteroide);
-            Asteroide asteroide4=Asteroide(texturaNave2,velocidadAsteroide);
-            Asteroide asteroide5=Asteroide(texturaNave3,velocidadAsteroide);
+            Asteroide asteroide=Asteroide(texturaAsteroide,velocidadAsteroide);
+            Asteroide asteroide2=Asteroide(texturaAsteroide,velocidadAsteroide);
+            Asteroide asteroide3=Asteroide(texturaAsteroide,velocidadAsteroide);
+            Asteroide asteroide4=Asteroide(texturaAsteroide2,velocidadAsteroide);
+            Asteroide asteroide5=Asteroide(texturaAsteroide3,velocidadAsteroide);
 
             asteroides.push_back(asteroide);
             asteroides.push_back(asteroide2);
@@ -152,6 +156,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
            lunas[i].verificarExistencia(i,lunas,relojLuna2);
         } }
         timeLuna2=relojLuna2.getElapsedTime();
+        
            nave.update(delta_time_seconds);
 
         
@@ -168,7 +173,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 
         }
         App.draw(score);
-        App.draw(nave);
+        nave.mostrar(App);
  
         timeDisparo=relojDisparo.getElapsedTime();
         if(timeDisparo.asSeconds()>0.25){
@@ -198,17 +203,28 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 if(asteroides[i].getSprite().getGlobalBounds().intersects(balas[j].spriteBala.getGlobalBounds())){      
                     posicion = {(asteroides[i].getSprite().getPosition().x+balas[j].spriteBala.getPosition().x)/2,(asteroides[i].getSprite().getPosition().y+balas[j].spriteBala.getPosition().y)/2};
                     do{
+
                         explosionUno.mostrar(App,posicion);
+                    
+
                         explosionUno.actualizar();
-                    }while(!explosionUno.termina());
+                    }while(!explosionUno.termina());           
                     asteroides.erase(asteroides.begin()+i);
                     balas.erase(balas.begin()+j);
                     puntaje++;
+                    exploto=true;
                 }
             }
         }   
-        
-        
+//        if(exploto && explotoEntero<=49){
+//            explotoEntero+=1;
+//                        explosionUno.mostrar(App,posicion);
+//                        explosionUno.actualizar();
+//                        if(explotoEntero>=43){                          
+//                            explotoEntero=0;
+//                            exploto=false;
+//                        }
+//        }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa){
             musicaFondo.pause();
             std::vector<sf::Sprite> sprites;

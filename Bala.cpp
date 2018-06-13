@@ -24,14 +24,14 @@
 Bala::Bala(game::Ship &nave, sf::Texture &textura) {
     spriteBala.setTexture(textura);
     spriteBala.setScale(0.25,0.25);
-    spriteBala.setPosition(nave.getPosition().x,nave.getPosition().y);
-    velocity = {(float)(std::cos(nave.getRotation()*(PI/180)))*10,(float)(std::sin(nave.getRotation()*(PI/180)))*10};
+    spriteBala.setPosition(nave.getSprite().getPosition().x,nave.getSprite().getPosition().y);
+    velocity = {((float)(std::cos(nave.getSprite().getRotation()*(PI/180)))*10),((float)(std::sin(nave.getSprite().getRotation()*(PI/180)))*10)};
     
 }
 
 void Bala::mostrar(sf::RenderWindow &window){
                 window.draw(spriteBala);
-                spriteBala.move(velocity);
+                spriteBala.move(velocity.x,velocity.y);
 }
 
 

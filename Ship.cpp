@@ -23,64 +23,70 @@
 
 namespace game
 {
- Ship::Ship()
+ Ship::Ship(sf::Texture &texture)
  {
 //  Define la figura que representara la nave
-  formaNave.setPointCount( 3 ); //Será un triangulo
-  formaNave.setPoint( 0, sf::Vector2f( 10.0f, 0.0f ) );
-  formaNave.setPoint( 1, sf::Vector2f(-10.0f, 7.5f ) );
-  formaNave.setPoint( 2, sf::Vector2f(-10.0f,-7.5f ) );
-     
-  formaNave.setFillColor( sf::Color( 0,0,0,0 ) );
-  formaNave.setOutlineColor(sf::Color::White);
-  formaNave.setOutlineThickness(2);
-  formaNave.setPosition( 0.0f, 0.0f );
+//  formaNave.setPointCount( 3 ); //Será un triangulo
+//  formaNave.setPoint( 0, sf::Vector2f( 10.0f, 0.0f ) );
+//  formaNave.setPoint( 1, sf::Vector2f(-10.0f, 7.5f ) );
+//  formaNave.setPoint( 2, sf::Vector2f(-10.0f,-7.5f ) );
+//     
+//  formaNave.setFillColor( sf::Color( 0,0,0,0 ) );
+//  formaNave.setOutlineColor(sf::Color::White);
+//  formaNave.setOutlineThickness(2);
+//  formaNave.setPosition( 0.0f, 0.0f );
     
      // formaNave.setScale(1,1);
-  
+     formaNave.setTexture(texture);
         float escalaX=(anchoResolucion*0.0416666)/100;
     float escalaY=(altoResolucion*0.0740740740)/100;
      formaNave.setScale(escalaX,escalaY);
-
+     formaNave.setOrigin(texture.getSize().x/2,texture.getSize().y/2);
+    
   reset();
  }
  
  Ship::~Ship()
  {
  }
- sf::ConvexShape Ship::getForma(){
-     return this->formaNave;
- }
+// sf::ConvexShape Ship::getForma(){
+//     return this->formaNave;
+// }
  //Inicializa la nave a sus valores iniciales
  void Ship::reset()
  {
-  setPosition( anchoResolucion/2, altoResolucion/2); //Lo colocamos en el centro de la pantalla
-  setRotation( 270.0f );   //lo ponemos con giro cero
+  formaNave.setPosition( anchoResolucion/2, altoResolucion/2); //Lo colocamos en el centro de la pantalla
+  formaNave.setRotation( 270.0f );   //lo ponemos con giro cero
   velocidadNave.x = 0.0f;  //Lo paramos para que no se mueva
   velocidadNave.y = 0.0f;
+  
  }
- 
+ sf::Sprite Ship::getSprite() {
+     return formaNave;
+     
+    }
+
  //Función que actualizara la lógica de la nave
  void Ship::update( float delta_time_seconds )
  {
   //Comprobación del teclado
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::A  ) )    //Si pulsamos cursor izquierda
-      move(velocidadNave.x = -velocidadMovimientoX,velocidadNave.y = 0.0f);
+      formaNave.move(velocidadNave.x = -velocidadMovimientoX,velocidadNave.y = 0.0f);
       
  
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::D  ) )   //Si pulsamos cursor derecha
-      move(velocidadNave.x = velocidadMovimientoX,velocidadNave.y = 0.0f);
+      formaNave.move(velocidadNave.x = velocidadMovimientoX,velocidadNave.y = 0.0f);
  
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) )    //Si pulsamos cursor arriba
-     move(velocidadNave.x = 0.0f,velocidadNave.y = -velocidadMovimientoY);
+     formaNave.move(velocidadNave.x = 0.0f,velocidadNave.y = -velocidadMovimientoY);
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::S) )    //Si pulsamos cursor  abajo
-     move(velocidadNave.x = 0.0f,velocidadNave.y = velocidadMovimientoY);
+     formaNave.move(velocidadNave.x = 0.0f,velocidadNave.y = velocidadMovimientoY);
   
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) //con Z gira en sentido antihorario
-      rotate( -1.0f * velocidadRotacion * delta_time_seconds );
+      formaNave.rotate( -1.0f * velocidadRotacion * delta_time_seconds );
   
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) //con X gira en sentido horario     
-      rotate( velocidadRotacion * delta_time_seconds );
+      formaNave.rotate( velocidadRotacion * delta_time_seconds );
     
 
  
@@ -90,7 +96,7 @@ namespace game
   {   
  
    //Comprueba la posición
-   sf::Vector2f position = getPosition();
+   sf::Vector2f position = formaNave.getPosition();
  
    //Si se sale por los laterales izquierdo o derecho
    //los muevo hasta el lado contrario
@@ -105,19 +111,23 @@ namespace game
 
  
    //Ponemos la posición que obtenemos
-   setPosition( position );
+   formaNave.setPosition( position );
   }
  }
  
  //Definición de la función sf::Drawable
- void Ship::draw ( sf::RenderTarget &target, sf::RenderStates states ) const
- {
-  //Aplicamos a la transformación que nos viene la transformación que tiene la nave
-  states.transform *= getTransform();
- 
-  //Dibujamos la representación gráfica de la nave con la transformación calculada
- target.draw( formaNave, states );
+// void Ship::draw ( sf::RenderTarget &target, sf::RenderStates states ) const
+// {
+//  Aplicamos a la transformación que nos viene la transformación que tiene la nave
+//  states.transform *= getTransform();
+// 
+//  Dibujamos la representación gráfica de la nave con la transformación calculada
+// target.draw( formaNave, states );
+// 
+// }
+// 
+ void Ship::mostrar(sf::RenderWindow &window){
+     window.draw(formaNave);
  
  }
- 
 };
