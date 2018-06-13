@@ -214,6 +214,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             std::vector<sf::Sprite> sprites;
             sprites.push_back(sprite);
             sprites.push_back(nave.getSprite());
+            for(int i=0;i<lunas.size();i++){
+                 sprites.push_back(lunas[i].getSprite());
+            }
+           
+            
             for(int i=0;i<asteroides.size();i++){
                 sprites.push_back(asteroides[i].getSprite());
             }
