@@ -21,6 +21,7 @@
 #include <unistd.h>
 #include <thread>
 #include <time.h>
+#include "gameOver.h"
 
 PantallaJuego::PantallaJuego() {
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
@@ -220,7 +221,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             };
             
         }
-
+        
 
 
         //        if(exploto && explotoEntero<=49){
@@ -249,6 +250,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             menuPausa.run(App, sprites, running);
             musicaFondo.play();
             pausa = false;
+        }
+        if(vidas==0){
+            musicaFondo.pause();
+            gameOver gameover;
+            gameover.Run(App);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa) {
 
