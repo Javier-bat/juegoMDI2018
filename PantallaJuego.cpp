@@ -61,13 +61,11 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Time timeJuego;
     sf::Clock relojDisparo;
     sf::Time timeDisparo;
-    int velocidadAsteroide = 0;
-    sf::Vector2f posicion;
+    int velocidadAsteroide = 0;   
     int tiempoSigNivel = 45;
     sf::Clock relojLuna2;
     sf::Time timeLuna2;
     bool exploto = false;
-    int explotoEntero = 0;
     int vidas=3;
     //Fin de declaracion de variables
 
@@ -220,7 +218,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             while (balas.begin() != balas.end()) {
                 balas.erase(balas.begin());
             };
-            
+            while (lunas.begin() != lunas.end()) {
+                lunas.erase(lunas.begin());
+            };
         }
         
 
