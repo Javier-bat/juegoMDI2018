@@ -34,7 +34,7 @@ Luna::Luna(sf::Texture &texturaNave) {
     float escalaY=(altoResolucion*0.0462963)/100;
      spriteLuna.setScale(escalaX,escalaY);
 
-
+     spriteLuna.setOrigin(texturaNave.getSize().x / 2,texturaNave.getSize().y / 2);
                
       
      
@@ -49,12 +49,12 @@ void Luna::ActualizarPosicion() {
      srand(time(NULL));
      int num = (250+rand()%((altoResolucion-250)-100));
     spriteLuna.move(sf::Vector2f(movimientoX, movimientoY));
-    if((int)spriteLuna.getPosition().y > num-12 && (int)spriteLuna.getPosition().y <num+12){
+    if((int)spriteLuna.getPosition().y > num-15 && (int)spriteLuna.getPosition().y <num+15){
     
         movimientoY=0;
     }
     
-    
+    spriteLuna.rotate(0.5);
     
 }
 void Luna::setMovimientoY(int movimientoY){
@@ -72,6 +72,9 @@ void Luna::generarOrigen() {
 }
 Luna::~Luna(){
 
+}
+sf::Sprite Luna::getSprite(){
+    return spriteLuna;
 }
 void Luna::verificarExistencia(int indice, std::vector<Luna> &vector,sf::Clock relojLuna2) {
     int posX = spriteLuna.getPosition().x;
