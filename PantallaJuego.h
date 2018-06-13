@@ -43,6 +43,7 @@ private:
     sf::Sound explosionAstSound;
     //Texto
     sf::Text score;
+    sf::Text cuentaRegresiva;
 };
 
 #endif /* PANTALLAJUEGO_H */
