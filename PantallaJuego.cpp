@@ -194,7 +194,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         for (int i = 0; i < balas.size(); i++) {
             balas[i].mostrar(App);
             balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje);
-            if (balas[i].spriteBala.getPosition().x > anchoResolucion && balas[i].spriteBala.getPosition().y > altoResolucion) {
+            if (balas[i].spriteBala.getPosition().x > anchoResolucion  || balas[i].spriteBala.getPosition().y > altoResolucion || balas[i].spriteBala.getPosition().x < 0  && balas[i].spriteBala.getPosition().y < 0) {
                 balas.erase(balas.begin() + i);
             }
         }
@@ -203,7 +203,8 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
         }
-        nave.colisiona(asteroides, nave, explosionUno, App, exploto);
+        
+        nave.colisiona(asteroides, nave, explosionUno, App, exploto, lunas);
 
         if (exploto) {
             exploto = false;
