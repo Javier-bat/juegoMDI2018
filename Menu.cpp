@@ -16,6 +16,7 @@
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Audio/Sound.hpp>
 #include "ConstantesGlobales.h"
+#include "Configuracion.h"
 
 Menu::Menu() {
 }
@@ -23,7 +24,7 @@ Menu::Menu(const Menu& orig){}
 Menu::~Menu(){}
 void Menu::ConfigurarTexto(sf::Font &fuente,sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,sf::Text &opcionTres,string mensajeTitulo,string mensajeUno,string mensajeDos,string mensajeTres){
     fuente.loadFromFile("font/Cave-Story.ttf");
-    
+    font=fuente;
     titulo.setFont(fuente);
     opcionUno.setFont(fuente);
     opcionDos.setFont(fuente);
@@ -55,7 +56,7 @@ void Menu::ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text
     opcionDos.setPosition(titulo.getPosition().x , titulo.getPosition().y + 90);
     opcionTres.setPosition(titulo.getPosition().x , titulo.getPosition().y + 120);
 }
-void Menu::SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos, sf::Text &opcionTres,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion){
+void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos, sf::Text &opcionTres,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion){
    // reloj.restart();
     tiempo=reloj.getElapsedTime();
     if(tiempo.asSeconds() > 0.15){
@@ -99,22 +100,21 @@ void Menu::SeleccionarOpcion(int &itemSeleccionado,sf::Text &opcionUno,sf::Text 
         
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             if (itemSeleccionado == 0) {
-               // seleccionar.play();
-                //musicaFondo.stop();
-                //running = false;
-                //PantallaJuego p1;
-                //p1.Run(App);
                 OpcionUno(App,running);
                 
             }
             if (itemSeleccionado == 1) {
-                OpcionDos();
+                OpcionDos(window,fondo);
                 
             }
             if(itemSeleccionado == 2){
                 OpcionTres();
             }
         }
+}
+void Menu::OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo){
+    Configuracion conf;
+    conf.run(window,fondo,font);
 }
 
 
