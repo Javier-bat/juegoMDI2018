@@ -31,7 +31,7 @@ public:
     void ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,sf::Text &opcionTres,int offset);
     void SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos,sf::Text &opcionTres,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion);
     virtual void OpcionUno(sf::RenderWindow &App,bool &running){cout<<"Opcion uno"<<endl;}
-    void OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo);
+    void OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo,bool &opcion);
     virtual void OpcionTres(){};
 private:
     sf::Clock reloj;

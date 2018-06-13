@@ -23,13 +23,16 @@
 class Configuracion {
 public:
     Configuracion();
-    int run(sf::RenderWindow &window,sf::Sprite &fondo,sf::Font &fuente);
+    int run(sf::RenderWindow &window,sf::Sprite &fondo,sf::Font &fuente,bool &opcion);
     void ConfigurarTexto(sf::Font &font,std::vector<sf::Text> &texto,std::vector<std::string> mensajes);
     void Dibujar(std::vector<sf::Text> texto,sf::RenderWindow &window);
     void AnadirArray(std::vector<sf::Text> &textos,std::vector<std::string> &mensajes,sf::Text texto,std::string mensaje);
     void ConfigurarPosicion(std::vector<sf::Text> &text);
+    void SeleccionarOpcion(std::vector<sf::Text> &text,int &item,bool &opcion);
 private:
     bool running=true;
+    sf::Clock reloj;
+    sf::Time tiempo;
 };
 
 #endif /* CONFIGURACION_H */

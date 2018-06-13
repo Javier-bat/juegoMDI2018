@@ -103,10 +103,10 @@ int MenuPrincipal::Run(sf::RenderWindow &App) {
             asteroides[i].ActualizarPosicion();
         }
         App.draw(titulo);
-        if(!opcion){
+        
         App.draw(tituloSinglePlayer);
         App.draw(tituloConfig);
-        App.draw(tituloSalir);}
+        App.draw(tituloSalir);
         App.display();
 
         //Este bloque de codigo hace que el menu sea navegable con las flechas

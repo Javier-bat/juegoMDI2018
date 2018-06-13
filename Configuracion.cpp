@@ -22,8 +22,9 @@ Configuracion::Configuracion() {
 
 }
 
-int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente) {
+int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente,bool &opcion) {
     std::vector<sf::Text> textoss;
+    int posicionDefecto = 0;
     std::vector<std::string> mensajes;
     sf::Text arriba;
     sf::Text abajo;
@@ -35,6 +36,14 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
     sf::Text salir;
     salir.setFont(fuente);
 
+    sf::Text arribaControl;
+    sf::Text abajoControl;
+    sf::Text derechaControl;
+    sf::Text izquierdaControl;
+    sf::Text gIzquierdaControl;
+    sf::Text gDerechaControl;
+    sf::Text dispararControl;
+
     AnadirArray(textoss, mensajes, arriba, "Arriba");
     AnadirArray(textoss, mensajes, abajo, "Abajo");
     AnadirArray(textoss, mensajes, derecha, "Derecha");
@@ -44,7 +53,15 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
     AnadirArray(textoss, mensajes, disparar, "Disparar");
     AnadirArray(textoss, mensajes, salir, "Salir");
 
-    ConfigurarTexto(fuente,textoss, mensajes);
+    AnadirArray(textoss, mensajes, arribaControl, "W");
+    AnadirArray(textoss, mensajes, abajoControl, "S");
+    AnadirArray(textoss, mensajes, derechaControl, "D");
+    AnadirArray(textoss, mensajes, izquierdaControl, "A");
+    AnadirArray(textoss, mensajes, gDerechaControl, "Flecha izquierda");
+    AnadirArray(textoss, mensajes, gIzquierdaControl, "Flecha derecha");
+    AnadirArray(textoss, mensajes, dispararControl, "Espacio");
+
+    ConfigurarTexto(fuente, textoss, mensajes);
     ConfigurarPosicion(textoss);
 
     while (running) {
@@ -54,14 +71,16 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
                 return (-1);
             }
         }
+
         window.clear();
         window.draw(fondo);
+        SeleccionarOpcion(textoss, posicionDefecto,opcion);
         Dibujar(textoss, window);
         window.display();
     }
 }
 
-void Configuracion::ConfigurarTexto(sf::Font& font,std::vector<sf::Text>& texto, std::vector<std::string> mensajes) {
+void Configuracion::ConfigurarTexto(sf::Font& font, std::vector<sf::Text>& texto, std::vector<std::string> mensajes) {
     for (int i = 0; i < texto.size(); i++) {
         texto[i].setFont(font);
         texto[i].setString(mensajes[i]);
@@ -78,20 +97,54 @@ void Configuracion::AnadirArray(std::vector<sf::Text>& textos, std::vector<std::
     textos.push_back(texto);
     mensajes.push_back(mensaje);
 }
-void Configuracion::ConfigurarPosicion(std::vector<sf::Text>& text){
-    int offsetX=30;
-    int offsetY=50;
-    sf::FloatRect textRec=text[0].getGlobalBounds();
-    
+
+void Configuracion::ConfigurarPosicion(std::vector<sf::Text>& text) {
+    int offsetX = 30;
+    int offsetY = 60;
+    sf::FloatRect textRec = text[0].getGlobalBounds();
+
     text[0].setOrigin((textRec.left + textRec.width / 2.0f) - 50, textRec.top + textRec.height / 2.0f);
-    text[0].setPosition(anchoResolucion / 2, altoResolucion / 2);
-    
-    
-    for(int i=1;i<text.size();i++){
-        std::cout<<"Tamana:"<<text.size()<<std::endl;
+    text[0].setPosition((anchoResolucion / 2) + offsetY, altoResolucion / 2);
+
+
+    for (int i = 1; i < text.size(); i++) {
         text[i].setOrigin((textRec.left + textRec.width / 2.0f) - 50, textRec.top + textRec.height / 2.0f);
-        text[i].setPosition(anchoResolucion / 2, (altoResolucion / 2) + offsetX);
-        offsetX+=30;
+        if (i == 8) {
+            offsetX = 0;
+            offsetY = -140;
+        }
+
+        text[i].setPosition((anchoResolucion / 2) + offsetY, (altoResolucion / 2) + offsetX);
+        offsetX += 30;
+
     }
-    
+
+}
+
+void Configuracion::SeleccionarOpcion(std::vector<sf::Text>& text, int& item,bool &opcion){
+    tiempo = reloj.getElapsedTime();
+    if (tiempo.asSeconds() > 0.15) {
+        for (int i = 0; i < text.size(); i++) {
+            if (i == item) {
+                text[i].setFillColor(sf::Color::Red);
+            } else {
+                text[i].setFillColor(sf::Color::White);
+                //text[i+6].setFillColor(sf::Color::White);
+            }
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && item<7) {
+            item = item + 1;
+            reloj.restart();
+        }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && item>0) {
+            item = item - 1;
+            reloj.restart();
+        }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && tiempo.asSeconds() > 0.15) {
+            if(item==7){
+                opcion=true;
+            running=false;
+            }
+        }if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+            running=false;
+        }
+    }
 }

@@ -64,7 +64,6 @@ sf::Keyboard::Key Controles::ObtenerControlArriba() {
 
 void Controles::PersistirControles(std::vector<sf::Keyboard::Key> controles) {
     std::ofstream output("controles.cntrl");
-    controles.push_back(sf::Keyboard::Backspace);
     for (int i = 0; i < controles.size(); i++) {
         output << controles[i] << std::endl;
     }
