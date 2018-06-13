@@ -78,13 +78,11 @@ void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &ite
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
                     cambiarSeleccion.play();
                     itemSeleccionado = 0;
-                    opcion=false;
                     reloj.restart();
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
                     cambiarSeleccion.play();
                     itemSeleccionado = 2;
-                    opcion=false;
                     reloj.restart();
                 }
                 break;
@@ -104,9 +102,9 @@ void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &ite
                 OpcionUno(App,running);
                 
             }
-            if (itemSeleccionado == 1 && !opcion) {
+            if (itemSeleccionado == 1) {
                 reloj.restart();
-                OpcionDos(window,fondo,opcion);
+                OpcionDos(window,fondo);
                 
             }
             if(itemSeleccionado == 2){
@@ -115,9 +113,9 @@ void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &ite
         
         }
 }
-void Menu::OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo,bool &opcion){
+void Menu::OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo){
     Configuracion conf;
-    conf.run(window,fondo,font,opcion);
+    conf.run(window,fondo,font);
 }
 
 

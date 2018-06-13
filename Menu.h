@@ -31,14 +31,12 @@ public:
     void ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text &opcionDos,sf::Text &opcionTres,int offset);
     void SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos,sf::Text &opcionTres,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion);
     virtual void OpcionUno(sf::RenderWindow &App,bool &running){cout<<"Opcion uno"<<endl;}
-    void OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo,bool &opcion);
+    void OpcionDos(sf::RenderWindow &window,sf::Sprite &fondo);
     virtual void OpcionTres(){};
 private:
     sf::Clock reloj;
     sf::Time tiempo;
     sf::Font font;
-protected:
-    bool opcion = false;
 };
 
 #endif /* MENU_H */
