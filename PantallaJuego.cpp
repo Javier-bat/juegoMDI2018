@@ -80,12 +80,12 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     //Setea la tipografia
     score.setFont(font);
     //Para evitar un uso innecesario del procesador,limita los fps a 60
-    App.setFramerateLimit(60);
+    App.setFramerateLimit(120);
     //Para evitar efecto shuttering
     App.setVerticalSyncEnabled(true);
     //Desactiva el mouse,ya que no es necesario para jugar
     App.setMouseCursorVisible(false);
-    score.setCharacterSize(32);
+    score.setCharacterSize((anchoResolucion*1.666666)/100);
 
 
     
@@ -105,7 +105,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score :"+ std::to_string(puntaje)+ "\nNivel de Velocidad    :  "+std::to_string(velocidadAsteroide+1)+"\nTiempo para el siguiente nivel    :     "+std::to_string(tiempoSigNivel-(int)timeJuego.asSeconds()));        //Esto es necesario para matar el programa cuando se cierra la ventana
+        score.setString("Score : "+ std::to_string(puntaje)+ "\nNivel de Velocidad    :  "+std::to_string(velocidadAsteroide+1)+"\nTiempo para el siguiente nivel    :     "+std::to_string(tiempoSigNivel-(int)timeJuego.asSeconds()));        //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
         while (App.pollEvent(event)) {
