@@ -82,40 +82,12 @@ namespace game
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) //con X gira en sentido horario     
       rotate( velocidadRotacion * delta_time_seconds );
     
-  //{
-   //Cogemos la dirección en la que mira la nave
-   float rotation = getRotation();
- 
-   //Cogemos cual es su direccion en coordenadas cartesianas
-   //NOTA - SFML trabaja en grados[0...360] y las ecuaciones matemáticas estándar trabajan en radianes[0...2*Pi]
-   float cosRotation = std::cos( rotation * degree2radian );
-  float sinRotation = std::sin( rotation * degree2radian );
- 
-   //Damos un acelerón a la nave
-   velocidadNave.x += aceleracion * delta_time_seconds * cosRotation;
-   velocidadNave.y += aceleracion * delta_time_seconds * sinRotation;
-//  }
+
  
   //Comprobamos si la nave se mueve
-  //La velocidad es la longitud del vector velocidad
-  float ship_speed = std::sqrt( (velocidadNave.x * velocidadNave.x) + (velocidadNave.y * velocidadNave.y) );
-  if( ship_speed > 0 ) //Si la nave se esta moviendo
-  {
-   //Vemos cual es la direccion del movimiento
-   float angle_of_velocity = std::atan2( velocidadNave.y/ship_speed , velocidadNave.x/ship_speed );
- 
-   //Aplico la resistencia en la direccion del movimiento
-      velocidadNave.x -= resistencia * delta_time_seconds * std::cos( angle_of_velocity );
-       velocidadNave.y -= resistencia * delta_time_seconds * std::sin( angle_of_velocity );
- 
-   //Compruebo la nueva velocidad
-   ship_speed = std::sqrt( (velocidadNave.x * velocidadNave.x) + (velocidadNave.y * velocidadNave.y) );
- 
-   //Si es menos que cero, paro la nave para que no retroceda
-   if( ship_speed < 0.0f ) velocidadNave = sf::Vector2f( 0.0f, 0.0f );
-    
-   //Actualizo la posición de la nave
-  // move( m_ship_velocity * delta_time_seconds );
+  float velocidadDeNave = std::sqrt( (velocidadNave.x * velocidadNave.x) + (velocidadNave.y * velocidadNave.y) );
+  if( velocidadDeNave > 0 ) //Si la nave se esta moviendo
+  {   
  
    //Comprueba la posición
    sf::Vector2f position = getPosition();
@@ -137,7 +109,7 @@ namespace game
   }
  }
  
- //Definición de la función virtual de sf::Drawable
+ //Definición de la función sf::Drawable
  void Ship::draw ( sf::RenderTarget &target, sf::RenderStates states ) const
  {
   //Aplicamos a la transformación que nos viene la transformación que tiene la nave
@@ -146,7 +118,6 @@ namespace game
   //Dibujamos la representación gráfica de la nave con la transformación calculada
  target.draw( formaNave, states );
  
-  //NOTA - Una transformación contiene la información de posición, rotación y escalado...
  }
  
 };

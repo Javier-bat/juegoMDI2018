@@ -19,16 +19,11 @@
 
 #include "ConstantesGlobales.h" 
 
-const float degree2radian = (3.14159f / 180.0f);
- 
-const float resistencia = 3.0f; //Velocidad de resistencia contra el movimiento de la nave (Esto ara que se pare poco a poco cuando se deje de acelerar )
-const float aceleracion = 10.0f; //Aceleración en pixel/segundo2 de la nave cuando se aplica empuje
 const float velocidadRotacion = 200.0f; //Velocidad de rotación de la nave en grados/segundo
 
 namespace game //Un namespace para evitar cualquier colisión de nombres accidental
 {
- //Clase Ship derivada de Transformable y Drawable
- //La clase transformable nos proporciona métodos para girar y mover la nave
+
  class Ship: public sf::Transformable, public sf::Drawable
  {
  public:
@@ -38,10 +33,10 @@ namespace game //Un namespace para evitar cualquier colisión de nombres acciden
   //Inicializa la nave a sus valores iniciales
   void reset();
  
-  //Función que actualizara la lógica de la nave
+  //Función que actualiza la nave
   void update( float delta_time_seconds );
  
-  //Definición de la función virtual de sf::Drawable
+  //draw 
   void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
   
   sf::ConvexShape getForma();

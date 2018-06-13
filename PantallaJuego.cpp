@@ -58,7 +58,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int tiempoSigNivel = 45;
     sf::Clock relojLuna2;
     sf::Time timeLuna2;
-    bool primeraVez=true;
+  
     //Fin de declaracion de variables
     
 //musica y sonidos
