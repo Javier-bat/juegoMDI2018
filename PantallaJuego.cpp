@@ -229,11 +229,12 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             musicaFondo.pause();
             std::vector<sf::Sprite> sprites;
             sprites.push_back(sprite);
+            sprites.push_back(nave.getSprite());
             for(int i=0;i<asteroides.size();i++){
                 sprites.push_back(asteroides[i].getSprite());
             }
             MenuPausa menuPausa;
-            menuPausa.run(App,sprites,running,nave);
+            menuPausa.run(App,sprites,running);
             musicaFondo.play();
             pausa=false;
         }

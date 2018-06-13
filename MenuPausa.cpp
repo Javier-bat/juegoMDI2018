@@ -28,7 +28,7 @@ MenuPausa::MenuPausa() {
 
 }
 
-int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bool &seguirJuego,game::Ship nave) {
+int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bool &seguirJuego) {
     sf::Font fuente;
     float origenX;
     float origenY;
@@ -82,7 +82,6 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
             window.draw(sprites[i]);
         }
         SeleccionarOpcion(window,sprites[0],itemSeleccionado,pausaReanudar,pausaConfig,pausaSalir,running,window,cambiarSeleccion);
-        window.draw(nave);
         window.draw(pausaTitulo);
         window.draw(pausaReanudar);
         window.draw(pausaConfig);
