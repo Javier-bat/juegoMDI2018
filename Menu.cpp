@@ -52,9 +52,9 @@ void Menu::ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text
     opcionTres.setOrigin(textRec.left + textRec.width / 2.0f, textRec.top + textRec.height / 2.0f);
 
     titulo.setPosition(anchoResolucion / 2, (altoResolucion / 2) - offset);
-    opcionUno.setPosition(titulo.getPosition().x , titulo.getPosition().y + 60);
-    opcionDos.setPosition(titulo.getPosition().x , titulo.getPosition().y + 90);
-    opcionTres.setPosition(titulo.getPosition().x , titulo.getPosition().y + 120);
+    opcionUno.setPosition(titulo.getPosition().x , titulo.getPosition().y + 90);
+    opcionDos.setPosition(titulo.getPosition().x , titulo.getPosition().y + 120);
+    opcionTres.setPosition(titulo.getPosition().x , titulo.getPosition().y + 150);
 }
 void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos, sf::Text &opcionTres,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion){
    // reloj.restart();

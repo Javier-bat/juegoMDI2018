@@ -20,7 +20,8 @@
 #include "Menu.h"
 using namespace std;
 
-gameOver::gameOver() {
+ gameOver::gameOver(int score) {
+    this->score=score;
 }
 
 int gameOver::Run(sf::RenderWindow &App) {
@@ -37,7 +38,7 @@ int gameOver::Run(sf::RenderWindow &App) {
     sf::Font font;
 
 
-    App.setFramerateLimit(60);
+    App.setFramerateLimit(120);
     App.setMouseCursorVisible(false);
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta
     sprite.setTexture(fondo); //le seteo la textura
@@ -76,7 +77,7 @@ int gameOver::Run(sf::RenderWindow &App) {
 
     if (!texturaAsteroide.loadFromFile("Imagenes/asteroideGrande.png")) {
     }
-    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloConfig, tituloSalir, "Asteroids GAME OVER!!!", "Jugar de nuevo", "Configurar","Salir");
+    ConfigurarTexto(font, titulo, tituloSinglePlayer, tituloConfig, tituloSalir, "Asteroids GAME OVER!!!\nSu puntuacion: "+std::to_string(score), "Jugar de nuevo", "Configurar","Salir");
     ConfigurarTamanoTexto(titulo, tituloSinglePlayer, tituloConfig,tituloSalir, 56, 36, 36);
     ConfigurarPosicionTexto(titulo, tituloSinglePlayer,tituloConfig, tituloSalir, 0);
     while (running) {

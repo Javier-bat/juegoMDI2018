@@ -22,7 +22,7 @@ Controles::Controles() {
 
     std::ifstream input("controles.cntrl");
     if (!input.is_open()) {
-        std::cout << "No se pudo abrir el fucking archivo" << std::endl;
+        
     }
     int teclan;
     std::vector<sf::Keyboard::Key> vectorTeclas;

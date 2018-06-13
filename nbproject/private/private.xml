@@ -16,11 +16,19 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/german/NetBeansProjects/juegoMDI2018/Animacion.h</file>
-            <file>file:/home/german/NetBeansProjects/juegoMDI2018/PantallaJuego.cpp</file>
-            <file>file:/home/german/NetBeansProjects/juegoMDI2018/Bala.cpp</file>
-            <file>file:/home/german/NetBeansProjects/juegoMDI2018/Animacion.cpp</file>
-            <file>file:/home/german/NetBeansProjects/juegoMDI2018/Bala.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/Bala.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/PantallaJuego.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/Ship.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/main.cpp</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/gameOver.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/MenuPrincipal.cpp</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/MenuPrincipal.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/Animacion.cpp</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/MenuPausa.cpp</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/PantallaJuego.cpp</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/gameOver.cpp</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/MenuPausa.h</file>
+            <file>file:/root/NetBeansProjects/juegoMDI2018/Ship.cpp</file>
         </group>
     </open-files>
 </project-private>

@@ -251,9 +251,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             musicaFondo.play();
             pausa = false;
         }
-        if(vidas==0){
+        if(vidas<0){
             musicaFondo.pause();
-            gameOver gameover;
+            gameOver gameover(puntaje);
             gameover.Run(App);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && !pausa) {
