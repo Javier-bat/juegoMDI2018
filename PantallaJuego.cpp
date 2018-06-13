@@ -85,7 +85,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     App.setVerticalSyncEnabled(true);
     //Desactiva el mouse,ya que no es necesario para jugar
     App.setMouseCursorVisible(false);
-    score.setCharacterSize((anchoResolucion*1.666666)/100);
+    score.setCharacterSize(32);
 
 
     
