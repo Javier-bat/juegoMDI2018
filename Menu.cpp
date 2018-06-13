@@ -56,7 +56,7 @@ void Menu::ConfigurarPosicionTexto(sf::Text &titulo,sf::Text &opcionUno,sf::Text
     opcionDos.setPosition(titulo.getPosition().x , titulo.getPosition().y + 120);
     opcionTres.setPosition(titulo.getPosition().x , titulo.getPosition().y + 150);
 }
-void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos, sf::Text &opcionTres,bool &running,sf::RenderWindow &App,sf::Sound &cambiarSeleccion){
+void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &itemSeleccionado,sf::Text &opcionUno,sf::Text &opcionDos, sf::Text &opcionTres,bool &running,sf::Sound &cambiarSeleccion){
    // reloj.restart();
     tiempo=reloj.getElapsedTime();
     if(tiempo.asSeconds() > 0.15){
@@ -99,7 +99,7 @@ void Menu::SeleccionarOpcion(sf::RenderWindow &window,sf::Sprite &fondo,int &ite
 }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
             if (itemSeleccionado == 0) {
-                OpcionUno(App,running);
+                OpcionUno(window,running);
                 
             }
             if (itemSeleccionado == 1) {
