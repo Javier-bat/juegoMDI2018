@@ -13,6 +13,7 @@
 
 #include "Animacion.h"
 #include <SFML/Graphics.hpp>
+#include <unistd.h>
 
 Animacion::Animacion(sf::Texture &textura, int x, int y, int w, int h, int count, float speed) {
     frame = 0;
@@ -29,11 +30,14 @@ Animacion::Animacion(sf::Texture &textura, int x, int y, int w, int h, int count
 }
 
 void Animacion::actualizar(){
+   
     frame += speed;
     if (frame >= frames.size()) 
         frame -= frames.size();
     if (frames.size() > 0) 
+        
         spriteExplosion.setTextureRect( frames[int(frame)] );
+ 
 
 }
 
@@ -46,5 +50,7 @@ Animacion::~Animacion() {
 
 void Animacion::mostrar(sf::RenderWindow &window, sf::Vector2f posicion){
     spriteExplosion.setPosition(posicion);
+       
+
     window.draw(spriteExplosion);
 }

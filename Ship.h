@@ -24,26 +24,28 @@ const float velocidadRotacion = 200.0f; //Velocidad de rotación de la nave en g
 namespace game //Un namespace para evitar cualquier colisión de nombres accidental
 {
 
- class Ship: public sf::Transformable, public sf::Drawable
+ class Ship
  {
  public:
-  Ship();
+  Ship(sf::Texture &texture);
   ~Ship();
+  
  
   //Inicializa la nave a sus valores iniciales
   void reset();
  
   //Función que actualiza la nave
   void update( float delta_time_seconds );
- 
+  sf::Sprite getSprite();
   //draw 
-  void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
-  
-  sf::ConvexShape getForma();
+  //void draw ( sf::RenderTarget &target, sf::RenderStates states ) const;
+  void mostrar(sf::RenderWindow &window);
+//  sf::ConvexShape getForma();
  protected:
   sf::Vector2f velocidadNave; //Velocidad de la nave
  
-  sf::ConvexShape formaNave; //Representación gráfica de la nave
+  //sf::ConvexShape formaNave; //Representación gráfica de la nave
+  sf::Sprite formaNave;
  const float velocidadMovimientoX = (anchoResolucion*0.104166)/100;
 const float velocidadMovimientoY = (altoResolucion*0.1851851)/100;
   

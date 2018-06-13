@@ -25,11 +25,12 @@ public:
     int Run(sf::RenderWindow &App);
     void setRunning(bool run);
 private:
-    sf::Texture texturaNave;
-    sf::Texture texturaNave2;
-    sf::Texture texturaNave3;
+    sf::Texture texturaAsteroide;
+    sf::Texture texturaAsteroide2;
+    sf::Texture texturaAsteroide3;
     sf::Texture texturaLuna;
     sf::Texture texturaBala;
+    sf::Texture texturaNaveReal;
     sf::Texture fondo; // creo una textura para el fondo
     sf::Texture explosion;
     //Sonidos
