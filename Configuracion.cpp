@@ -22,7 +22,7 @@ Configuracion::Configuracion() {
 
 }
 
-int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente, bool &opcion) {
+int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente) {
     std::vector<sf::Text> textoss;
     int posicionDefecto = 0;
     std::vector<std::string> mensajes;
