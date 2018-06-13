@@ -180,7 +180,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         nave.update(delta_time_seconds);
 
-
+        
         //limpiamos la pantalla
         App.clear();
         //dibujamos la pantalla
@@ -206,7 +206,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         for (int i = 0; i < balas.size(); i++) {
             balas[i].mostrar(App);
             balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje, lunas,colisionoConAst);
-            if (balas[i].spriteBala.getPosition().x > anchoResolucion  || balas[i].spriteBala.getPosition().y > altoResolucion || balas[i].spriteBala.getPosition().x < 0  && balas[i].spriteBala.getPosition().y < 0) {
+            if (balas[i].spriteBala.getPosition().x > anchoResolucion  || balas[i].spriteBala.getPosition().y > altoResolucion || balas[i].spriteBala.getPosition().x < 0  || balas[i].spriteBala.getPosition().y < 0) {
                 balas.erase(balas.begin() + i);
             }
         }
