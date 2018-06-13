@@ -132,16 +132,18 @@ namespace game
  
  }
  
- void Ship::colisiona(std::vector <Asteroide> &asteroides, game::Ship &nave, Animacion &explosionUno, sf::RenderWindow &App){
+void Ship::colisiona(std::vector <Asteroide> &asteroides, game::Ship &nave, Animacion &explosionUno, sf::RenderWindow &App,bool &exploto){
      for(int i = 0; i < asteroides.size(); i++){
          if(asteroides[i].getSprite().getGlobalBounds().intersects(nave.getSprite().getGlobalBounds())){
+            exploto=true;
              sf::Vector2f posicion = {(asteroides[i].getSprite().getPosition().x+ nave.formaNave.getPosition().x)/2,(asteroides[i].getSprite().getPosition().y+ nave.formaNave.getPosition().y)/2};
              explosionUno.spriteExplosion.setScale(0.5,0.5);
                     do{
                         explosionUno.mostrar(App,posicion);    
                         explosionUno.actualizar();
                     }while(!explosionUno.termina());
-            asteroides.erase(asteroides.begin()+i);        
+            asteroides.erase(asteroides.begin()+i);   
+            
          }
      }
  }

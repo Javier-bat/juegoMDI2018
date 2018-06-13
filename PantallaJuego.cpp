@@ -33,6 +33,9 @@ PantallaJuego::PantallaJuego() {
     
     //Inicializacion de sonidos
     musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav");
+    explosionNaveBuffer.loadFromFile("musica/DeathFlash.flac");
+    explosionNaveSound.setBuffer(explosionNaveBuffer);
+   
     
 }
 
@@ -69,7 +72,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
      //Agregar credito a Zander Noriega pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
-
+    musicaFondo.setVolume(45);
 
  //finMusica y sonidos 
     Animacion explosionUno(explosion,1,1,256,256,48,0.3f);
@@ -196,8 +199,15 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
         }
+        nave.colisiona(asteroides, nave, explosionUno, App,exploto);
         
-        nave.colisiona(asteroides, nave, explosionUno, App);
+        if(exploto){
+            exploto=false;
+            explosionNaveSound.play();
+            explosionNaveSound.setVolume(300);
+        
+        }
+        
         
         
 //        if(exploto && explotoEntero<=49){

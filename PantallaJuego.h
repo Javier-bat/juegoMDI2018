@@ -18,6 +18,8 @@
 #include <array>
 #include <list>
 #include <SFML/Audio/Music.hpp>
+#include <SFML/Audio/SoundBuffer.hpp>
+#include <SFML/Audio/Sound.hpp>
 
 class PantallaJuego {
 public:
@@ -35,6 +37,8 @@ private:
     sf::Texture explosion;
     //Sonidos
     sf::Music musicaFondo;
+    sf::SoundBuffer explosionNaveBuffer;
+    sf::Sound explosionNaveSound;
     //Texto
     sf::Text score;
 };
