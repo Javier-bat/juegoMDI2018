@@ -15,14 +15,16 @@
 #define SHIP_H
 
 
-#include <SFML/Graphics.hpp> 
+#include <SFML/Graphics.hpp>
+
+#include "ConstantesGlobales.h" 
 
 const float degree2radian = (3.14159f / 180.0f);
  
 const float resistencia = 3.0f; //Velocidad de resistencia contra el movimiento de la nave (Esto ara que se pare poco a poco cuando se deje de acelerar )
 const float aceleracion = 10.0f; //Aceleración en pixel/segundo2 de la nave cuando se aplica empuje
 const float velocidadRotacion = 200.0f; //Velocidad de rotación de la nave en grados/segundo
- 
+
 namespace game //Un namespace para evitar cualquier colisión de nombres accidental
 {
  //Clase Ship derivada de Transformable y Drawable
@@ -47,7 +49,8 @@ namespace game //Un namespace para evitar cualquier colisión de nombres acciden
   sf::Vector2f velocidadNave; //Velocidad de la nave
  
   sf::ConvexShape formaNave; //Representación gráfica de la nave
- 
+ const float velocidadMovimientoX = (anchoResolucion*0.104166)/100;
+const float velocidadMovimientoY = (altoResolucion*0.1851851)/100;
   
  
  };

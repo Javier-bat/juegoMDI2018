@@ -87,7 +87,7 @@ void Asteroide::generarOrigen() {
         case 0://Aparecen desde arriba
             y=0;
             x=rand() % anchoResolucion;//Genera posicion aleatoria para el ancho
-            movimientoY=2;
+            movimientoY=(altoResolucion*0.1851851)/100;
             //Ambos if, hacen que los asteroides convergan hacia el centro
             if(x > anchoResolucion/2 && movimientoX>=0) {
                 movimientoX=-movimientoX;
@@ -98,7 +98,7 @@ void Asteroide::generarOrigen() {
         case 1://Aparecen desde abajo
             y=altoResolucion;
             x=rand() % anchoResolucion;//Genera posicion aleatoria para el ancho
-            movimientoY=-2;
+            movimientoY=-((altoResolucion*0.1851851)/100);
             //Ambos if, hacen que los asteroides convergan hacia el centro
             if(x < anchoResolucion/2 && movimientoX<=0){
                 movimientoX=movimientoX *(-1);
@@ -111,14 +111,14 @@ void Asteroide::generarOrigen() {
             y=rand() % altoResolucion;
             x=0;
             if(movimientoX==0) {//Es para evitar que la rotacion saque al asteroide de la pantalla
-                movimientoX+=1;
+                movimientoX+=((anchoResolucion*0.05208333)/100);
             }
             //Ambos if, hacen que los asteroides convergan hacia el centro
             if(y > altoResolucion/2 && movimientoY>=0){
-                movimientoY=-2;
+                movimientoY=-((altoResolucion*0.1851851)/100);
                 
             }if(y < altoResolucion/2 && movimientoY<=0){
-                    movimientoY=2;
+                    movimientoY=((altoResolucion*0.1851851)/100);
             }
             break;
         default://Aparecen del lado derecho
@@ -126,11 +126,11 @@ void Asteroide::generarOrigen() {
             x=anchoResolucion;
             movimientoX=-movimientoX;
             if(movimientoX == 0) {//Es para evitar que la rotacion saque al asteroide de la pantalla
-                movimientoX-=1;
+                movimientoX-=((anchoResolucion*0.05208333)/100);
             }if(y > altoResolucion/2 && movimientoY>=0){
-                movimientoY=-2;
+                movimientoY=-((altoResolucion*0.1851851)/100);
             }if(y < altoResolucion/2 && movimientoY<=0){
-                    movimientoY=2;
+                    movimientoY=((altoResolucion*0.1851851)/100);
             }
             break;
     }

@@ -65,16 +65,16 @@ namespace game
  {
   //Comprobación del teclado
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::A  ) )    //Si pulsamos cursor izquierda
-      move(velocidadNave.x = -2.0f,velocidadNave.y = 0.0f);
+      move(velocidadNave.x = -velocidadMovimientoX,velocidadNave.y = 0.0f);
       
  
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::D  ) )   //Si pulsamos cursor derecha
-      move(velocidadNave.x = 2.0f,velocidadNave.y = 0.0f);
+      move(velocidadNave.x = velocidadMovimientoX,velocidadNave.y = 0.0f);
  
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::W ) )    //Si pulsamos cursor arriba
-     move(velocidadNave.x = 0.0f,velocidadNave.y = -2.0f);
+     move(velocidadNave.x = 0.0f,velocidadNave.y = -velocidadMovimientoY);
   if( sf::Keyboard::isKeyPressed( sf::Keyboard::S) )    //Si pulsamos cursor  abajo
-     move(velocidadNave.x = 0.0f,velocidadNave.y = 2.0f);
+     move(velocidadNave.x = 0.0f,velocidadNave.y = velocidadMovimientoY);
   
   if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) //con Z gira en sentido antihorario
       rotate( -1.0f * velocidadRotacion * delta_time_seconds );
