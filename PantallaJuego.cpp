@@ -186,6 +186,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         for(int i =0; i<balas.size() ;i++){
             balas[i].mostrar(App);
+            balas[i].colisiona(balas, asteroides, explosionUno, App);
             if(balas[i].spriteBala.getPosition().x > anchoResolucion && balas[i].spriteBala.getPosition().y > altoResolucion ){
                 balas.erase(balas.begin()+i);
             }
@@ -196,26 +197,9 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             asteroides[i].ActualizarPosicion();
         }
         
-       
+        nave.colisiona(asteroides, nave, explosionUno, App);
         
-        for(int i=0;i < asteroides.size();i++){
-            for(int j=0;j < balas.size();j++){
-                if(asteroides[i].getSprite().getGlobalBounds().intersects(balas[j].spriteBala.getGlobalBounds())){      
-                    posicion = {(asteroides[i].getSprite().getPosition().x+balas[j].spriteBala.getPosition().x)/2,(asteroides[i].getSprite().getPosition().y+balas[j].spriteBala.getPosition().y)/2};
-                    do{
-
-                        explosionUno.mostrar(App,posicion);
-                    
-
-                        explosionUno.actualizar();
-                    }while(!explosionUno.termina());           
-                    asteroides.erase(asteroides.begin()+i);
-                    balas.erase(balas.begin()+j);
-                    puntaje++;
-                    exploto=true;
-                }
-            }
-        }   
+        
 //        if(exploto && explotoEntero<=49){
 //            explotoEntero+=1;
 //                        explosionUno.mostrar(App,posicion);

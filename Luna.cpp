@@ -82,3 +82,6 @@ void Luna::verificarExistencia(int indice, std::vector<Luna> &vector,sf::Clock r
     }
 }
 
+sf::Sprite Luna::getSprite(){
+    return spriteLuna;
+}
