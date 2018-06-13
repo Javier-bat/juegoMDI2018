@@ -27,8 +27,8 @@ public:
     int run(sf::RenderWindow &window,sf::Sprite &fondo,sf::Font &fuente);
     void ConfigurarTexto(sf::Font &font,std::vector<sf::Text> &texto,std::vector<std::string> mensajes);
     void Dibujar(std::vector<sf::Text> texto,sf::RenderWindow &window);
-    void AnadirArray(std::vector<sf::Text> &textos,std::vector<std::string> &mensajes,sf::Text texto,std::string mensaje);
     void ConfigurarPosicion(std::vector<sf::Text> &text);
+    std::vector<sf::Text> CrearArrayTexto(int tamano);
 private:
     bool running=true;
     sf::Clock reloj;

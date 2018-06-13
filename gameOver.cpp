@@ -109,7 +109,6 @@ int gameOver::Run(sf::RenderWindow &App) {
         App.draw(tituloConfig);
         App.draw(tituloSalir);
         App.display();
-
         //Este bloque de codigo hace que el menu sea navegable con las flechas
         SeleccionarOpcion(App,sprite,itemSeleccionado, tituloSinglePlayer, tituloConfig,tituloSalir, running, App,cambiarSeleccion);
 

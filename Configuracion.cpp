@@ -24,41 +24,24 @@ Configuracion::Configuracion() {
 
 int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente) {
     std::vector<sf::Text> textoss;
-    int posicionDefecto = 0;
     std::vector<std::string> mensajes;
-    sf::Text titulo;
-    sf::Text arriba;
-    sf::Text abajo;
-    sf::Text derecha;
-    sf::Text izquierda;
-    sf::Text gIzquierda;
-    sf::Text gDerecha;
-    sf::Text disparar;
-
-    sf::Text arribaControl;
-    sf::Text abajoControl;
-    sf::Text derechaControl;
-    sf::Text izquierdaControl;
-    sf::Text gIzquierdaControl;
-    sf::Text gDerechaControl;
-    sf::Text dispararControl;
-    
-    AnadirArray(textoss,mensajes,titulo,"Esquema de controles (ESC para volver)");
-    AnadirArray(textoss, mensajes, arriba, "Arriba");
-    AnadirArray(textoss, mensajes, abajo, "Abajo");
-    AnadirArray(textoss, mensajes, derecha, "Derecha");
-    AnadirArray(textoss, mensajes, izquierda, "Izquierda");
-    AnadirArray(textoss, mensajes, gIzquierda, "Giro a la izquierda");
-    AnadirArray(textoss, mensajes, gDerecha, "Giro a la derecha");
-    AnadirArray(textoss, mensajes, disparar, "Disparar");
-
-    AnadirArray(textoss, mensajes, arribaControl, "W");
-    AnadirArray(textoss, mensajes, abajoControl, "S");
-    AnadirArray(textoss, mensajes, derechaControl, "D");
-    AnadirArray(textoss, mensajes, izquierdaControl, "A");
-    AnadirArray(textoss, mensajes, gDerechaControl, "Flecha izquierda");
-    AnadirArray(textoss, mensajes, gIzquierdaControl, "Flecha derecha");
-    AnadirArray(textoss, mensajes, dispararControl, "Espacio");
+    textoss=CrearArrayTexto(15);
+    //Creacion de strings para los texts
+    mensajes.push_back("Esquema de controles (ESC para volver)");
+    mensajes.push_back("Arriba");
+    mensajes.push_back("Abajo");
+    mensajes.push_back("Derecha");
+    mensajes.push_back("Izquierda");
+    mensajes.push_back("Giro a la izquierda");
+    mensajes.push_back("Giro a la derecha");
+    mensajes.push_back("Disparar");
+    mensajes.push_back("W");
+    mensajes.push_back("S");
+    mensajes.push_back("D");
+    mensajes.push_back("A");
+    mensajes.push_back("Flecha izquierda");
+    mensajes.push_back("Flecha derecha");
+    mensajes.push_back("Espacio");
 
     ConfigurarTexto(fuente, textoss, mensajes);
     ConfigurarPosicion(textoss);
@@ -97,11 +80,6 @@ void Configuracion::Dibujar(std::vector<sf::Text> texto, sf::RenderWindow& windo
     }
 }
 
-void Configuracion::AnadirArray(std::vector<sf::Text>& textos, std::vector<std::string>& mensajes, sf::Text texto, std::string mensaje) {
-    textos.push_back(texto);
-    mensajes.push_back(mensaje);
-}
-
 void Configuracion::ConfigurarPosicion(std::vector<sf::Text>& text) {
     int offsetX = 30;
     int offsetY = 60;
@@ -123,4 +101,12 @@ void Configuracion::ConfigurarPosicion(std::vector<sf::Text>& text) {
 
     }
 
+}
+std::vector<sf::Text> Configuracion::CrearArrayTexto(int tamano){
+    std::vector<sf::Text> vector;
+    for(int i=0;i<tamano;i++){
+        sf::Text texto;
+        vector.push_back(texto);
+    }
+    return vector;
 }
