@@ -81,7 +81,7 @@ int MenuPausa::run(sf::RenderWindow &window, std::vector<sf::Sprite> sprites, bo
         for (int i = 0; i < sprites.size(); i++) {
             window.draw(sprites[i]);
         }
-        SeleccionarOpcion(window,sprites[0],itemSeleccionado,pausaReanudar,pausaConfig,pausaSalir,running,window,cambiarSeleccion);
+        SeleccionarOpcion(window,sprites[0],itemSeleccionado,pausaReanudar,pausaConfig,pausaSalir,running,cambiarSeleccion);
         window.draw(pausaTitulo);
         window.draw(pausaReanudar);
         window.draw(pausaConfig);
