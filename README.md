@@ -1,7 +1,9 @@
 # Asteroids
 Juego Asteroids para la asignatura Metodología de la Investigación.
 Se toma como base la idea del videojuego Asteroids,agregandole añadidos varios.
-El juego está hecho para correr en GNU/Linux y utiliza las librerias de SFML,para el autoenlazado automatico en el proyecto, es necesario instalar dicha libreria y pkgconfig:
+El juego está hecho para correr en GNU/Linux y utiliza las librerias de SFML,
+
+El proyecto es realizado en el IDE NetBeans,el lenguaje seleccionado es C++,y para el enlazado automatico de librerías en el proyecto, es necesario instalar SFML y pkgconfig:
 
 ## Para Ubuntu y sus derivados:
 
