@@ -155,9 +155,7 @@ void Ship::colisiona(std::vector <Asteroide> &asteroides, game::Ship &nave, Anim
                     do{
                         explosionUno.mostrar(App,posicion);    
                         explosionUno.actualizar();
-                    }while(!explosionUno.termina());
-            asteroides.erase(asteroides.begin()+i);   
-            
+                    }while(!explosionUno.termina());            
          }
      }
  }
