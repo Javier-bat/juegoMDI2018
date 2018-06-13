@@ -186,7 +186,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         for(int i =0; i<balas.size() ;i++){
             balas[i].mostrar(App);
-            balas[i].colisiona(balas, asteroides, explosionUno, App);
+            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje);
             if(balas[i].spriteBala.getPosition().x > anchoResolucion && balas[i].spriteBala.getPosition().y > altoResolucion ){
                 balas.erase(balas.begin()+i);
             }
