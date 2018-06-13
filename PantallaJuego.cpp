@@ -93,7 +93,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     //Setea la tipografia
     score.setFont(font);
     //Para evitar un uso innecesario del procesador,limita los fps a 60
-    App.setFramerateLimit(110);
+    App.setFramerateLimit(75);
     //Para evitar efecto shuttering
     App.setVerticalSyncEnabled(true);
     //Desactiva el mouse,ya que no es necesario para jugar
@@ -121,7 +121,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         if (1 > tiempoSigNivel) {
             velocidadAsteroide += 1;
             
-            tiempoSigNivel += (velocidadAsteroide * 5);
+            tiempoSigNivel =45+ (velocidadAsteroide * 5);
         }
 
 
