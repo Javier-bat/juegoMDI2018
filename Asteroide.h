@@ -24,7 +24,6 @@ public:
     void Mostrar(sf::RenderWindow &window);
     void ActualizarPosicion();
     void verificarExistencia(int indice,std::vector<Asteroide> &vector);
-    void abc(sf::RenderWindow &window,std::vector<Asteroide> &asteroides);
     sf::Sprite getSprite();
     void setVelocidad(int velocidad);
 private:

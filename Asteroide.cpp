@@ -143,13 +143,6 @@ void Asteroide::verificarExistencia(int indice,std::vector<Asteroide> &vector){
         vector.erase(vector.begin()+indice);
     }
 }
-void abc(sf::RenderWindow &window,std::vector<Asteroide> &asteroides){
-    for(int i=0;i < asteroides.size();i++){
-            asteroides[i].verificarExistencia(i,asteroides);
-            asteroides[i].Mostrar(window);
-            asteroides[i].ActualizarPosicion();
-        }
-}
 sf::Sprite Asteroide::getSprite(){
     return spriteNave;
 }
