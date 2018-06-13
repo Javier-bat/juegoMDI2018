@@ -221,6 +221,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             while (lunas.begin() != lunas.end()) {
                 lunas.erase(lunas.begin());
             };
+            relojJuego.restart();
         }
         
 
