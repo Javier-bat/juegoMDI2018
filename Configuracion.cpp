@@ -22,10 +22,11 @@ Configuracion::Configuracion() {
 
 }
 
-int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente,bool &opcion) {
+int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fuente, bool &opcion) {
     std::vector<sf::Text> textoss;
     int posicionDefecto = 0;
     std::vector<std::string> mensajes;
+    sf::Text titulo;
     sf::Text arriba;
     sf::Text abajo;
     sf::Text derecha;
@@ -33,8 +34,6 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
     sf::Text gIzquierda;
     sf::Text gDerecha;
     sf::Text disparar;
-    sf::Text salir;
-    salir.setFont(fuente);
 
     sf::Text arribaControl;
     sf::Text abajoControl;
@@ -43,7 +42,8 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
     sf::Text gIzquierdaControl;
     sf::Text gDerechaControl;
     sf::Text dispararControl;
-
+    
+    AnadirArray(textoss,mensajes,titulo,"Esquema de controles (ESC para volver)");
     AnadirArray(textoss, mensajes, arriba, "Arriba");
     AnadirArray(textoss, mensajes, abajo, "Abajo");
     AnadirArray(textoss, mensajes, derecha, "Derecha");
@@ -51,7 +51,6 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
     AnadirArray(textoss, mensajes, gIzquierda, "Giro a la izquierda");
     AnadirArray(textoss, mensajes, gDerecha, "Giro a la derecha");
     AnadirArray(textoss, mensajes, disparar, "Disparar");
-    AnadirArray(textoss, mensajes, salir, "Salir");
 
     AnadirArray(textoss, mensajes, arribaControl, "W");
     AnadirArray(textoss, mensajes, abajoControl, "S");
@@ -74,10 +73,13 @@ int Configuracion::run(sf::RenderWindow& window, sf::Sprite& fondo, sf::Font &fu
 
         window.clear();
         window.draw(fondo);
-        SeleccionarOpcion(textoss, posicionDefecto,opcion);
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+            running = false;
+        }
         Dibujar(textoss, window);
         window.display();
     }
+    return -1;
 }
 
 void Configuracion::ConfigurarTexto(sf::Font& font, std::vector<sf::Text>& texto, std::vector<std::string> mensajes) {
@@ -85,6 +87,8 @@ void Configuracion::ConfigurarTexto(sf::Font& font, std::vector<sf::Text>& texto
         texto[i].setFont(font);
         texto[i].setString(mensajes[i]);
     }
+    texto[0].setCharacterSize(46);
+    texto[0].setFillColor(sf::Color::Yellow);
 }
 
 void Configuracion::Dibujar(std::vector<sf::Text> texto, sf::RenderWindow& window) {
@@ -104,14 +108,14 @@ void Configuracion::ConfigurarPosicion(std::vector<sf::Text>& text) {
     sf::FloatRect textRec = text[0].getGlobalBounds();
 
     text[0].setOrigin((textRec.left + textRec.width / 2.0f) - 50, textRec.top + textRec.height / 2.0f);
-    text[0].setPosition((anchoResolucion / 2) + offsetY, altoResolucion / 2);
+    text[0].setPosition((anchoResolucion / 2) -30, altoResolucion / 2 -40);
 
 
     for (int i = 1; i < text.size(); i++) {
-        text[i].setOrigin((textRec.left + textRec.width / 2.0f) - 50, textRec.top + textRec.height / 2.0f);
+        text[i].setOrigin((textRec.left + textRec.width / 2.0f) , textRec.top + textRec.height / 2.0f);
         if (i == 8) {
-            offsetX = 0;
-            offsetY = -140;
+            offsetX = 30;
+            offsetY = -240;
         }
 
         text[i].setPosition((anchoResolucion / 2) + offsetY, (altoResolucion / 2) + offsetX);
@@ -119,32 +123,4 @@ void Configuracion::ConfigurarPosicion(std::vector<sf::Text>& text) {
 
     }
 
-}
-
-void Configuracion::SeleccionarOpcion(std::vector<sf::Text>& text, int& item,bool &opcion){
-    tiempo = reloj.getElapsedTime();
-    if (tiempo.asSeconds() > 0.15) {
-        for (int i = 0; i < text.size(); i++) {
-            if (i == item) {
-                text[i].setFillColor(sf::Color::Red);
-            } else {
-                text[i].setFillColor(sf::Color::White);
-                //text[i+6].setFillColor(sf::Color::White);
-            }
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && item<7) {
-            item = item + 1;
-            reloj.restart();
-        }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && item>0) {
-            item = item - 1;
-            reloj.restart();
-        }if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && tiempo.asSeconds() > 0.15) {
-            if(item==7){
-                opcion=true;
-            running=false;
-            }
-        }if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
-            running=false;
-        }
-    }
 }

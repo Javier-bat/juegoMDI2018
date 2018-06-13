@@ -18,6 +18,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Keyboard.hpp>
 
 
 class Configuracion {
@@ -28,7 +29,6 @@ public:
     void Dibujar(std::vector<sf::Text> texto,sf::RenderWindow &window);
     void AnadirArray(std::vector<sf::Text> &textos,std::vector<std::string> &mensajes,sf::Text texto,std::string mensaje);
     void ConfigurarPosicion(std::vector<sf::Text> &text);
-    void SeleccionarOpcion(std::vector<sf::Text> &text,int &item,bool &opcion);
 private:
     bool running=true;
     sf::Clock reloj;
