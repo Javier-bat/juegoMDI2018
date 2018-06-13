@@ -18,7 +18,6 @@
 #include <list>
 #include <iostream>
 #include "Animacion.h"
-#include "Controles.h"
 
 PantallaJuego::PantallaJuego() {
     fondo.loadFromFile("Imagenes/back.png"); //cargo la imagen de la carpeta

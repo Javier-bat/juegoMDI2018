@@ -15,12 +15,30 @@
 #define CONTROLES_H
 
 #include <SFML/Window/Keyboard.hpp>
+#include <vector>
 
 
 class Controles {
 public:
     Controles();
+    //Getters
     sf::Keyboard::Key ObtenerControlArriba();
+    sf::Keyboard::Key ObtenerControlAbajo();
+    sf::Keyboard::Key ObtenerControlDerecha();
+    sf::Keyboard::Key ObtenerControlIzquierda();
+    sf::Keyboard::Key ObtenerControlGirarIzquierda();
+    sf::Keyboard::Key ObtenerControlGirarDerecha();
+    sf::Keyboard::Key ObtenerControlDisparar();
+    //Setter
+    void SetearControlArriba(sf::Keyboard::Key tecla);
+    void SetearControlAbajo(sf::Keyboard::Key tecla);
+    void SetearControlDerecha(sf::Keyboard::Key tecla);
+    void SetearControlIzquierda(sf::Keyboard::Key tecla);
+    void SetearControlGirarIzquierda(sf::Keyboard::Key tecla);
+    void SetearControlGirarDerecha(sf::Keyboard::Key tecla);
+    void SetearControlDisparar(sf::Keyboard::Key tecla);
+    //Persistir controles
+    void PersistirControles(std::vector<sf::Keyboard::Key> controles);
 private:
     sf::Keyboard::Key controlArriba;
     sf::Keyboard::Key controlAbajo;
