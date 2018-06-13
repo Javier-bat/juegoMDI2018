@@ -71,6 +71,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     int vidas=3;
     sf::Clock empiezaJuegoC;
     sf::Time empiezaJuegoT;
+    bool noPausa = true;
     //Fin de declaracion de variables
 
     //musica y sonidos
@@ -110,10 +111,16 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         empiezaJuegoT=empiezaJuegoC.getElapsedTime();
         if((int)empiezaJuegoT.asSeconds()>3){
         timeJuego = relojJuego.getElapsedTime();
+            
+        if((int) timeJuego.asSeconds()>=1 && !pausa){
         
-        if ((int) timeJuego.asSeconds() > tiempoSigNivel) {
-            velocidadAsteroide += 1;
+            tiempoSigNivel--;
             relojJuego.restart();
+        }
+        
+        if (1 > tiempoSigNivel) {
+            velocidadAsteroide += 1;
+            
             tiempoSigNivel += (velocidadAsteroide * 5);
         }
 
@@ -122,7 +129,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
 
         //Actualiza el score en cada vuelta del bucle
-        score.setString("Score : " + std::to_string(puntaje) + "\nNivel    :  " + std::to_string(velocidadAsteroide + 1) + "\nTiempo para el siguiente nivel    :     " + std::to_string(tiempoSigNivel - (int) timeJuego.asSeconds())+"\nVidas : "+std::to_string(vidas)); //Esto es necesario para matar el programa cuando se cierra la ventana
+        score.setString("Score : " + std::to_string(puntaje) + "\nNivel    :  " + std::to_string(velocidadAsteroide + 1) + "\nTiempo para el siguiente nivel    :     " + std::to_string(tiempoSigNivel )+"\nVidas : "+std::to_string(vidas)); //Esto es necesario para matar el programa cuando se cierra la ventana
 
         sf::Event event;
         while (App.pollEvent(event)) {
@@ -256,6 +263,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             menuPausa.run(App, sprites, running);
             musicaFondo.play();
             pausa = false;
+            relojJuego.restart();
         }
         if(vidas<0){
             musicaFondo.pause();
@@ -299,6 +307,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             MenuPausa menuPausa;
             menuPausa.run(App, sprites, running);
             musicaFondo.play();
+            
             pausa = false;
             empiezaJuegoC.restart();
         }
