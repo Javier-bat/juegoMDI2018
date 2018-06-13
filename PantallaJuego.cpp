@@ -173,8 +173,6 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         for (int i = 0; i < lunas.size(); i++) {
             lunas[i].Mostrar(App);
             lunas[i].ActualizarPosicion();
-            // if(sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-            //  {lunas[i].~Luna();}
 
         }
         App.draw(score);
@@ -223,18 +221,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
             };
             relojJuego.restart();
         }
-        
 
-
-        //        if(exploto && explotoEntero<=49){
-        //            explotoEntero+=1;
-        //                        explosionUno.mostrar(App,posicion);
-        //                        explosionUno.actualizar();
-        //                        if(explotoEntero>=43){                          
-        //                            explotoEntero=0;
-        //                            exploto=false;
-        //                        }
-        //        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa) {
             musicaFondo.pause();
             std::vector<sf::Sprite> sprites;
