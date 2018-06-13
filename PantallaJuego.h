@@ -39,6 +39,8 @@ private:
     sf::Music musicaFondo;
     sf::SoundBuffer explosionNaveBuffer;
     sf::Sound explosionNaveSound;
+    sf::SoundBuffer explosionAstBuffer;
+    sf::Sound explosionAstSound;
     //Texto
     sf::Text score;
 };

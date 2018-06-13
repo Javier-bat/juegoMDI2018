@@ -31,7 +31,7 @@ public:
     void mostrar(sf::RenderWindow &window);
     sf::Sprite spriteBala;
     sf::Vector2f velocity;
-    void colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje, std::vector <Luna> &lunas);
+    void colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje, std::vector <Luna> &lunas,bool &colisionoConAst);
     
 };
 

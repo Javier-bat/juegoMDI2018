@@ -37,7 +37,8 @@ PantallaJuego::PantallaJuego() {
     musicaFondo.openFromFile("musica/ZanderNoriega-DarkerWaves.wav");
     explosionNaveBuffer.loadFromFile("musica/DeathFlash.flac");
     explosionNaveSound.setBuffer(explosionNaveBuffer);
-
+    explosionAstBuffer.loadFromFile("musica/SFX_Explosion_03.wav");
+    explosionAstSound.setBuffer(explosionAstBuffer);
 
 }
 
@@ -66,6 +67,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     sf::Clock relojLuna2;
     sf::Time timeLuna2;
     bool exploto = false;
+    bool colisionoConAst = false;
     int vidas=3;
     //Fin de declaracion de variables
 
@@ -73,7 +75,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
     //Agregar credito a Zander Noriega pendiente
     musicaFondo.setLoop(true);
     musicaFondo.play();
-    musicaFondo.setVolume(45);
+    musicaFondo.setVolume(60);
 
     //finMusica y sonidos 
     Animacion explosionUno(explosion, 1, 1, 256, 256, 48, 0.3f);
@@ -189,12 +191,17 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
 
         for (int i = 0; i < balas.size(); i++) {
             balas[i].mostrar(App);
-            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje, lunas);
+            balas[i].colisiona(balas, asteroides, explosionUno, App, puntaje, lunas,colisionoConAst);
             if (balas[i].spriteBala.getPosition().x > anchoResolucion  || balas[i].spriteBala.getPosition().y > altoResolucion || balas[i].spriteBala.getPosition().x < 0  && balas[i].spriteBala.getPosition().y < 0) {
                 balas.erase(balas.begin() + i);
             }
         }
-
+        
+         if (colisionoConAst) {
+             
+            colisionoConAst = false;
+            explosionNaveSound.play();
+            explosionNaveSound.setVolume(100);}
         for (int i = 0; i < asteroides.size(); i++) {
             asteroides[i].Mostrar(App);
             asteroides[i].ActualizarPosicion();
@@ -203,9 +210,10 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
         nave.colisiona(asteroides, nave, explosionUno, App, exploto, lunas);
 
         if (exploto) {
+            musicaFondo.stop();
             exploto = false;
-            explosionNaveSound.play();
-            explosionNaveSound.setVolume(300);
+            explosionAstSound.play();
+            explosionAstSound.setVolume(300);
             nave.reset();
             vidas--;
             velocidadAsteroide=0;
@@ -220,6 +228,7 @@ int PantallaJuego::Run(sf::RenderWindow &App) {
                 lunas.erase(lunas.begin());
             };
             relojJuego.restart();
+            musicaFondo.play();
         }
 
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) && pausa) {

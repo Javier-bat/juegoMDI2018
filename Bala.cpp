@@ -39,10 +39,11 @@ void Bala::mostrar(sf::RenderWindow &window){
 Bala::~Bala() {
 };
 
-void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje, std::vector <Luna> &lunas){
+void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroides, Animacion &explosionUno, sf::RenderWindow &App, int &puntaje, std::vector <Luna> &lunas,bool &colisionoConAst){
     for(int i=0;i < asteroides.size();i++){
             for(int j=0;j < balas.size();j++){
                 if(asteroides[i].getSprite().getGlobalBounds().intersects(balas[j].spriteBala.getGlobalBounds())){      
+                    colisionoConAst=true;
                     sf::Vector2f posicion = {(asteroides[i].getSprite().getPosition().x+balas[j].spriteBala.getPosition().x)/2,(asteroides[i].getSprite().getPosition().y+balas[j].spriteBala.getPosition().y)/2};
                     explosionUno.spriteExplosion.setScale(1,1);
                     do{
@@ -59,6 +60,7 @@ void Bala::colisiona(std::vector <Bala> &balas, std::vector <Asteroide> &asteroi
     for(int i=0;i < balas.size();i++){
             for(int j=0;j < lunas.size();j++){
                 if(Collision::PixelPerfectTest(lunas[j].getSprite(),balas[i].spriteBala,127)){      
+                    colisionoConAst=true;
                     sf::Vector2f posicion = balas[i].spriteBala.getPosition();
                     explosionUno.spriteExplosion.setScale(0.3,0.3);
                     do{
